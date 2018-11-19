@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8"/>
+        <style>
+            div 
+            { 
+                font-family: sans-serif;
+                font-size: 2em;
+                border: dashed 3px #ccc;
+                padding: 0vh 5vw 4vh;
+                width: 50vw;
+                margin: 5vh 20vw;
+                color: #aaa;
+                letter-spacing: -0.1em;
+                overflow-x: hidden;
+            }
+            input
+            {
+               font-size: 1em;
+               padding: 0.5em;
+               margin: 1%;
+            }
+            p#result, p#result_mid
+            {
+                font-size: 2em;
+                margin: 0;
+                letter-spacing: -0.03em;
+            }
+            p.button
+            {
+                background: darkseagreen;
+                padding: 0.4em;
+                width: 40%;
+                min-width: 8em;
+                letter-spacing: 0;
+                color: whitesmoke;
+                border-radius: 0.3em;
+                margin: 0.2em;
+                    
+            }
+            p.link
+            {
+                text-align: right;
+                font-size: 0.4em;
+                letter-spacing: 0;
+            }
+            a { text-decoration: none }
+        </style>
+    </head>
+
+    <body>
+
+
+<! --------------- >
+
+        
+        <div>
+            <p class="link"><a href="http://motokofr.com/geekbrains/l2.html">онлайн-версия</a></p>
+            <center>
+                <h1>Урок №2, задание 2</h1>
+                <p>Введите три разных целых числа</p>
+                <input style="width: 1em" type="text" name="a" id="a" placeholder="A">
+                <input style="width: 1em"type="text" name="b" id="b" placeholder="B">
+                <input style="width: 1em"type="text" name="c" id="c" placeholder="C">
+                <br>
+                <input type="button" onclick="middle()" value="Вычислить среднее">
+                <p id="result_mid"></div>
+            </center>
+        
+
+        </div>
+
+
+
+
+        <div>
+            <center><h1>Урок №2, задание 3*</h1>
+        <input type="text" name="x" id="x" onkeyup="work()" placeholder="Введите число до 10">
+        <p id="result"></div>
+        
+        </center>
+        </div>
+
+
+<! --------------- >
+
+        <script>
+            function middle()
+            {
+                a = parseInt(document.getElementById('a').value);
+                b = parseInt(document.getElementById('b').value);
+                c = parseInt(document.getElementById('c').value);
+                
+                if ( isNaN(a) || isNaN(b) || isNaN(c) ) alert('Что-то пошло не так... ;)');
+                else
+                {
+                    if ( a == b || b == c || a == c ) alert('Числа должны быть РАЗНЫМИ');
+                    else
+                    {
+                        if (a<b && b<c)
+                        mid = b
+                        else if (c<b && b<a)
+                        mid = b
+                        
+                        else if (a<c && c<b)
+                        mid = c
+                        else if (b<c && c<a)
+                        mid = c
+                        
+                        else if (c<a && a<b)
+                        mid = a
+                        else 
+                        mid = a
+                        
+                        document.getElementById('result_mid').innerHTML = mid;
+                    }
+                }
+            }
+                
+        
+            function work() 
+            {
+                xx = document.getElementById('x');
+                x = parseInt(xx.value);
+    
+                if (x > 10) document.getElementById('result').innerHTML = 'Это число больше 10';
+    
+                else
+                {
+                    y = 0;
+                    document.getElementById('result').innerHTML = '';
+                    while (y < 10) {
+                        x++;
+                        y = 10 - (10 - x);
+                        if (y > 10) y = ';)';
+                        if ( isNaN(x) )
+                        document.getElementById('result').innerHTML = 'Разве это число? :)';
+                        else 
+                        document.getElementById('result').innerHTML += y +'&nbsp;&nbsp;';
+                        
+                        if( xx.value == '' )
+                        document.getElementById('result').innerHTML ='';                        
+                    }
+                }
+            }
+
+        </script>
+        
+        <!-- Yandex.Metrika counter --><script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter32205529 = new Ya.Metrika({ id:32205529, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, ut:"noindex" }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="https://mc.yandex.ru/watch/32205529?ut=noindex" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+        
+	</body>
+</html>
+

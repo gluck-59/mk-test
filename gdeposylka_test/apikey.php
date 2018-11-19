@@ -1,0 +1,5 @@
+<?php
+    $apikey = '22fc09c472a627c525373311a54ffa7d20e44fb9d1f9cab00c2d413402be853e367f71b1569cb26c';
+//    $client = new Client\Client('22fc09c472a627c525373311a54ffa7d20e44fb9d1f9cab00c2d413402be853e367f71b1569cb26c');
+?>
+
