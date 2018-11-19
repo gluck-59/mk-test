@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Transitional//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='ru' lang='ru' dir='ltr'>
+<head>
+<title>List-Org</title>
+<meta http-equiv="content-language" content="ru"> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" media="screen" href="/style/main.css?ver=2"/>
+<script defer="defer" type="text/javascript" src="/js/jquery.min.js"></script>
+<script defer="defer" type="text/javascript" src="/js/org.js"></script>
+</head>
+<body>
+<div class=main>
+<div class=header>
+<a class="cd-primary-nav-trigger"><span class="cd-menu-icon"></span></a>
+<a href='#' class='lbs64' rel='rLw==' title='В начало'>
+<span class='logo'></span>
+</a><br><span class='h1'>List-Org - Проверка, что Вы не робот</span><br><br>
+</div>
+<div class=content>
+<form name=frm method=POST>Вы слишком часто обращались к сайту и мы хотим убедиться, что вы не робот.<br>Повторите текст на картинке и сможете дальше работать:<br><img src="http://www.list-org.com/kcap.php?PHPSESSID=cmgm99uv8jgu75r1nncdblb424"><br><br><input type="text" name="keystring"><br><br><input type="submit" value=" Проверить! " name="submit"></form></div>
+<nav class='menu'>
+<div class='rmenu'>
+<form action="/search.php">
+<div class="input-group">
+ <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+ <input name="val" class="form-control" type="text" placeholder="Поиск" title='по наименованию, адресу, руководителю'>
+</div>
+<input name="type" value="all" type="hidden">
+</form>
+<ul>
+<li><a href="/?search=inn"><i class="fa-sm fa fa-angle-double-right fa-fw"></i>Поиск по ИНН</a></li>
+<li><a href="/?search=ogrn"><i class="fa-sm fa fa-angle-double-right fa-fw"></i>Поиск по ОГРН</a></li>
+<li><a href="/?search=okpo"><i class="fa-sm fa fa-angle-double-right fa-fw"></i>Поиск по ОКПО</a></li>
+<li><a href="/?search=phone"><i class="fa-sm fa fa-phone fa-fw"></i>Поиск по телефону</a></li>
+<li><a href="/?search=name"><i class="fa-sm fa fa-file-text-o fa-fw"></i>Поиск по наименованию</a></li>
+<li><a href="/?search=boss"><i class="fa-sm fa-sm fa fa-user-o fa-fw"></i>Поиск по руководителю</a></li>
+<li><a href="/?search=address"><i class="fa-sm fa fa-map-marker fa-fw"></i>Поиск по адресу</a><br><br></li>
+<li><a href="/okato.php"><i class="fa-sm fa fa-list-ul fa-fw"></i>Список по регионам (ОКАТО)</a></li>
+<li><a href="/okved.php"><i class="fa-sm fa fa-list-ul fa-fw"></i>Список по отраслям (ОКВЭД)</a></li>
+<li><a href="/okved2.php"><i class="fa-sm fa fa-list-ul fa-fw"></i>Список по отраслям (ОКВЭД ред.2)</a></li>
+</ul>
+</div>
+</nav>
+</div>
+</body>
+<link rel="stylesheet" type="text/css" media="screen" href="/style/font-awesome.min.css"/>
+</html>

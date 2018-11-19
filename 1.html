@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <meta charset="UTF-8"/>
+        <style>
+
+        </style>
+    </head>
+
+    <body> 
+        
+        <input type="text" name="x" id="x" onkeyup="work()" placeholder="Введите число до 10">
+        <div id="res"></div>
+
+        <script>
+            function work() 
+            {
+                x = document.getElementById('x');
+                x = parseInt(x.value);
+    
+                if (x > 10) document.getElementById('res').innerHTML = 'Это число больше 10';
+    
+                else
+                {
+                    y = 0;
+                    document.getElementById('res').innerHTML = '';
+                    while (y < 10) {
+                        x++;
+                        y = 10 - (10 - x);
+                        if (y > 10) y = ';)';
+                        if (isNaN(x) === false)
+                        {
+                            document.getElementById('res').innerHTML += y +' ';
+                        }
+                        else document.getElementById('res').innerHTML = 'Разве это число? :)';
+                    }
+                }
+            }
+        </script>
+	</body>
+</html>
+
