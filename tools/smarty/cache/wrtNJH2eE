@@ -1,0 +1,690 @@
+535
+a:4:{s:8:"template";a:6:{s:73:"/home/motokofr/public_html/modules/blockadvancesearch_3/advancesearch.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./breadcrumb.tpl";b:1;s:52:"/home/motokofr/public_html/themes/Earth/./errors.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-sort.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-list.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./pagination.tpl";b:1;}s:9:"timestamp";i:1477317324;s:7:"expires";i:1477320924;s:13:"cache_serials";a:0:{}} 	<!-- Breadcrumb -->
+		<div class="breadcrumb">
+    		<a href="/">Главная</a>
+            &nbsp;
+                &#10016;&nbsp;
+                Фильтр&nbsp;
+    			</div>
+
+<noindex>
+<h2>Фильтр
+<span>8&nbsp; ништяков</span>
+</h2>
+</noindex>
+
+<span id="advcCurSelection_3">&nbsp;</span>&nbsp;
+		<a class="ebutton mini blue"  href="/modules/blockadvancesearch_3/advancesearch.php">Сброс</a><br>
+		
+
+	 
+<input required class="filter" type="text" name="filter" id="filter"  placeholder="Что искать будем
+	 ?">
+
+
+
+<script type="text/javascript">
+blockAdvanceSearch_3.isSearchPage = true;
+</script>
+	
+	<!-- Sort products -->
+	
+
+	<!--p class="select" id="productsSortForm">
+				<select id="selectPrductSort" onchange="document.location.href = $(this).val();">
+							<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%B0%D1%82%D0%BB%D0%B8%D0%BD%D0%B3&amp;manufacturer=2&orderby=position&orderway=desc" selected="selected">--</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%B0%D1%82%D0%BB%D0%B8%D0%BD%D0%B3&amp;manufacturer=2&orderby=price&orderway=asc" >сначала дешевые</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%B0%D1%82%D0%BB%D0%B8%D0%BD%D0%B3&amp;manufacturer=2&orderby=price&orderway=desc" >сначала дорогие</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%B0%D1%82%D0%BB%D0%B8%D0%BD%D0%B3&amp;manufacturer=2&orderby=name&orderway=asc" >названию: А-Я</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%B0%D1%82%D0%BB%D0%B8%D0%BD%D0%B3&amp;manufacturer=2&orderby=name&orderway=desc" >названию: Я-А</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%B0%D1%82%D0%BB%D0%B8%D0%BD%D0%B3&amp;manufacturer=2&orderby=quantity&orderway=desc" >скидки</option>
+		</select>
+		<label for="selectPrductSort">сортировка:</label>
+
+
+	</p>
+<!-- /Sort products -->
+ 
+	
+	<!-- Products list -->
+	<ul id="product_list" class="clear">
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="493.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/299-512.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=299"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/299-512-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product first_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=299" class="product_img_link" title="Fox Creek Leather Deluxe Trunk Bag">
+									
+					<img src="http://cdn.motokofr.com/img/p/299-512-home.jpg" alt="Fox Creek Leather Deluxe Trunk Bag" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=299" title="Fox Creek Leather Deluxe Trunk Bag">Fox Creek Leather Deluxe Trunk Bag</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=299">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=299" title="Fox Creek Leather Deluxe Trunk Bag"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 22  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$493</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_299" href="/cart.php?add&amp;id_product=299&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '299',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="540.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6313-7005.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6313"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6313-7005-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6313" class="product_img_link" title="Боковые кофры 34х30х13">
+									
+					<img src="http://cdn.motokofr.com/img/p/6313-7005-home.jpg" alt="Боковые кофры 34х30х13" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6313" title="Боковые кофры 34х30х13">Боковые кофры 34х30х13</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6313">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$540</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6313" href="/cart.php?add&amp;id_product=6313&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6313',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="506.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6312-7002.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6312"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6312-7002-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6312" class="product_img_link" title="Боковые кофры 36х22х18">
+									
+					<img src="http://cdn.motokofr.com/img/p/6312-7002-home.jpg" alt="Боковые кофры 36х22х18" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6312" title="Боковые кофры 36х22х18">Боковые кофры 36х22х18</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6312">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$506</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6312" href="/cart.php?add&amp;id_product=6312&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6312',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="111.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6316-7017.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6316"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6316-7017-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6316" class="product_img_link" title="Батон на стекло">
+									
+					<img src="http://cdn.motokofr.com/img/p/6316-7017-home.jpg" alt="Батон на стекло" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6316" title="Батон на стекло">Батон на стекло</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6316">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$111</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6316" href="/cart.php?add&amp;id_product=6316&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6316',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="122.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6315-7014.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6315"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6315-7014-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6315" class="product_img_link" title="Батон на стекло">
+									
+					<img src="http://cdn.motokofr.com/img/p/6315-7014-home.jpg" alt="Батон на стекло" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6315" title="Батон на стекло">Батон на стекло</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6315">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$122</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6315" href="/cart.php?add&amp;id_product=6315&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6315',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="110.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/295-501.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=295"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/295-501-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=295" class="product_img_link" title="Батон 23x11x6">
+									
+					<img src="http://cdn.motokofr.com/img/p/295-501-home.jpg" alt="23x11x6" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=295" title="23x11x6">Батон 23x11x6</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=295">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$110</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_295" href="/cart.php?add&amp;id_product=295&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '295',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="122.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/291-486.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=291"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/291-486-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=291" class="product_img_link" title="Батон 23x11x6">
+									
+					<img src="http://cdn.motokofr.com/img/p/291-486-home.jpg" alt="23x11x6" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=291" title="23x11x6">Батон 23x11x6</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=291">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$122</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_291" href="/cart.php?add&amp;id_product=291&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '291',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="137.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/290-482.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=290"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/290-482-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product last_item alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=290" class="product_img_link" title="Батон 28x14x8">
+									
+					<img src="http://cdn.motokofr.com/img/p/290-482-home.jpg" alt="28x14x8" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=290" title="28x14x8">Батон 28x14x8</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=290">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=290" title="28x14x8"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 21  байкера</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$137</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_290" href="/cart.php?add&amp;id_product=290&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '290',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+	</ul>
+
+<!-- /Products list -->
+								
+	<!-- не нашел ништяк -->	
+		<ul id="product_list" class="clear">
+		<div id="out">
+		<div id="in">
+	
+			<li class="ajax_block_product item">
+				<div class="center_block">
+					<a href="/contact-form.php" class="product_img_link" >
+							<img src="/img/no_product.png" >
+					</a>
+					
+					<h3>
+					<a href="/contact-form.php">Не нашел нужный ништяк?</a>
+					</h3>
+					
+					<p class="product_desc">Напиши нам и мы поищем его в каталогах поставщиков</p>
+	
+					<a href="/contact-form.php" ></a>
+					
+					</div>
+	
+					<div class="right_block">
+						<div>
+						<span class="price" style="display: inline;">&nbsp;</span>
+						</div>
+									
+						<span class="align_center">
+						<a class="ebutton blue plist" href="/contact-form.php">Написать</a>
+						</span>
+					</div>
+		</div>
+	</div>
+	<br class="clear"/>
+	</li>
+	</ul>
+	
+
+	<!-- Pagination -->
+	<div id="pagination" class="pagination">
+		</div>
+	<!-- /Pagination -->
+	
+					
+	<p>&nbsp;</p>
+	<form  action="/modules/blockadvancesearch_3/advancesearch.php" method="get" class="pagination">
+									
+			<!--input type="submit" class="ebutton blue  mini" value="ОК" /-->
+			<p class="select">
+						<select name="n" id="nb_item" onChange="setAttr('n',this.value)"> 
+										<option value="50" selected="selected">50</option>
+							<option value="20" >20</option>
+							<option value="50" selected="selected">50</option>
+							<option value="100" >100</option>
+			
+			</select>
+			<label for="nb_item">на странице:</label>
+			</p>
+																		<input type="hidden" name="orderby" value="position" />
+																				<input type="hidden" name="orderway" value="desc" />
+																				<input type="hidden" name="manufacturer" value="2" />
+																						</form>
+	
+
+
+						
+	
+	<script defer language="JavaScript">
+	jQuery(document).ready(function()
+			{   
+			$('body,html').animate({
+				scrollTop: 320
+			}, 10);
+		});
+		
+	</script>
+	
+
+
+
+
+
+<script language="JavaScript">
+    
+///////////////// лишний &amp генерится где-то здесь    
+	jQuery(document).ready(function()
+	{   
+		$("#filter").keypress(function(e)
+		{
+			if(e.keyCode==13)
+			{
+			
+						
+				setAttr('filter',getAttr('filter')+this.value);
+			
+				
+			
+			}
+		});
+	});
+
+
+function getAttr(prmName) 
+{ 
+   //var $_GET = {}; 
+   var d = window.location.search.substring(1).split("&"); 
+   for(var i=0; i< d.length; i++) { 
+      var getVar = d[i].split("="); 
+      if (getVar[0]==prmName)
+      {
+        //return typeof(getVar[1])=="undefined" ? "" : getVar[1]
+        return getVar[1]+'|';
+      }
+      //$_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+   } 
+   return '';
+   //return $_GET; 
+} 
+
+function setAttr(prmName,val)
+{
+    var res = '';
+	var d = location.href.split("#")[0].split("?");  
+	var base = d[0];
+	var query = d[1];
+	if(query) {
+		var params = query.split("&");  
+		for(var i = 0; i < params.length; i++) {  
+			var keyval = params[i].split("=");  
+			if(keyval[0] != prmName) {  
+				res += params[i] + '&';
+			}
+		}
+	}
+	
+	if (val != '') 	
+	{	
+		var val = val.replace(/ /g, '|')
+		res += prmName + '=' + val;
+		window.location.href = base + '?' + res; // перезагружает страницу, не дает работать AJAX
+		return false;
+	}
+}
+
+	
+</script>
+

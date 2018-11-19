@@ -1,0 +1,806 @@
+535
+a:4:{s:8:"template";a:6:{s:73:"/home/motokofr/public_html/modules/blockadvancesearch_3/advancesearch.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./breadcrumb.tpl";b:1;s:52:"/home/motokofr/public_html/themes/Earth/./errors.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-sort.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-list.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./pagination.tpl";b:1;}s:9:"timestamp";i:1473850608;s:7:"expires";i:1473854208;s:13:"cache_serials";a:0:{}} 	<!-- Breadcrumb -->
+		<div class="breadcrumb">
+    		<a href="/">Главная</a>
+            &nbsp;
+                &#10016;&nbsp;
+                Фильтр&nbsp;
+    			</div>
+
+<noindex>
+<h2>Фильтр
+<span>9&nbsp; ништяков</span>
+</h2>
+</noindex>
+
+<span id="advcCurSelection_3">&nbsp;</span>&nbsp;
+		<a class="ebutton mini blue"  href="/modules/blockadvancesearch_3/advancesearch.php">Сброс</a><br>
+		
+
+	 
+<input required class="filter" type="text" name="filter" id="filter"  placeholder="Что искать будем
+	 ?">
+
+	<p class="tips">
+								&nbsp;<a class="tips" rel="вольтметр" onclick="setAttr('filter',getAttr('filter')+'вольтметр')">вольтметр</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="вынос" onclick="setAttr('filter',getAttr('filter')+'вынос')">вынос</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="ГТЦ" onclick="setAttr('filter',getAttr('filter')+'ГТЦ')">ГТЦ</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="дефлектор" onclick="setAttr('filter',getAttr('filter')+'дефлектор')">дефлектор</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="замок" onclick="setAttr('filter',getAttr('filter')+'замок')">замок</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="колонки" onclick="setAttr('filter',getAttr('filter')+'колонки')">колонки</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="крышк" onclick="setAttr('filter',getAttr('filter')+'крышк')">крышк</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="молдинг" onclick="setAttr('filter',getAttr('filter')+'молдинг')">молдинг</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="мотоботы" onclick="setAttr('filter',getAttr('filter')+'мотоботы')">мотоботы</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="накладк" onclick="setAttr('filter',getAttr('filter')+'накладк')">накладк</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="пиво" onclick="setAttr('filter',getAttr('filter')+'пиво')">пиво</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="прикуриватель" onclick="setAttr('filter',getAttr('filter')+'прикуриватель')">прикуриватель</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="пульт" onclick="setAttr('filter',getAttr('filter')+'пульт')">пульт</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="решетка" onclick="setAttr('filter',getAttr('filter')+'решетка')">решетка</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="спидометр" onclick="setAttr('filter',getAttr('filter')+'спидометр')">спидометр</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="спидшифтер" onclick="setAttr('filter',getAttr('filter')+'спидшифтер')">спидшифтер</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="тахометр" onclick="setAttr('filter',getAttr('filter')+'тахометр')">тахометр</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="термометр" onclick="setAttr('filter',getAttr('filter')+'термометр')">термометр</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="трос" onclick="setAttr('filter',getAttr('filter')+'трос')">трос</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="универсал" onclick="setAttr('filter',getAttr('filter')+'универсал')">универсал</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="фильтр" onclick="setAttr('filter',getAttr('filter')+'фильтр')">фильтр</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="хомуты" onclick="setAttr('filter',getAttr('filter')+'хомуты')">хомуты</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="часы" onclick="setAttr('filter',getAttr('filter')+'часы')">часы</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="чехол" onclick="setAttr('filter',getAttr('filter')+'чехол')">чехол</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="шлем" onclick="setAttr('filter',getAttr('filter')+'шлем')">шлем</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="шпора" onclick="setAttr('filter',getAttr('filter')+'шпора')">шпора</a>&nbsp;
+						
+			</p>
+
+
+<script type="text/javascript">
+blockAdvanceSearch_3.isSearchPage = true;
+</script>
+	
+	<!-- Sort products -->
+	
+
+	<!--p class="select" id="productsSortForm">
+				<select id="selectPrductSort" onchange="document.location.href = $(this).val();">
+							<option value="/modules/blockadvancesearch_3/advancesearch.php?category=27&amp;filter=%D0%BF%D1%80%D0%B8%D0%BA%D1%83%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C&orderby=position&orderway=desc" >--</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=27&amp;filter=%D0%BF%D1%80%D0%B8%D0%BA%D1%83%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C&orderby=price&orderway=asc" >сначала дешевые</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=27&amp;filter=%D0%BF%D1%80%D0%B8%D0%BA%D1%83%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C&orderby=price&orderway=desc" >сначала дорогие</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=27&amp;filter=%D0%BF%D1%80%D0%B8%D0%BA%D1%83%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C&orderby=name&orderway=asc" >названию: А-Я</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=27&amp;filter=%D0%BF%D1%80%D0%B8%D0%BA%D1%83%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C&orderby=name&orderway=desc" >названию: Я-А</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=27&amp;filter=%D0%BF%D1%80%D0%B8%D0%BA%D1%83%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C&orderby=quantity&orderway=desc" >скидки</option>
+		</select>
+		<label for="selectPrductSort">сортировка:</label>
+
+
+	</p>
+<!-- /Sort products -->
+ 
+	
+	<!-- Products list -->
+	<ul id="product_list" class="clear">
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="51.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6392-7176.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6392"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6392-7176-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product first_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6392" class="product_img_link" title="Прикуриватель + USB">
+									
+					<img src="http://cdn.motokofr.com/img/p/6392-7176-home.jpg" alt="Прикуриватель + USB" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6392" title="Прикуриватель + USB">Прикуриватель + USB</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6392"> Для 22мм...25мм рулей 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=6392" title="Прикуриватель + USB"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 4  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$51</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6392" href="/cart.php?add&amp;id_product=6392&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6392',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="28.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6393-7178.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6393"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6393-7178-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6393" class="product_img_link" title="Прикуриватель">
+									
+					<img src="http://cdn.motokofr.com/img/p/6393-7178-home.jpg" alt="Прикуриватель" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6393" title="Прикуриватель">Прикуриватель</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6393"> Для рулей 22...35мм 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$28</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6393" href="/cart.php?add&amp;id_product=6393&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6393',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="101.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5993-6135.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5993"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5993-6135-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5993" class="product_img_link" title="Прикуриватель Kuryakyn для 25мм рулей">
+									
+					<img src="http://cdn.motokofr.com/img/p/5993-6135-home.jpg" alt="Прикуриватель Kuryakyn" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5993" title="Прикуриватель Kuryakyn">Прикуриватель Kuryakyn для 25мм рулей</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5993">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=5993" title="Прикуриватель Kuryakyn"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 22  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$101</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5993" href="/cart.php?add&amp;id_product=5993&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5993',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="91.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/8035-10424.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=8035"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/8035-10424-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=8035" class="product_img_link" title="Прикуриватель Kuryakyn для 32мм рулей">
+									
+					<img src="http://cdn.motokofr.com/img/p/8035-10424-home.jpg" alt="Прикуриватель Kuryakyn" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=8035" title="Прикуриватель Kuryakyn">Прикуриватель Kuryakyn для 32мм рулей</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=8035">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$91</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_8035" href="/cart.php?add&amp;id_product=8035&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '8035',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="43.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6386-7169.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6386"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6386-7169-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6386" class="product_img_link" title="Прикуриватель + гнездо зарядки аккумулятора">
+									
+					<img src="http://cdn.motokofr.com/img/p/6386-7169-home.jpg" alt="Прикуриватель + гнездо зарядки аккумулятора" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6386" title="Прикуриватель + гнездо зарядки аккумулятора">Прикуриватель + гнездо зарядки аккумулятора</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6386"> Для мотоциклов, квадроциклов и снегоходов 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=6386" title="Прикуриватель + гнездо зарядки аккумулятора"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 2  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$43</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6386" href="/cart.php?add&amp;id_product=6386&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6386',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="70.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6387-7170.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6387"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6387-7170-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6387" class="product_img_link" title="Прикуриватель тройной + USB">
+									
+					<img src="http://cdn.motokofr.com/img/p/6387-7170-home.jpg" alt="Прикуриватель тройной + USB" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6387" title="Прикуриватель тройной + USB">Прикуриватель тройной + USB</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6387"> Для мотоциклов, квадроциклов и снегоходов 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$70</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6387" href="/cart.php?add&amp;id_product=6387&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6387',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="77.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6389-7172.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6389"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6389-7172-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6389" class="product_img_link" title="Прикуриватель + выносное гнездо зарядки аккумулятора">
+									
+					<img src="http://cdn.motokofr.com/img/p/6389-7172-home.jpg" alt="Прикуриватель + выносное гнездо зарядки аккумулятора" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6389" title="Прикуриватель + выносное гнездо зарядки аккумулятора">Прикуриватель + выносное гнездо зарядки аккумулятора</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6389"> Для мотоциклов, квадроциклов и снегоходов 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$77</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6389" href="/cart.php?add&amp;id_product=6389&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6389',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="77.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6390-7173.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6390"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6390-7173-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6390" class="product_img_link" title="Прикуриватель + выносное гнездо зарядки аккумулятора">
+									
+					<img src="http://cdn.motokofr.com/img/p/6390-7173-home.jpg" alt="Прикуриватель + выносное гнездо зарядки аккумулятора" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6390" title="Прикуриватель + выносное гнездо зарядки аккумулятора">Прикуриватель + выносное гнездо зарядки аккумулятора</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6390"> Для мотоциклов, квадроциклов и снегоходов 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$77</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6390" href="/cart.php?add&amp;id_product=6390&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6390',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="84.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6391-7177.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6391"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6391-7177-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product last_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6391" class="product_img_link" title="Прикуриватель на руль + USB + выносное гнездо">
+									
+					<img src="http://cdn.motokofr.com/img/p/6391-7177-home.jpg" alt="Прикуриватель на руль + USB + выносное гнездо" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6391" title="Прикуриватель на руль + USB + выносное гнездо">Прикуриватель на руль + USB + выносное гнездо</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6391"> Для мотоциклов, квадроциклов и снегоходов 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=6391" title="Прикуриватель на руль + USB + выносное гнездо"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 12  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$84</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6391" href="/cart.php?add&amp;id_product=6391&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6391',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+	</ul>
+
+<!-- /Products list -->
+								
+	<!-- не нашел ништяк -->	
+		<ul id="product_list" class="clear">
+		<div id="out">
+		<div id="in">
+	
+			<li class="ajax_block_product item">
+				<div class="center_block">
+					<a href="/contact-form.php" class="product_img_link" >
+							<img src="/img/no_product.png" >
+					</a>
+					
+					<h3>
+					<a href="/contact-form.php">Не нашел нужный ништяк?</a>
+					</h3>
+					
+					<p class="product_desc">Напиши нам и мы поищем его в каталогах поставщиков</p>
+	
+					<a href="/contact-form.php" ></a>
+					
+					</div>
+	
+					<div class="right_block">
+						<div>
+						<span class="price" style="display: inline;">&nbsp;</span>
+						</div>
+									
+						<span class="align_center">
+						<a class="ebutton blue plist" href="/contact-form.php">Написать</a>
+						</span>
+					</div>
+		</div>
+	</div>
+	<br class="clear"/>
+	</li>
+	</ul>
+	
+
+	<!-- Pagination -->
+	<div id="pagination" class="pagination">
+		</div>
+	<!-- /Pagination -->
+	
+					
+	<p>&nbsp;</p>
+	<form  action="/modules/blockadvancesearch_3/advancesearch.php" method="get" class="pagination">
+									
+			<!--input type="submit" class="ebutton blue  mini" value="ОК" /-->
+			<p class="select">
+						<select name="n" id="nb_item" onChange="setAttr('n',this.value)"> 
+										<option value="50" selected="selected">50</option>
+							<option value="20" >20</option>
+							<option value="50" selected="selected">50</option>
+							<option value="100" >100</option>
+			
+			</select>
+			<label for="nb_item">на странице:</label>
+			</p>
+																		<input type="hidden" name="category" value="27" />
+																				<input type="hidden" name="filter" value="%D0%BF%D1%80%D0%B8%D0%BA%D1%83%D1%80%D0%B8%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C" />
+																						</form>
+	
+
+
+						
+	
+	<script defer language="JavaScript">
+	jQuery(document).ready(function()
+			{   
+			$('body,html').animate({
+				scrollTop: 320
+			}, 10);
+		});
+		
+	</script>
+	
+
+
+
+
+
+<script language="JavaScript">
+    
+///////////////// лишний &amp генерится где-то здесь    
+	jQuery(document).ready(function()
+	{   
+		$("#filter").keypress(function(e)
+		{
+			if(e.keyCode==13)
+			{
+			
+						
+				setAttr('filter',getAttr('filter')+this.value);
+			
+				
+			
+			}
+		});
+	});
+
+
+function getAttr(prmName) 
+{ 
+   //var $_GET = {}; 
+   var d = window.location.search.substring(1).split("&"); 
+   for(var i=0; i< d.length; i++) { 
+      var getVar = d[i].split("="); 
+      if (getVar[0]==prmName)
+      {
+        //return typeof(getVar[1])=="undefined" ? "" : getVar[1]
+        return getVar[1]+'|';
+      }
+      //$_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+   } 
+   return '';
+   //return $_GET; 
+} 
+
+function setAttr(prmName,val)
+{
+    var res = '';
+	var d = location.href.split("#")[0].split("?");  
+	var base = d[0];
+	var query = d[1];
+	if(query) {
+		var params = query.split("&");  
+		for(var i = 0; i < params.length; i++) {  
+			var keyval = params[i].split("=");  
+			if(keyval[0] != prmName) {  
+				res += params[i] + '&';
+			}
+		}
+	}
+	
+	if (val != '') 	
+	{	
+		var val = val.replace(/ /g, '|')
+		res += prmName + '=' + val;
+		window.location.href = base + '?' + res; // перезагружает страницу, не дает работать AJAX
+		return false;
+	}
+}
+
+	
+</script>
+

@@ -1,0 +1,1130 @@
+535
+a:4:{s:8:"template";a:6:{s:73:"/home/motokofr/public_html/modules/blockadvancesearch_3/advancesearch.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./breadcrumb.tpl";b:1;s:52:"/home/motokofr/public_html/themes/Earth/./errors.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-sort.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-list.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./pagination.tpl";b:1;}s:9:"timestamp";i:1463308617;s:7:"expires";i:1463312217;s:13:"cache_serials";a:0:{}} 	<!-- Breadcrumb -->
+		<div class="breadcrumb">
+    		<a href="/">Главная</a>
+            &nbsp;
+                &#10016;&nbsp;
+                Фильтр&nbsp;
+    			</div>
+
+<noindex>
+<h2>Фильтр
+<span>15&nbsp; ништяков</span>
+</h2>
+</noindex>
+
+<span id="advcCurSelection_3">&nbsp;</span>&nbsp;
+		<a class="ebutton mini blue"  href="/modules/blockadvancesearch_3/advancesearch.php">Сброс</a><br>
+		
+
+	 
+<input required class="filter" type="text" name="filter" id="filter"  placeholder="ручки Mean Streak — фильтр по словам">
+
+	<p class="tips">
+								&nbsp;<a class="tips" rel="Classic" onclick="setAttr('filter',getAttr('filter')+'Classic')">Classic</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Custom" onclick="setAttr('filter',getAttr('filter')+'Custom')">Custom</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Drifter" onclick="setAttr('filter',getAttr('filter')+'Drifter')">Drifter</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="LT" onclick="setAttr('filter',getAttr('filter')+'LT')">LT</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Mean Streak" onclick="setAttr('filter',getAttr('filter')+'Mean Streak')">Mean Streak</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Nomad" onclick="setAttr('filter',getAttr('filter')+'Nomad')">Nomad</a>&nbsp;
+						
+			</p>
+
+
+<script type="text/javascript">
+blockAdvanceSearch_3.isSearchPage = true;
+</script>
+	
+	<!-- Sort products -->
+	
+
+	<!--p class="select" id="productsSortForm">
+				<select id="selectPrductSort" onchange="document.location.href = $(this).val();">
+							<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D1%81%D1%82%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9&amp;category=64%7C18%7C25%7C88&amp;supplier=8&amp;filter=Classic&orderby=position&orderway=desc" selected="selected">--</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D1%81%D1%82%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9&amp;category=64%7C18%7C25%7C88&amp;supplier=8&amp;filter=Classic&orderby=price&orderway=asc" >сначала дешевые</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D1%81%D1%82%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9&amp;category=64%7C18%7C25%7C88&amp;supplier=8&amp;filter=Classic&orderby=price&orderway=desc" >сначала дорогие</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D1%81%D1%82%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9&amp;category=64%7C18%7C25%7C88&amp;supplier=8&amp;filter=Classic&orderby=name&orderway=asc" >названию: А-Я</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D1%81%D1%82%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9&amp;category=64%7C18%7C25%7C88&amp;supplier=8&amp;filter=Classic&orderby=name&orderway=desc" >названию: Я-А</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%B3%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D1%81%D1%82%D0%BE%D0%BA%D0%BE%D0%B2%D1%8B%D0%B9&amp;category=64%7C18%7C25%7C88&amp;supplier=8&amp;filter=Classic&orderby=quantity&orderway=desc" >скидки</option>
+		</select>
+		<label for="selectPrductSort">сортировка:</label>
+
+
+	</p>
+<!-- /Sort products -->
+ 
+	
+	<!-- Products list -->
+	<ul id="product_list" class="clear">
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="951.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/8606-11637.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=8606"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/8606-11637-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product first_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=8606" class="product_img_link" title="Глушитель для VN900 Classic / Custom / LT">
+									
+					<img src="http://cdn.motokofr.com/img/p/8606-11637-home.jpg" alt="Глушитель для VN900 Classic / Custom / LT" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=8606" title="Глушитель для VN900 Classic / Custom / LT">Глушитель для VN900 Classic / Custom / LT</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=8606">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$951</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_8606" href="/cart.php?add&amp;id_product=8606&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '8606',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="913.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/8605-11635.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=8605"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/8605-11635-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=8605" class="product_img_link" title="Глушитель для VN900 Classic / Custom / LT">
+									
+					<img src="http://cdn.motokofr.com/img/p/8605-11635-home.jpg" alt="Глушитель для VN900 Classic / Custom / LT" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=8605" title="Глушитель для VN900 Classic / Custom / LT">Глушитель для VN900 Classic / Custom / LT</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=8605">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$913</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_8605" href="/cart.php?add&amp;id_product=8605&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '8605',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="745.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/8604-11634.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=8604"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/8604-11634-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=8604" class="product_img_link" title="Глушитель для VN900 Classic / Custom / LT">
+									
+					<img src="http://cdn.motokofr.com/img/p/8604-11634-home.jpg" alt="Глушитель для VN900 Classic / Custom / LT" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=8604" title="Глушитель для VN900 Classic / Custom / LT">Глушитель для VN900 Classic / Custom / LT</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=8604">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$745</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_8604" href="/cart.php?add&amp;id_product=8604&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '8604',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="685.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/8603-11633.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=8603"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/8603-11633-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=8603" class="product_img_link" title="Глушитель для VN900 Classic / Custom / LT">
+									
+					<img src="http://cdn.motokofr.com/img/p/8603-11633-home.jpg" alt="Глушитель для VN900 Classic / Custom / LT" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=8603" title="Глушитель для VN900 Classic / Custom / LT">Глушитель для VN900 Classic / Custom / LT</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=8603">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$685</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_8603" href="/cart.php?add&amp;id_product=8603&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '8603',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="549.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5805-5828.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5805"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5805-5828-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5805" class="product_img_link" title="Глушитель Drag Pipes 2IN Exhaust для Vulcan 1500/1600 Classic / Mean Streak ">
+									
+					<img src="http://cdn.motokofr.com/img/p/5805-5828-home.jpg" alt="Глушитель Drag Pipes 2IN Exhaust для Vulcan 1500/1600" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5805" title="Глушитель Drag Pipes 2IN Exhaust для Vulcan 1500/1600">Глушитель Drag Pipes 2IN Exhaust для Vulcan 1500/1600 Classic / Mean Streak </a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5805"> Оригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$549</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5805" href="/cart.php?add&amp;id_product=5805&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5805',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="669.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5801-5824.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5801"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5801-5824-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5801" class="product_img_link" title="Глушитель Classic Deluxe Slashcut Exhaust для Vulcan 1500">
+									
+					<img src="http://cdn.motokofr.com/img/p/5801-5824-home.jpg" alt="Глушитель Classic Deluxe Slashcut Exhaust для Vulcan 1500/1600" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5801" title="Глушитель Classic Deluxe Slashcut Exhaust для Vulcan 1500/1600">Глушитель Classic Deluxe Slashcut Exhaust для Vulcan 1500</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5801"> Оригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$669</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5801" href="/cart.php?add&amp;id_product=5801&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5801',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="727.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5799-5822.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5799"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5799-5822-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5799" class="product_img_link" title="Глушитель Speedster Long Exhaust Chrome для Vulcan 1600 Classic">
+									
+					<img src="http://cdn.motokofr.com/img/p/5799-5822-home.jpg" alt="Глушитель Speedster Long Exhaust Chrome для Vulcan 1600" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5799" title="Глушитель Speedster Long Exhaust Chrome для Vulcan 1600">Глушитель Speedster Long Exhaust Chrome для Vulcan 1600 Classic</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5799"> Оригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					color:#bbb; font-weight:normal; ">
+					$727</span>
+					</div>
+								
+				    				        				        				</span>
+        				<span class="ebutton inactive plist">В корзину</span>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5799',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Отсутствует</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="586.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5794-8355.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5794"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5794-8355-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5794" class="product_img_link" title="Глушитель Dragsters Street для Vulcan VN1700 Classic 09-12">
+									
+					<img src="http://cdn.motokofr.com/img/p/5794-8355-home.jpg" alt="Глушитель Dragsters Street для Vulcan VN1700 Classic 09-12" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5794" title="Глушитель Dragsters Street для Vulcan VN1700 Classic 09-12">Глушитель Dragsters Street для Vulcan VN1700 Classic 09-12</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5794"> Оригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					color:#bbb; font-weight:normal; ">
+					$586</span>
+					</div>
+								
+				    				        				        				</span>
+        				<span class="ebutton inactive plist">В корзину</span>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5794',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Отсутствует</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="594.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5789-5812.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5789"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5789-5812-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5789" class="product_img_link" title="Глушитель Classic Slash-Cut Exhaust для Vulcan 800">
+									
+					<img src="http://cdn.motokofr.com/img/p/5789-5812-home.jpg" alt="Глушитель Classic Slash-Cut Exhaust для Vulcan 800" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5789" title="Глушитель Classic Slash-Cut Exhaust для Vulcan 800">Глушитель Classic Slash-Cut Exhaust для Vulcan 800</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5789"> Оригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$594</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5789" href="/cart.php?add&amp;id_product=5789&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5789',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="692.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5609-5632.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5609"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5609-5632-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5609" class="product_img_link" title="Глушитель Classic 2 для VN1500/D/E/P, Mean Streak">
+									
+					<img src="http://cdn.motokofr.com/img/p/5609-5632-home.jpg" alt="Глушитель Classic 2 для VN1500/D/E/P, Mean Streak" />
+															
+					
+					<div title="Этот ништяк был недавно обновлен" class="new">new</div>									</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5609" title="Глушитель Classic 2 для VN1500/D/E/P, Mean Streak">Глушитель Classic 2 для VN1500/D/E/P, Mean Streak</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5609"> Оригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$692</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5609" href="/cart.php?add&amp;id_product=5609&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5609',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="474.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6564-7632.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6564"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6564-7632-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6564" class="product_img_link" title="Стекло для VN900 Classic / LT / SE">
+									
+					<img src="http://cdn.motokofr.com/img/p/6564-7632-home.jpg" alt="Стекло для VN900 Classic / LT / SE" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6564" title="Стекло для VN900 Classic / LT / SE">Стекло для VN900 Classic / LT / SE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6564"> Небьющееся безопасное стекло из поликарбоната 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$474</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6564" href="/cart.php?add&amp;id_product=6564&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6564',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="491.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2609-1294.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2609"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/2609-1294-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2609" class="product_img_link" title="Стекло для VN1600A VULCAN CLASSIC">
+									
+					<img src="http://cdn.motokofr.com/img/p/2609-1294-home.jpg" alt="KAWASAKI VN1600A VULCAN CLASSIC" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2609" title="KAWASAKI VN1600A VULCAN CLASSIC">Стекло для VN1600A VULCAN CLASSIC</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2609"> Небьющееся безопасное стекло из поликарбоната 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$491</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2609" href="/cart.php?add&amp;id_product=2609&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2609',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="444.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2608-1293.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2608"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/2608-1293-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2608" class="product_img_link" title="Стекло для VN1600A VULCAN CLASSIC">
+									
+					<img src="http://cdn.motokofr.com/img/p/2608-1293-home.jpg" alt="KAWASAKI VN1600A VULCAN CLASSIC" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2608" title="KAWASAKI VN1600A VULCAN CLASSIC">Стекло для VN1600A VULCAN CLASSIC</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2608"> Небьющееся безопасное стекло из поликарбоната 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$444</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2608" href="/cart.php?add&amp;id_product=2608&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2608',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="418.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2607-1292.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2607"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/2607-1292-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2607" class="product_img_link" title="Стекло для VN1600A VULCAN CLASSIC">
+									
+					<img src="http://cdn.motokofr.com/img/p/2607-1292-home.jpg" alt="KAWASAKI VN1600A VULCAN CLASSIC" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2607" title="KAWASAKI VN1600A VULCAN CLASSIC">Стекло для VN1600A VULCAN CLASSIC</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2607"> Небьющееся безопасное стекло из поликарбоната 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$418</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2607" href="/cart.php?add&amp;id_product=2607&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2607',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="427.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2606-1291.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2606"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/2606-1291-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product last_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2606" class="product_img_link" title="Стекло для VN1600A VULCAN CLASSIC">
+									
+					<img src="http://cdn.motokofr.com/img/p/2606-1291-home.jpg" alt="KAWASAKI VN1600A VULCAN CLASSIC" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2606" title="KAWASAKI VN1600A VULCAN CLASSIC">Стекло для VN1600A VULCAN CLASSIC</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2606"> Небьющееся безопасное стекло из поликарбоната 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$427</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2606" href="/cart.php?add&amp;id_product=2606&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2606',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+	</ul>
+
+<!-- /Products list -->
+								
+	<!-- не нашел ништяк -->	
+		<ul id="product_list" class="clear">
+		<div id="out">
+		<div id="in">
+	
+			<li class="ajax_block_product item">
+				<div class="center_block">
+					<a href="/contact-form.php" class="product_img_link" >
+							<img src="/img/no_product.png" >
+					</a>
+					
+					<h3>
+					<a href="/contact-form.php">Не нашел нужный ништяк?</a>
+					</h3>
+					
+					<p class="product_desc">Напиши нам и мы поищем его в каталогах поставщиков</p>
+	
+					<a href="/contact-form.php" ></a>
+					
+					</div>
+	
+					<div class="right_block">
+						<div>
+						<span class="price" style="display: inline;">&nbsp;</span>
+						</div>
+									
+						<span class="align_center">
+						<a class="ebutton blue plist" href="/contact-form.php">Написать</a>
+						</span>
+					</div>
+		</div>
+	</div>
+	<br class="clear"/>
+	</li>
+	</ul>
+	
+
+	<!-- Pagination -->
+	<div id="pagination" class="pagination">
+		</div>
+	<!-- /Pagination -->
+	
+					
+	<p>&nbsp;</p>
+	<form  action="/modules/blockadvancesearch_3/advancesearch.php" method="get" class="pagination">
+									
+			<!--input type="submit" class="ebutton blue  mini" value="ОК" /-->
+			<p class="select">
+						<select name="n" id="nb_item" onChange="setAttr('n',this.value)"> 
+										<option value="50" selected="selected">50</option>
+							<option value="20" >20</option>
+							<option value="50" selected="selected">50</option>
+							<option value="100" >100</option>
+			
+			</select>
+			<label for="nb_item">на странице:</label>
+			</p>
+																		<input type="hidden" name="orderby" value="position" />
+																				<input type="hidden" name="orderway" value="desc" />
+																				<input type="hidden" name="category" value="64%7C18%7C25%7C88" />
+																				<input type="hidden" name="supplier" value="8" />
+																				<input type="hidden" name="filter" value="Classic" />
+																						</form>
+	
+
+
+						
+	
+	<script defer language="JavaScript">
+	jQuery(document).ready(function()
+			{   
+			$('body,html').animate({
+				scrollTop: 320
+			}, 10);
+		});
+		
+	</script>
+	
+
+
+
+
+
+<script language="JavaScript">
+    
+///////////////// лишний &amp генерится где-то здесь    
+	jQuery(document).ready(function()
+	{   
+		$("#filter").keypress(function(e)
+		{
+			if(e.keyCode==13)
+			{
+			
+						
+				setAttr('filter',getAttr('filter')+this.value);
+			
+				
+			
+			}
+		});
+	});
+
+
+function getAttr(prmName) 
+{ 
+   //var $_GET = {}; 
+   var d = window.location.search.substring(1).split("&"); 
+   for(var i=0; i< d.length; i++) { 
+      var getVar = d[i].split("="); 
+      if (getVar[0]==prmName)
+      {
+        //return typeof(getVar[1])=="undefined" ? "" : getVar[1]
+        return getVar[1]+'|';
+      }
+      //$_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+   } 
+   return '';
+   //return $_GET; 
+} 
+
+function setAttr(prmName,val)
+{
+    var res = '';
+	var d = location.href.split("#")[0].split("?");  
+	var base = d[0];
+	var query = d[1];
+	if(query) {
+		var params = query.split("&");  
+		for(var i = 0; i < params.length; i++) {  
+			var keyval = params[i].split("=");  
+			if(keyval[0] != prmName) {  
+				res += params[i] + '&';
+			}
+		}
+	}
+	
+	if (val != '') 	
+	{	
+		var val = val.replace(/ /g, '|')
+		res += prmName + '=' + val;
+		window.location.href = base + '?' + res; // перезагружает страницу, не дает работать AJAX
+		return false;
+	}
+}
+
+	
+</script>
+

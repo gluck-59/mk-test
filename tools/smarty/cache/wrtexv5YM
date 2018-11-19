@@ -1,0 +1,883 @@
+535
+a:4:{s:8:"template";a:6:{s:73:"/home/motokofr/public_html/modules/blockadvancesearch_3/advancesearch.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./breadcrumb.tpl";b:1;s:52:"/home/motokofr/public_html/themes/Earth/./errors.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-sort.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-list.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./pagination.tpl";b:1;}s:9:"timestamp";i:1464789469;s:7:"expires";i:1464793069;s:13:"cache_serials";a:0:{}} 	<!-- Breadcrumb -->
+		<div class="breadcrumb">
+    		<a href="/">Главная</a>
+            &nbsp;
+                &#10016;&nbsp;
+                Фильтр&nbsp;
+    			</div>
+
+<noindex>
+<h2>Фильтр
+<span>11&nbsp; ништяков</span>
+</h2>
+</noindex>
+
+<span id="advcCurSelection_3">&nbsp;</span>&nbsp;
+		<a class="ebutton mini blue"  href="/modules/blockadvancesearch_3/advancesearch.php">Сброс</a><br>
+		
+
+	 
+<input required class="filter" type="text" name="filter" id="filter"  placeholder="Что искать будем
+	 ?">
+
+	<p class="tips">
+								&nbsp;<a class="tips" rel="Выносы" onclick="setAttr('filter',getAttr('filter')+'Выносы')">Выносы</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="платформы" onclick="setAttr('filter',getAttr('filter')+'платформы')">платформы</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="подножки" onclick="setAttr('filter',getAttr('filter')+'подножки')">подножки</a>&nbsp;
+						
+			</p>
+
+
+<script type="text/javascript">
+blockAdvanceSearch_3.isSearchPage = true;
+</script>
+	
+	<!-- Sort products -->
+	
+
+	<!--p class="select" id="productsSortForm">
+				<select id="selectPrductSort" onchange="document.location.href = $(this).val();">
+							<option value="/modules/blockadvancesearch_3/advancesearch.php?category=29&amp;filter=%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8%7C%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8&orderby=position&orderway=desc" >--</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=29&amp;filter=%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8%7C%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8&orderby=price&orderway=asc" >сначала дешевые</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=29&amp;filter=%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8%7C%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8&orderby=price&orderway=desc" >сначала дорогие</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=29&amp;filter=%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8%7C%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8&orderby=name&orderway=asc" >названию: А-Я</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=29&amp;filter=%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8%7C%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8&orderby=name&orderway=desc" >названию: Я-А</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?category=29&amp;filter=%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8%7C%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8&orderby=quantity&orderway=desc" >скидки</option>
+		</select>
+		<label for="selectPrductSort">сортировка:</label>
+
+
+	</p>
+<!-- /Sort products -->
+ 
+	
+	<!-- Products list -->
+	<ul id="product_list" class="clear">
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="105.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3909-3720.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3909"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3909-3720-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product first_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3909" class="product_img_link" title="Водительские подножки Rebel 250 / CA / CMX 96-07">
+									
+					<img src="http://cdn.motokofr.com/img/p/3909-3720-home.jpg" alt="Водительские платформы Rebel 250 / CA / CMX 96-07" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3909" title="Водительские платформы Rebel 250 / CA / CMX 96-07">Водительские подножки Rebel 250 / CA / CMX 96-07</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3909"> Неоригинал, комплект как на фото 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					7 000 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3909" href="/cart.php?add&amp;id_product=3909&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3909',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="137.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3992-3813.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3992"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3992-3813-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3992" class="product_img_link" title="Пассажирские подножки Virago XV 125 / 250 09">
+									
+					<img src="http://cdn.motokofr.com/img/p/3992-3813-home.jpg" alt="Пассажирские платформы Virago XV 125 / 250 09" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3992" title="Пассажирские платформы Virago XV 125 / 250 09">Пассажирские подножки Virago XV 125 / 250 09</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3992"> Неоригинал, комплект как на фото 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					9 100 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3992" href="/cart.php?add&amp;id_product=3992&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3992',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="176.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6460-7399.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6460"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6460-7399-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6460" class="product_img_link" title="Подножки для Sportster Dyna Softail FLT">
+									
+					<img src="http://cdn.motokofr.com/img/p/6460-7399-home.jpg" alt="Подножки для Sportster Dyna Softail FLT" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6460" title="Подножки для Sportster Dyna Softail FLT">Подножки для Sportster Dyna Softail FLT</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6460">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=6460" title="Подножки для Sportster Dyna Softail FLT"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 1  байкера</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					11 700 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6460" href="/cart.php?add&amp;id_product=6460&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6460',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="65.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2834-1631.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2834"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/2834-1631-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2834" class="product_img_link" title="Подножки на дуги">
+									
+					<img src="http://cdn.motokofr.com/img/p/2834-1631-home.jpg" alt="Универсальные подножки на дуги" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2834" title="Универсальные подножки на дуги">Подножки на дуги</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2834"> Универсальные 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=2834" title="Универсальные подножки на дуги"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 25  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					4 300 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2834" href="/cart.php?add&amp;id_product=2834&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2834',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="145.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6357-7100.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6357"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6357-7100-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6357" class="product_img_link" title="Подножки на нестандартные толстые дуги">
+									
+					<img src="http://cdn.motokofr.com/img/p/6357-7100-home.jpg" alt="Подножки на нестандартные толстые дуги" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6357" title="Подножки на нестандартные толстые дуги">Подножки на нестандартные толстые дуги</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6357"> Диаметр дуг до 4см 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=6357" title="Подножки на нестандартные толстые дуги"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 1  байкера</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					9 600 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6357" href="/cart.php?add&amp;id_product=6357&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6357',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="57.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/7208-8931.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=7208"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/7208-8931-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=7208" class="product_img_link" title="Подножки универсальные">
+									
+					<img src="http://cdn.motokofr.com/img/p/7208-8931-home.jpg" alt="Подножки универсальные" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=7208" title="Подножки универсальные">Подножки универсальные</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=7208">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					3 800 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_7208" href="/cart.php?add&amp;id_product=7208&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '7208',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="253.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/7209-8933.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=7209"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/7209-8933-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=7209" class="product_img_link" title="Подножки Victory на дуги">
+									
+					<img src="http://cdn.motokofr.com/img/p/7209-8933-home.jpg" alt="Подножки Victory на дуги" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=7209" title="Подножки Victory на дуги">Подножки Victory на дуги</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=7209">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					16 700 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_7209" href="/cart.php?add&amp;id_product=7209&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '7209',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="211.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2827-1618.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2827"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/2827-1618-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2827" class="product_img_link" title="Подножки для дуг Lindby">
+									
+					<img src="http://cdn.motokofr.com/img/p/2827-1618-home.jpg" alt="Дополнительные подножки для дуг Lindby" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2827" title="Дополнительные подножки для дуг Lindby">Подножки для дуг Lindby</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2827">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					14 000 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2827" href="/cart.php?add&amp;id_product=2827&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2827',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="123.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5351-5324.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5351"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5351-5324-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5351" class="product_img_link" title="Подножки на дуги хромированные">
+									
+					<img src="http://cdn.motokofr.com/img/p/5351-5324-home.jpg" alt="Подножки на дуги хромированные" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5351" title="Подножки на дуги хромированные">Подножки на дуги хромированные</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5351"> Универсальные, 32мм 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=5351" title="Подножки на дуги хромированные"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 12  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					8 100 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5351" href="/cart.php?add&amp;id_product=5351&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5351',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="153.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5352-5335.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5352"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5352-5335-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5352" class="product_img_link" title="Подножки на дуги хромированные">
+									
+					<img src="http://cdn.motokofr.com/img/p/5352-5335-home.jpg" alt="Подножки на дуги хромированные" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5352" title="Подножки на дуги хромированные">Подножки на дуги хромированные</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5352">Универсальные, 32мм
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					10 100 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5352" href="/cart.php?add&amp;id_product=5352&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5352',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="136.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5353-5347.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5353"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/5353-5347-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product last_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5353" class="product_img_link" title="Подножки на дуги хромированные">
+									
+					<img src="http://cdn.motokofr.com/img/p/5353-5347-home.jpg" alt="Подножки на дуги хромированные" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5353" title="Подножки на дуги хромированные">Подножки на дуги хромированные</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5353"> Универсальные, 32мм 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=5353" title="Подножки на дуги хромированные"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 23  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					9 000 р</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5353" href="/cart.php?add&amp;id_product=5353&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5353',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+	</ul>
+
+<!-- /Products list -->
+								
+	<!-- не нашел ништяк -->	
+		<ul id="product_list" class="clear">
+		<div id="out">
+		<div id="in">
+	
+			<li class="ajax_block_product item">
+				<div class="center_block">
+					<a href="/contact-form.php" class="product_img_link" >
+							<img src="/img/no_product.png" >
+					</a>
+					
+					<h3>
+					<a href="/contact-form.php">Не нашел нужный ништяк?</a>
+					</h3>
+					
+					<p class="product_desc">Напиши нам и мы поищем его в каталогах поставщиков</p>
+	
+					<a href="/contact-form.php" ></a>
+					
+					</div>
+	
+					<div class="right_block">
+						<div>
+						<span class="price" style="display: inline;">&nbsp;</span>
+						</div>
+									
+						<span class="align_center">
+						<a class="ebutton blue plist" href="/contact-form.php">Написать</a>
+						</span>
+					</div>
+		</div>
+	</div>
+	<br class="clear"/>
+	</li>
+	</ul>
+	
+
+	<!-- Pagination -->
+	<div id="pagination" class="pagination">
+		</div>
+	<!-- /Pagination -->
+	
+					
+	<p>&nbsp;</p>
+	<form  action="/modules/blockadvancesearch_3/advancesearch.php" method="get" class="pagination">
+									
+			<!--input type="submit" class="ebutton blue  mini" value="ОК" /-->
+			<p class="select">
+						<select name="n" id="nb_item" onChange="setAttr('n',this.value)"> 
+										<option value="50" selected="selected">50</option>
+							<option value="20" >20</option>
+							<option value="50" selected="selected">50</option>
+							<option value="100" >100</option>
+			
+			</select>
+			<label for="nb_item">на странице:</label>
+			</p>
+																		<input type="hidden" name="category" value="29" />
+																				<input type="hidden" name="filter" value="%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8%7C%D0%BF%D0%BE%D0%B4%D0%BD%D0%BE%D0%B6%D0%BA%D0%B8" />
+																						</form>
+	
+
+
+						
+	
+	<script defer language="JavaScript">
+	jQuery(document).ready(function()
+			{   
+			$('body,html').animate({
+				scrollTop: 320
+			}, 10);
+		});
+		
+	</script>
+	
+
+
+
+
+
+<script language="JavaScript">
+    
+///////////////// лишний &amp генерится где-то здесь    
+	jQuery(document).ready(function()
+	{   
+		$("#filter").keypress(function(e)
+		{
+			if(e.keyCode==13)
+			{
+			
+						
+				setAttr('filter',getAttr('filter')+this.value);
+			
+				
+			
+			}
+		});
+	});
+
+
+function getAttr(prmName) 
+{ 
+   //var $_GET = {}; 
+   var d = window.location.search.substring(1).split("&"); 
+   for(var i=0; i< d.length; i++) { 
+      var getVar = d[i].split("="); 
+      if (getVar[0]==prmName)
+      {
+        //return typeof(getVar[1])=="undefined" ? "" : getVar[1]
+        return getVar[1]+'|';
+      }
+      //$_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+   } 
+   return '';
+   //return $_GET; 
+} 
+
+function setAttr(prmName,val)
+{
+    var res = '';
+	var d = location.href.split("#")[0].split("?");  
+	var base = d[0];
+	var query = d[1];
+	if(query) {
+		var params = query.split("&");  
+		for(var i = 0; i < params.length; i++) {  
+			var keyval = params[i].split("=");  
+			if(keyval[0] != prmName) {  
+				res += params[i] + '&';
+			}
+		}
+	}
+	
+	if (val != '') 	
+	{	
+		var val = val.replace(/ /g, '|')
+		res += prmName + '=' + val;
+		window.location.href = base + '?' + res; // перезагружает страницу, не дает работать AJAX
+		return false;
+	}
+}
+
+	
+</script>
+

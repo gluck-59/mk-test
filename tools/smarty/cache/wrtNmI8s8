@@ -1,0 +1,894 @@
+535
+a:4:{s:8:"template";a:6:{s:73:"/home/motokofr/public_html/modules/blockadvancesearch_3/advancesearch.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./breadcrumb.tpl";b:1;s:52:"/home/motokofr/public_html/themes/Earth/./errors.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-sort.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-list.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./pagination.tpl";b:1;}s:9:"timestamp";i:1473247120;s:7:"expires";i:1473250720;s:13:"cache_serials";a:0:{}} 	<!-- Breadcrumb -->
+		<div class="breadcrumb">
+    		<a href="/">Главная</a>
+            &nbsp;
+                &#10016;&nbsp;
+                Фильтр&nbsp;
+    			</div>
+
+<noindex>
+<h2>Фильтр
+<span>11&nbsp; ништяков</span>
+</h2>
+</noindex>
+
+<span id="advcCurSelection_3">&nbsp;</span>&nbsp;
+		<a class="ebutton mini blue"  href="/modules/blockadvancesearch_3/advancesearch.php">Сброс</a><br>
+		
+
+	 
+<input required class="filter" type="text" name="filter" id="filter"  placeholder="Что искать будем
+	 ?">
+
+	<p class="tips">
+								&nbsp;<a class="tips" rel="фара" onclick="setAttr('filter',getAttr('filter')+'фара')">фара</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="паук" onclick="setAttr('filter',getAttr('filter')+'паук')">паук</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="cbr" onclick="setAttr('filter',getAttr('filter')+'cbr')">cbr</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="ninja" onclick="setAttr('filter',getAttr('filter')+'ninja')">ninja</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="gsx" onclick="setAttr('filter',getAttr('filter')+'gsx')">gsx</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="yzf" onclick="setAttr('filter',getAttr('filter')+'yzf')">yzf</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="r1" onclick="setAttr('filter',getAttr('filter')+'r1')">r1</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="r6" onclick="setAttr('filter',getAttr('filter')+'r6')">r6</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="hayabusa" onclick="setAttr('filter',getAttr('filter')+'hayabusa')">hayabusa</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="blackbird" onclick="setAttr('filter',getAttr('filter')+'blackbird')">blackbird</a>&nbsp;
+						
+			</p>
+
+
+<script type="text/javascript">
+blockAdvanceSearch_3.isSearchPage = true;
+</script>
+	
+	<!-- Sort products -->
+	
+
+	<!--p class="select" id="productsSortForm">
+				<select id="selectPrductSort" onchange="document.location.href = $(this).val();">
+							<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D1%81%D0%B8%D1%80%D0%B5%D0%BD%D0%BE%D0%B9&amp;category=65&orderby=position&orderway=desc" selected="selected">--</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D1%81%D0%B8%D1%80%D0%B5%D0%BD%D0%BE%D0%B9&amp;category=65&orderby=price&orderway=asc" >сначала дешевые</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D1%81%D0%B8%D1%80%D0%B5%D0%BD%D0%BE%D0%B9&amp;category=65&orderby=price&orderway=desc" >сначала дорогие</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D1%81%D0%B8%D1%80%D0%B5%D0%BD%D0%BE%D0%B9&amp;category=65&orderby=name&orderway=asc" >названию: А-Я</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D1%81%D0%B8%D1%80%D0%B5%D0%BD%D0%BE%D0%B9&amp;category=65&orderby=name&orderway=desc" >названию: Я-А</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D1%81%D0%B8%D1%80%D0%B5%D0%BD%D0%BE%D0%B9&amp;category=65&orderby=quantity&orderway=desc" >скидки</option>
+		</select>
+		<label for="selectPrductSort">сортировка:</label>
+
+
+	</p>
+<!-- /Sort products -->
+ 
+	
+	<!-- Products list -->
+	<ul id="product_list" class="clear">
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="133.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3626-3320.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3626"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3626-3320-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product first_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3626" class="product_img_link" title="Фара для Honda CBR600RR F5 07-11">
+									
+					<img src="http://cdn.motokofr.com/img/p/3626-3320-home.jpg" alt="Фара для Honda CBR600RR F5 07-11" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3626" title="Фара для Honda CBR600RR F5 07-11">Фара для Honda CBR600RR F5 07-11</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3626">В сборе, неоригинал
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$133</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3626" href="/cart.php?add&amp;id_product=3626&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3626',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="133.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3625-3312.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3625"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3625-3312-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3625" class="product_img_link" title="Фара для Honda CBR600RR 03-06">
+									
+					<img src="http://cdn.motokofr.com/img/p/3625-3312-home.jpg" alt="Фара для Honda CBR600RR 03-06" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3625" title="Фара для Honda CBR600RR 03-06">Фара для Honda CBR600RR 03-06</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3625">В сборе, неоригинал
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$133</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3625" href="/cart.php?add&amp;id_product=3625&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3625',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="133.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3623-3298.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3623"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3623-3298-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3623" class="product_img_link" title="Фара для Honda CBR1000RR 04-07">
+									
+					<img src="http://cdn.motokofr.com/img/p/3623-3298-home.jpg" alt="Фара для Honda CBR1000RR 04-07" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3623" title="Фара для Honda CBR1000RR 04-07">Фара для Honda CBR1000RR 04-07</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3623"> В сборе, неоригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$133</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3623" href="/cart.php?add&amp;id_product=3623&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3623',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="120.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3622-3290.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3622"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3622-3290-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3622" class="product_img_link" title="Паук для GSX-R 750">
+									
+					<img src="http://cdn.motokofr.com/img/p/3622-3290-home.jpg" alt="Паук для GSX-R 750" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3622" title="Паук для GSX-R 750">Паук для GSX-R 750</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3622">Кронштейн фары, неоригинал
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$120</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3622" href="/cart.php?add&amp;id_product=3622&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3622',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="102.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3620-3274.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3620"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3620-3274-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3620" class="product_img_link" title="Паук для GSX-R 1000 K7 / K8">
+									
+					<img src="http://cdn.motokofr.com/img/p/3620-3274-home.jpg" alt="Паук для GSX-R 1000 K7 / K8" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3620" title="Паук для GSX-R 1000 K7 / K8">Паук для GSX-R 1000 K7 / K8</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3620">Кронштейн фары, неоригинал
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$102</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3620" href="/cart.php?add&amp;id_product=3620&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3620',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="143.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3631-3361.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3631"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3631-3361-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3631" class="product_img_link" title="Фара для Yamaha YZF R6 2006-2007">
+									
+					<img src="http://cdn.motokofr.com/img/p/3631-3361-home.jpg" alt="Фара для Yamaha YZF R6 2006-2007" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3631" title="Фара для Yamaha YZF R6 2006-2007">Фара для Yamaha YZF R6 2006-2007</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3631"> В сборе, неоригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$143</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3631" href="/cart.php?add&amp;id_product=3631&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3631',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="143.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3630-3354.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3630"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3630-3354-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3630" class="product_img_link" title="Фара для Yamaha YZF R1 2002-2003">
+									
+					<img src="http://cdn.motokofr.com/img/p/3630-3354-home.jpg" alt="Фара для Yamaha YZF R1 2002-2003" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3630" title="Фара для Yamaha YZF R1 2002-2003">Фара для Yamaha YZF R1 2002-2003</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3630"> В сборе, неоригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$143</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3630" href="/cart.php?add&amp;id_product=3630&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3630',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="143.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3628-3336.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3628"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3628-3336-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3628" class="product_img_link" title="Фара для Yamaha YZF-R1 2007-2008">
+									
+					<img src="http://cdn.motokofr.com/img/p/3628-3336-home.jpg" alt="Фара для Yamaha YZF-R1 2007-2008" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3628" title="Фара для Yamaha YZF-R1 2007-2008">Фара для Yamaha YZF-R1 2007-2008</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3628"> В сборе, неоригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$143</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3628" href="/cart.php?add&amp;id_product=3628&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3628',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="143.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3629-3345.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3629"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3629-3345-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3629" class="product_img_link" title="Фара для Yamaha YZF-R6 2003-2005">
+									
+					<img src="http://cdn.motokofr.com/img/p/3629-3345-home.jpg" alt="Фара для Yamaha YZF-R6 2003-2005" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3629" title="Фара для Yamaha YZF-R6 2003-2005">Фара для Yamaha YZF-R6 2003-2005</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3629"> В сборе, неоригинал 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=3629" title="Фара для Yamaha YZF-R6 2003-2005"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 21  байкера</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$143</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3629" href="/cart.php?add&amp;id_product=3629&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3629',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="140.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3624-3305.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3624"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3624-3305-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3624" class="product_img_link" title="Фара для Yamaha YZF R6 YZFR6 2008-2010">
+									
+					<img src="http://cdn.motokofr.com/img/p/3624-3305-home.jpg" alt="Фара для Yamaha YZF R6 YZFR6 2008-2010" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3624" title="Фара для Yamaha YZF R6 YZFR6 2008-2010">Фара для Yamaha YZF R6 YZFR6 2008-2010</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3624"> В сборе, неоригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$140</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3624" href="/cart.php?add&amp;id_product=3624&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3624',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="118.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3621-3281.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3621"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/3621-3281-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product last_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3621" class="product_img_link" title="Паук для YZF R1 2007-2008">
+									
+					<img src="http://cdn.motokofr.com/img/p/3621-3281-home.jpg" alt="Паук для YZF R1 2007-2008" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3621" title="Паук для YZF R1 2007-2008">Паук для YZF R1 2007-2008</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3621"> Кронштейн фары, неоригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$118</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3621" href="/cart.php?add&amp;id_product=3621&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3621',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+	</ul>
+
+<!-- /Products list -->
+								
+	<!-- не нашел ништяк -->	
+		<ul id="product_list" class="clear">
+		<div id="out">
+		<div id="in">
+	
+			<li class="ajax_block_product item">
+				<div class="center_block">
+					<a href="/contact-form.php" class="product_img_link" >
+							<img src="/img/no_product.png" >
+					</a>
+					
+					<h3>
+					<a href="/contact-form.php">Не нашел нужный ништяк?</a>
+					</h3>
+					
+					<p class="product_desc">Напиши нам и мы поищем его в каталогах поставщиков</p>
+	
+					<a href="/contact-form.php" ></a>
+					
+					</div>
+	
+					<div class="right_block">
+						<div>
+						<span class="price" style="display: inline;">&nbsp;</span>
+						</div>
+									
+						<span class="align_center">
+						<a class="ebutton blue plist" href="/contact-form.php">Написать</a>
+						</span>
+					</div>
+		</div>
+	</div>
+	<br class="clear"/>
+	</li>
+	</ul>
+	
+
+	<!-- Pagination -->
+	<div id="pagination" class="pagination">
+		</div>
+	<!-- /Pagination -->
+	
+					
+	<p>&nbsp;</p>
+	<form  action="/modules/blockadvancesearch_3/advancesearch.php" method="get" class="pagination">
+									
+			<!--input type="submit" class="ebutton blue  mini" value="ОК" /-->
+			<p class="select">
+						<select name="n" id="nb_item" onChange="setAttr('n',this.value)"> 
+										<option value="50" selected="selected">50</option>
+							<option value="20" >20</option>
+							<option value="50" selected="selected">50</option>
+							<option value="100" >100</option>
+			
+			</select>
+			<label for="nb_item">на странице:</label>
+			</p>
+																		<input type="hidden" name="orderby" value="position" />
+																				<input type="hidden" name="orderway" value="desc" />
+																				<input type="hidden" name="category" value="65" />
+																						</form>
+	
+
+
+						
+	
+	<script defer language="JavaScript">
+	jQuery(document).ready(function()
+			{   
+			$('body,html').animate({
+				scrollTop: 320
+			}, 10);
+		});
+		
+	</script>
+	
+
+
+
+
+
+<script language="JavaScript">
+    
+///////////////// лишний &amp генерится где-то здесь    
+	jQuery(document).ready(function()
+	{   
+		$("#filter").keypress(function(e)
+		{
+			if(e.keyCode==13)
+			{
+			
+						
+				setAttr('filter',getAttr('filter')+this.value);
+			
+				
+			
+			}
+		});
+	});
+
+
+function getAttr(prmName) 
+{ 
+   //var $_GET = {}; 
+   var d = window.location.search.substring(1).split("&"); 
+   for(var i=0; i< d.length; i++) { 
+      var getVar = d[i].split("="); 
+      if (getVar[0]==prmName)
+      {
+        //return typeof(getVar[1])=="undefined" ? "" : getVar[1]
+        return getVar[1]+'|';
+      }
+      //$_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+   } 
+   return '';
+   //return $_GET; 
+} 
+
+function setAttr(prmName,val)
+{
+    var res = '';
+	var d = location.href.split("#")[0].split("?");  
+	var base = d[0];
+	var query = d[1];
+	if(query) {
+		var params = query.split("&");  
+		for(var i = 0; i < params.length; i++) {  
+			var keyval = params[i].split("=");  
+			if(keyval[0] != prmName) {  
+				res += params[i] + '&';
+			}
+		}
+	}
+	
+	if (val != '') 	
+	{	
+		var val = val.replace(/ /g, '|')
+		res += prmName + '=' + val;
+		window.location.href = base + '?' + res; // перезагружает страницу, не дает работать AJAX
+		return false;
+	}
+}
+
+	
+</script>
+

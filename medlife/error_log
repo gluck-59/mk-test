@@ -1,0 +1,22 @@
+[09-Apr-2018 10:42:09 Europe/Moscow] PHP Warning:  require(jsonwrapper.php): failed to open stream: No such file or directory in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:09 Europe/Moscow] PHP Warning:  require(jsonwrapper.php): failed to open stream: No such file or directory in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:09 Europe/Moscow] PHP Fatal error:  require(): Failed opening required 'jsonwrapper.php' (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:09 Europe/Moscow] PHP Warning:  require(jsonwrapper.php): failed to open stream: No such file or directory in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:09 Europe/Moscow] PHP Warning:  require(jsonwrapper.php): failed to open stream: No such file or directory in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:09 Europe/Moscow] PHP Fatal error:  require(): Failed opening required 'jsonwrapper.php' (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:10 Europe/Moscow] PHP Warning:  require(jsonwrapper.php): failed to open stream: No such file or directory in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:10 Europe/Moscow] PHP Warning:  require(jsonwrapper.php): failed to open stream: No such file or directory in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:10 Europe/Moscow] PHP Fatal error:  require(): Failed opening required 'jsonwrapper.php' (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:10 Europe/Moscow] PHP Warning:  require(jsonwrapper.php): failed to open stream: No such file or directory in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:10 Europe/Moscow] PHP Warning:  require(jsonwrapper.php): failed to open stream: No such file or directory in /home/motokofr/public_html/medlife/data.php on line 3
+[09-Apr-2018 10:42:10 Europe/Moscow] PHP Fatal error:  require(): Failed opening required 'jsonwrapper.php' (include_path='.:/opt/alt/php54/usr/share/pear:/opt/alt/php54/usr/share/php') in /home/motokofr/public_html/medlife/data.php on line 3
+[15-May-2018 20:07:00 Europe/Moscow] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)' in /home/motokofr/public_html/medlife/load.php:49
+Stack trace:
+#0 /home/motokofr/public_html/medlife/load.php(49): PDO->__construct('mysql:host=loca...', 'motokofr_ali', 'ntsp16ox', Array)
+#1 {main}
+  thrown in /home/motokofr/public_html/medlife/load.php on line 49
+[15-Jun-2018 08:01:00 Europe/Moscow] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2002] Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)' in /home/motokofr/public_html/medlife/load.php:49
+Stack trace:
+#0 /home/motokofr/public_html/medlife/load.php(49): PDO->__construct('mysql:host=loca...', 'motokofr_ali', 'ntsp16ox', Array)
+#1 {main}
+  thrown in /home/motokofr/public_html/medlife/load.php on line 49

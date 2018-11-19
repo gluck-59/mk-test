@@ -1,0 +1,231 @@
+body {
+    background: no-repeat center center fixed;
+	background: url(../img/bg/random.php);	    
+/*  background-image: url('../img/bg/winter-night-2.jpg'); */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.lang.en {
+    display: none;
+}
+
+h2 {
+    font-size: 36px;
+    font-family: 'Lobster', 'Trebuchet MS', sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+h2, p, input {
+    color: #000060;
+}
+
+p {
+    font-size: 18px;
+    font-family: 'Trebuchet MS', sans-serif;
+    text-align: justify;
+    margin: 0;
+    margin-top: 20px;
+}
+
+.snow {
+    position: absolute;
+    top: -30;
+    z-index: 1;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+}
+
+.content {
+    margin: auto;
+    width: 70%;
+}
+
+.wrapper {
+    position: absolute;
+    width: 100%;
+}
+
+.wrapper2 {
+    margin: 10px;
+/*    margin-top: 50px;*/
+    z-index: 2;
+}
+
+.menu {
+    top: 0;
+    position: absolute;
+    /*height: 40px;*/
+    width: 100%;
+    z-index: 2;
+}
+
+.menu p {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.menu a {
+    font-size: 24px;
+    font-weight: normal;
+    font-family: 'Lobster', 'Trebuchet MS', sans-serif;
+    color: #005089;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    color: #5090ff;
+}
+
+.page {
+    display: none;
+    background: rgb(200, 230, 255);
+    background: rgba(200, 230, 255, 0.9);
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.page.raffle {
+    background: none;
+}
+
+.raffle p {
+    text-align: center;
+    color: #d00000;
+    font-weight: bold;
+    /*display: none;*/
+}
+
+.raffle span {
+    background: rgb(200, 230, 255);
+    background: rgba(200, 230, 255, 0.6);
+    padding: 5px 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px rgba(200, 230, 255, 0.8);
+}
+
+.raffle .name, .raffle .lang, .newyear span {
+    font-size: 70px;
+    font-weight: normal;
+    font-family: 'Lobster', 'Trebuchet MS', sans-serif;
+}
+
+.name
+{
+font-size: 90pt;}
+
+.who span, .next span {
+    background: rgba(200, 230, 255, 0.8);
+    border: 2px dotted #d00000;
+    cursor: pointer;
+    font-size: 40pt;
+}
+
+.btn {
+    font-size: 36px;
+    font-family: 'Lobster', 'Trebuchet MS', sans-serif;
+    text-align: center;
+    color: #d00000;
+    border: 1px solid #d00000;
+    border-radius: 5px;
+    margin: auto;
+    width: 500px;
+    padding: 5px 0 15px 0;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.notice {
+    text-align: center;
+    margin-top: 20px;
+    color: #d00000;
+    font-weight: bold;
+    font-family: 'Trebuchet MS', sans-serif;
+    display: none;
+}
+
+.textField, .ok {
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 24px;
+    background-color: rgb(25, 47, 123);
+    background-color: rgba(25, 47, 123, 0.2);
+    border-color: rgb(25, 47, 123);
+    border-color: rgba(25, 47, 123, 0.5);
+    outline: 0;
+    border-width: 1px;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+input.textField {
+    font-family: 'Lobster', 'Trebuchet MS', sans-serif;
+    color: #d00000;
+    border: 1px solid #d00000;
+    padding-bottom: 4px;
+}
+
+.ok {
+    cursor: pointer;
+}
+
+.party {
+    clear: both;
+    height: 50px;
+}
+
+.party .name, .party .wantToGift {
+    float: left;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 2px 10px;
+    font-size: 24px;
+    font-family: 'Lobster', 'Trebuchet MS', sans-serif;
+    color: #d00000;
+    border-width: 1px;
+    border-style: solid;
+    position: relative;
+}
+
+.party .name {
+    color: #d00000;
+    border-color: #d00000;
+}
+
+.party .wantToGift {
+    color: #000060;
+    border-color: #000060;
+    cursor: pointer;
+}
+
+.party .wantToGift.noGift {
+    opacity: 0.5;
+}
+
+.parties {
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.remove {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 10px;
+    position: absolute;
+    right: 2px;
+    top: 0;
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: 'Lobster';
+    src: url(../fonts/Lobster/Lobster-Regular.ttf);
+}
+

@@ -1,0 +1,9 @@
+<IfModule mod_expires.c>
+
+  ExpiresActive On
+  ExpiresDefault "access plus 0 second"
+  
+  Header set Cache-Control "max-age=0, public, private"
+
+
+</IfModule>

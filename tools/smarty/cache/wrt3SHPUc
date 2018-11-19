@@ -1,0 +1,467 @@
+535
+a:4:{s:8:"template";a:6:{s:73:"/home/motokofr/public_html/modules/blockadvancesearch_3/advancesearch.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./breadcrumb.tpl";b:1;s:52:"/home/motokofr/public_html/themes/Earth/./errors.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-sort.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-list.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./pagination.tpl";b:1;}s:9:"timestamp";i:1475502759;s:7:"expires";i:1475506359;s:13:"cache_serials";a:0:{}} 	<!-- Breadcrumb -->
+		<div class="breadcrumb">
+    		<a href="/">Главная</a>
+            &nbsp;
+                &#10016;&nbsp;
+                Фильтр&nbsp;
+    			</div>
+
+<noindex>
+<h2>Фильтр
+<span>4&nbsp; ништяка</span>
+</h2>
+</noindex>
+
+<span id="advcCurSelection_3">&nbsp;</span>&nbsp;
+		<a class="ebutton mini blue"  href="/modules/blockadvancesearch_3/advancesearch.php">Сброс</a><br>
+		
+
+	 
+<input required class="filter" type="text" name="filter" id="filter"  placeholder="боковые крышки King — фильтр по словам">
+
+	<p class="tips">
+								&nbsp;<a class="tips" rel="Dyna" onclick="setAttr('filter',getAttr('filter')+'Dyna')">Dyna</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Fat" onclick="setAttr('filter',getAttr('filter')+'Fat')">Fat</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Boy" onclick="setAttr('filter',getAttr('filter')+'Boy')">Boy</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Glide" onclick="setAttr('filter',getAttr('filter')+'Glide')">Glide</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Electra" onclick="setAttr('filter',getAttr('filter')+'Electra')">Electra</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Road" onclick="setAttr('filter',getAttr('filter')+'Road')">Road</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="King" onclick="setAttr('filter',getAttr('filter')+'King')">King</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Softail" onclick="setAttr('filter',getAttr('filter')+'Softail')">Softail</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Sportster" onclick="setAttr('filter',getAttr('filter')+'Sportster')">Sportster</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Ultra" onclick="setAttr('filter',getAttr('filter')+'Ultra')">Ultra</a>&nbsp;
+						
+			</p>
+
+
+<script type="text/javascript">
+blockAdvanceSearch_3.isSearchPage = true;
+</script>
+	
+	<!-- Sort products -->
+	
+
+	<!--p class="select" id="productsSortForm">
+				<select id="selectPrductSort" onchange="document.location.href = $(this).val();">
+							<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%9C%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%B3+flhp&amp;supplier=11&amp;category=96&amp;filter=Road%7CKing&orderby=position&orderway=desc" selected="selected">--</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%9C%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%B3+flhp&amp;supplier=11&amp;category=96&amp;filter=Road%7CKing&orderby=price&orderway=asc" >сначала дешевые</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%9C%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%B3+flhp&amp;supplier=11&amp;category=96&amp;filter=Road%7CKing&orderby=price&orderway=desc" >сначала дорогие</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%9C%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%B3+flhp&amp;supplier=11&amp;category=96&amp;filter=Road%7CKing&orderby=name&orderway=asc" >названию: А-Я</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%9C%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%B3+flhp&amp;supplier=11&amp;category=96&amp;filter=Road%7CKing&orderby=name&orderway=desc" >названию: Я-А</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%9C%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%B3+flhp&amp;supplier=11&amp;category=96&amp;filter=Road%7CKing&orderby=quantity&orderway=desc" >скидки</option>
+		</select>
+		<label for="selectPrductSort">сортировка:</label>
+
+
+	</p>
+<!-- /Sort products -->
+ 
+	
+	<!-- Products list -->
+	<ul id="product_list" class="clear">
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="435.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6774-7935.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6774"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6774-7935-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product first_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6774" class="product_img_link" title="Сиденье Mustang для 11-13 HD FLTRU Electra Glide / Road Glide / Ultra / Road King">
+									
+					<img src="http://cdn.motokofr.com/img/p/6774-7935-home.jpg" alt="Сиденье Mustang для 11-13 HD FLTRU Road Glide Ultra " />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6774" title="Сиденье Mustang для 11-13 HD FLTRU Road Glide Ultra ">Сиденье Mustang для 11-13 HD FLTRU Electra Glide / Road Glide / Ultra / Road King</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6774">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$435</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6774" href="/cart.php?add&amp;id_product=6774&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6774',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="423.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6724-7872.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6724"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6724-7872-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6724" class="product_img_link" title="Сиденье Mustang для 94-96 HD FLHR Road King ">
+									
+					<img src="http://cdn.motokofr.com/img/p/6724-7872-home.jpg" alt="Сиденье Mustang для 94-96 HD FLHR Road King " />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6724" title="Сиденье Mustang для 94-96 HD FLHR Road King ">Сиденье Mustang для 94-96 HD FLHR Road King </a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6724">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					color:#bbb; font-weight:normal; ">
+					$423</span>
+					</div>
+								
+				    				        				        				</span>
+        				<span class="ebutton inactive plist">В корзину</span>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6724',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Отсутствует</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="298.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6704-7852.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6704"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6704-7852-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6704" class="product_img_link" title="Сиденье Mustang для HD Street Glide / Road King">
+									
+					<img src="http://cdn.motokofr.com/img/p/6704-7852-home.jpg" alt="Сиденье Mustang для 06 HD FLHXI Street Glide " />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6704" title="Сиденье Mustang для 06 HD FLHXI Street Glide ">Сиденье Mustang для HD Street Glide / Road King</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6704">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$298</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6704" href="/cart.php?add&amp;id_product=6704&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6704',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="185.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6636-7767.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6636"/ >
+
+				
+
+								
+				<p id="background_pic">
+				<img width="300px" height="300px" src="http://cdn.motokofr.com/img/p/6636-7767-home.jpg">
+				</p>
+						
+			
+		
+			<li class="ajax_block_product last_item alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6636" class="product_img_link" title="Сиденье Mustang для HD FLH* 99-15 Road King / Touring">
+									
+					<img src="http://cdn.motokofr.com/img/p/6636-7767-home.jpg" alt="Сиденье Mustang для 13 HD FLHRSE5 Road King" />
+															
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6636" title="Сиденье Mustang для 13 HD FLHRSE5 Road King">Сиденье Mustang для HD FLH* 99-15 Road King / Touring</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6636">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$185</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6636" href="/cart.php?add&amp;id_product=6636&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6636',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+	</ul>
+
+<!-- /Products list -->
+								
+	<!-- не нашел ништяк -->	
+		<ul id="product_list" class="clear">
+		<div id="out">
+		<div id="in">
+	
+			<li class="ajax_block_product item">
+				<div class="center_block">
+					<a href="/contact-form.php" class="product_img_link" >
+							<img src="/img/no_product.png" >
+					</a>
+					
+					<h3>
+					<a href="/contact-form.php">Не нашел нужный ништяк?</a>
+					</h3>
+					
+					<p class="product_desc">Напиши нам и мы поищем его в каталогах поставщиков</p>
+	
+					<a href="/contact-form.php" ></a>
+					
+					</div>
+	
+					<div class="right_block">
+						<div>
+						<span class="price" style="display: inline;">&nbsp;</span>
+						</div>
+									
+						<span class="align_center">
+						<a class="ebutton blue plist" href="/contact-form.php">Написать</a>
+						</span>
+					</div>
+		</div>
+	</div>
+	<br class="clear"/>
+	</li>
+	</ul>
+	
+
+	<!-- Pagination -->
+	<div id="pagination" class="pagination">
+		</div>
+	<!-- /Pagination -->
+	
+					
+	<p>&nbsp;</p>
+	<form  action="/modules/blockadvancesearch_3/advancesearch.php" method="get" class="pagination">
+									
+			<!--input type="submit" class="ebutton blue  mini" value="ОК" /-->
+			<p class="select">
+						<select name="n" id="nb_item" onChange="setAttr('n',this.value)"> 
+										<option value="50" selected="selected">50</option>
+							<option value="20" >20</option>
+							<option value="50" selected="selected">50</option>
+							<option value="100" >100</option>
+			
+			</select>
+			<label for="nb_item">на странице:</label>
+			</p>
+																		<input type="hidden" name="orderby" value="position" />
+																				<input type="hidden" name="orderway" value="desc" />
+																				<input type="hidden" name="supplier" value="11" />
+																				<input type="hidden" name="category" value="96" />
+																				<input type="hidden" name="filter" value="Road%7CKing" />
+																						</form>
+	
+
+
+						
+	
+	<script defer language="JavaScript">
+	jQuery(document).ready(function()
+			{   
+			$('body,html').animate({
+				scrollTop: 320
+			}, 10);
+		});
+		
+	</script>
+	
+
+
+
+
+
+<script language="JavaScript">
+    
+///////////////// лишний &amp генерится где-то здесь    
+	jQuery(document).ready(function()
+	{   
+		$("#filter").keypress(function(e)
+		{
+			if(e.keyCode==13)
+			{
+			
+						
+				setAttr('filter',getAttr('filter')+this.value);
+			
+				
+			
+			}
+		});
+	});
+
+
+function getAttr(prmName) 
+{ 
+   //var $_GET = {}; 
+   var d = window.location.search.substring(1).split("&"); 
+   for(var i=0; i< d.length; i++) { 
+      var getVar = d[i].split("="); 
+      if (getVar[0]==prmName)
+      {
+        //return typeof(getVar[1])=="undefined" ? "" : getVar[1]
+        return getVar[1]+'|';
+      }
+      //$_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+   } 
+   return '';
+   //return $_GET; 
+} 
+
+function setAttr(prmName,val)
+{
+    var res = '';
+	var d = location.href.split("#")[0].split("?");  
+	var base = d[0];
+	var query = d[1];
+	if(query) {
+		var params = query.split("&");  
+		for(var i = 0; i < params.length; i++) {  
+			var keyval = params[i].split("=");  
+			if(keyval[0] != prmName) {  
+				res += params[i] + '&';
+			}
+		}
+	}
+	
+	if (val != '') 	
+	{	
+		var val = val.replace(/ /g, '|')
+		res += prmName + '=' + val;
+		window.location.href = base + '?' + res; // перезагружает страницу, не дает работать AJAX
+		return false;
+	}
+}
+
+	
+</script>
+

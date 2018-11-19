@@ -1,0 +1,124 @@
+<HTML>
+<TITLE>
+Medlife MRI Intera 1.5T monitoring
+</TITLE>
+<script src="jquery.min.js"></script>
+<div id="container" style="height: 400px; min-width: 600px"></div>
+<script src="highstock.js"></script>
+<script src="moment.min.js"></script>
+<script src="moment-timezone-with-data.min.js"></script>
+
+<script>
+
+var x = new Date();
+var currentTimeZoneOffsetInHours = x.getTimezoneOffset() / 60;
+
+console.log(currentTimeZoneOffsetInHours);
+
+var seriesCounter = 0;
+var seriesOptions = [];
+
+var ids = [ 
+{"name": "CC collant supply", "id": "8" },
+
+{"name": "CC collant return", "id": "7" },
+{"name": "CC HE supply", "id": 6 },
+{"name": "CC HE return", "id": 2 },
+  
+];
+
+
+console.log(ids.length);
+
+function createChart() {
+Highcharts.stockChart('container', {
+time: {
+        //timezoneOffset: currentTimeZoneOffsetInHours * 60
+        //timezone: 'Asia/Yekaterinburg'
+        timezone: moment.tz.guess()
+    },
+  
+legend: {
+        enabled: true,
+        align: 'right',
+        backgroundColor: '#FCFFC5',
+        borderColor: 'black',
+        borderWidth: 2,
+        layout: 'vertical',
+        verticalAlign: 'top',
+        y: 100,
+        shadow: true
+    },
+        rangeSelector: {
+            selected: 0,
+            inputEnabled: false,
+
+buttons: [{
+    type: 'day',
+    count: 1,
+    text: '1d'
+},{
+    type: 'week',
+    count: 1,
+    text: '1w'
+},
+ {
+    type: 'month',
+    count: 1,
+    text: '1m'
+}, {
+    type: 'ytd',
+    text: 'YTD'
+}, {
+    type: 'year',
+    count: 1,
+    text: '1y'
+}, {
+    type: 'all',
+    text: 'All'
+}],
+
+        },
+
+        title: {
+            text: 'Cryocooler temperatures'
+        },
+
+        series: seriesOptions,
+        tooltip : {
+        valueDecimals: 2
+        },
+    }, function (chart) {
+
+        // apply the date pickers
+        /*setTimeout(function () {
+            $('input.highcharts-range-selector', $(chart.container).parent())
+                .datepicker();
+        }, 0);*/
+    });
+}
+
+$.each(ids, function (i, serie) {
+
+console.log(serie.id+  '/ '+serie.name)
+    $.getJSON('http://motokofr.com/medlife/data.php?sensorid='+serie.id, function (data) {
+
+        seriesOptions[i] = {
+            name: serie.name,
+            data: data
+        };
+
+        // As we're loading the data asynchronously, we don't know what order it will arrive. So
+        // we keep a counter and create the chart when all the data is loaded.
+        seriesCounter += 1;
+
+        if (seriesCounter === ids.length) {
+            createChart();
+            console.log('create chart!');
+        }
+    });
+
+});
+
+</script>
+

@@ -1,0 +1,13 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^js\.motokofr\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.js\.motokofr\.com$
+RewriteRule ^/?$ "http\:\/\/motokofr\.com\/js" [R=301,L]
+
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 46.229.164.0/24

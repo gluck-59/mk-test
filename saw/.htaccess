@@ -1,0 +1,22 @@
+<IfModule mod_expires.c>
+
+
+# чото вроде вся эта хуйня не работает
+
+
+  Header unset Cache-Control
+#  Header set Cache-Control "max-age=2592000, private"
+
+
+
+  ExpiresActive On
+#  ExpiresDefault "access plus 0 second"
+  ExpiresByType image/png "access 6 month"
+#  ExpiresByType text/javascript "access 1 day"
+#  ExpiresByType text/css "access 0 second"
+   ExpiresByType image/icon "access 6 month"
+
+
+
+
+</IfModule>

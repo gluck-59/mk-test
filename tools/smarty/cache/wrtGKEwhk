@@ -1,0 +1,407 @@
+535
+a:4:{s:8:"template";a:6:{s:73:"/home/motokofr/public_html/modules/blockadvancesearch_3/advancesearch.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./breadcrumb.tpl";b:1;s:52:"/home/motokofr/public_html/themes/Earth/./errors.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-sort.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-list.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./pagination.tpl";b:1;}s:9:"timestamp";i:1463290884;s:7:"expires";i:1463294484;s:13:"cache_serials";a:0:{}}
+<noindex>
+<h2>Фильтр
+<span>4&nbsp; ништяка</span>
+</h2>
+</noindex>
+
+<span id="advcCurSelection_3">&nbsp;</span>&nbsp;
+		<a class="ebutton blue" style="font-size: 1em; text-align: center; padding: 12px 0;" href="/modules/blockadvancesearch_3/advancesearch.php">Сброс</a><br>
+		
+
+	 
+<input required class="filter" type="text" name="filter" id="filter"  placeholder="сиденье ACE — фильтр по словам">
+
+	<p class="tips">
+								&nbsp;<a class="tips" rel="Aero" onclick="setAttr('filter',getAttr('filter')+'Aero')">Aero</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="ACE" onclick="setAttr('filter',getAttr('filter')+'ACE')">ACE</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Fury" onclick="setAttr('filter',getAttr('filter')+'Fury')">Fury</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Magna" onclick="setAttr('filter',getAttr('filter')+'Magna')">Magna</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Phantom" onclick="setAttr('filter',getAttr('filter')+'Phantom')">Phantom</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Sabre" onclick="setAttr('filter',getAttr('filter')+'Sabre')">Sabre</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Spirit" onclick="setAttr('filter',getAttr('filter')+'Spirit')">Spirit</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="VTX" onclick="setAttr('filter',getAttr('filter')+'VTX')">VTX</a>&nbsp;
+						
+			</p>
+
+
+<script type="text/javascript">
+blockAdvanceSearch_3.isSearchPage = true;
+</script>
+	
+	<!-- Sort products -->
+	
+
+	<!--p class="select" id="productsSortForm">
+				<select id="selectPrductSort" onchange="document.location.href = $(this).val();">
+							<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%A5%D0%BE%D0%BD%D0%B4%D0%B0+%D1%88%D0%B0%D0%B4%D0%BE%D0%B2+400+%D0%BA%D0%BE%D1%84%D1%80&amp;supplier=5&amp;filter=VTX%7CACE&orderby=position&orderway=desc" selected="selected">--</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%A5%D0%BE%D0%BD%D0%B4%D0%B0+%D1%88%D0%B0%D0%B4%D0%BE%D0%B2+400+%D0%BA%D0%BE%D1%84%D1%80&amp;supplier=5&amp;filter=VTX%7CACE&orderby=price&orderway=asc" >сначала дешевые</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%A5%D0%BE%D0%BD%D0%B4%D0%B0+%D1%88%D0%B0%D0%B4%D0%BE%D0%B2+400+%D0%BA%D0%BE%D1%84%D1%80&amp;supplier=5&amp;filter=VTX%7CACE&orderby=price&orderway=desc" >сначала дорогие</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%A5%D0%BE%D0%BD%D0%B4%D0%B0+%D1%88%D0%B0%D0%B4%D0%BE%D0%B2+400+%D0%BA%D0%BE%D1%84%D1%80&amp;supplier=5&amp;filter=VTX%7CACE&orderby=name&orderway=asc" >названию: А-Я</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%A5%D0%BE%D0%BD%D0%B4%D0%B0+%D1%88%D0%B0%D0%B4%D0%BE%D0%B2+400+%D0%BA%D0%BE%D1%84%D1%80&amp;supplier=5&amp;filter=VTX%7CACE&orderby=name&orderway=desc" >названию: Я-А</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%A5%D0%BE%D0%BD%D0%B4%D0%B0+%D1%88%D0%B0%D0%B4%D0%BE%D0%B2+400+%D0%BA%D0%BE%D1%84%D1%80&amp;supplier=5&amp;filter=VTX%7CACE&orderby=quantity&orderway=desc" >скидки</option>
+		</select>
+		<label for="selectPrductSort">сортировка:</label>
+
+
+	</p>
+<!-- /Sort products -->
+ 
+	
+	<!-- Products list -->
+	<ul id="product_list" class="clear">
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="576.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5985-6121.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5985"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product first_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5985" class="product_img_link" title="Глушитель National Cycle Peacemaker для VTX1300C 04-07">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/5985-6121-large.jpg" alt="Глушитель National Cycle Peacemaker для VTX1300C" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5985" title="Глушитель National Cycle Peacemaker для VTX1300C">Глушитель National Cycle Peacemaker для VTX1300C 04-07</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5985"> С регулировкой громкости на руле 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$576</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5985" href="/cart.php?add&amp;id_product=5985&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5985',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="1088.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5987-6123.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5987"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5987" class="product_img_link" title="Глушитель National Cycle Peacemaker для VTX1800 R/S/N 02-08">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/5987-6123-large.jpg" alt="Глушитель National Cycle Peacemaker для VTX1800 02-08" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5987" title="Глушитель National Cycle Peacemaker для VTX1800 02-08">Глушитель National Cycle Peacemaker для VTX1800 R/S/N 02-08</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5987"> С регулировкой громкости на руле 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$1,088</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5987" href="/cart.php?add&amp;id_product=5987&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5987',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="1288.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5988-6124.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5988"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5988" class="product_img_link" title="Глушитель National Cycle Peacemaker для VTX1300 C/R/S 08-09">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/5988-6124-large.jpg" alt="Глушитель National Cycle Peacemaker для VTX1300 08-09" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5988" title="Глушитель National Cycle Peacemaker для VTX1300 08-09">Глушитель National Cycle Peacemaker для VTX1300 C/R/S 08-09</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5988"> С регулировкой громкости на руле 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					color:#bbb; font-weight:normal; ">
+					$1,288</span>
+					</div>
+								
+				    				        				        				</span>
+        				<span class="ebutton inactive plist">В корзину</span>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5988',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Отсутствует</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="576.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/5986-6122.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=5986"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product last_item alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=5986" class="product_img_link" title="Глушитель National Cycle Peacemaker для VTX1300 R / S  03-07">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/5986-6122-large.jpg" alt="Глушитель National Cycle Peacemaker для VTX1300 03-08" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=5986" title="Глушитель National Cycle Peacemaker для VTX1300 03-08">Глушитель National Cycle Peacemaker для VTX1300 R / S  03-07</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=5986"> С регулировкой громкости на руле 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$576</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_5986" href="/cart.php?add&amp;id_product=5986&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '5986',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+	</ul>
+
+<!-- /Products list -->
+								
+	<!-- не нашел ништяк -->	
+		<ul id="product_list" class="clear">
+		<div id="out">
+		<div id="in">
+	
+			<li class="ajax_block_product item">
+				<div class="center_block">
+					<a href="/contact-form.php" class="product_img_link" >
+							<img src="/img/no_product.png" style="height: 200px;">
+					</a>
+					
+					<h3>
+					<a href="/contact-form.php">Не нашел нужный ништяк?</a>
+					</h3>
+					
+					<p class="product_desc">Напиши нам и мы поищем его в каталогах поставщиков</p>
+	
+					<a href="/contact-form.php" ></a>
+					
+					</div>
+	
+					<div class="right_block">
+						<div>
+						<span class="price" style="display: inline;">&nbsp;</span>
+						</div>
+									
+						<span class="align_center">
+						<a class="ebutton blue plist" href="/contact-form.php">Написать</a>
+						</span>
+					</div>
+		</div>
+	</div>
+	<br class="clear"/>
+	</li>
+	</ul>
+	
+
+	<!-- Pagination -->
+	<div id="pagination" class="pagination">
+		</div>
+	<!-- /Pagination -->
+	
+	
+
+
+
+
+
+
+
+<script language="JavaScript">
+    
+///////////////// лишний &amp генерится где-то здесь    
+	jQuery(document).ready(function()
+	{   
+		$("#filter").keypress(function(e)
+		{
+			if(e.keyCode==13)
+			{
+			
+						
+				setAttr('filter',getAttr('filter')+this.value);
+			
+				
+			
+			}
+		});
+	});
+
+
+function getAttr(prmName) 
+{ 
+   //var $_GET = {}; 
+   var d = window.location.search.substring(1).split("&"); 
+   for(var i=0; i< d.length; i++) { 
+      var getVar = d[i].split("="); 
+      if (getVar[0]==prmName)
+      {
+        //return typeof(getVar[1])=="undefined" ? "" : getVar[1]
+        return getVar[1]+'|';
+      }
+      //$_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+   } 
+   return '';
+   //return $_GET; 
+} 
+
+function setAttr(prmName,val)
+{
+    var res = '';
+	var d = location.href.split("#")[0].split("?");  
+	var base = d[0];
+	var query = d[1];
+	if(query) {
+		var params = query.split("&");  
+		for(var i = 0; i < params.length; i++) {  
+			var keyval = params[i].split("=");  
+			if(keyval[0] != prmName) {  
+				res += params[i] + '&';
+			}
+		}
+	}
+	
+	if (val != '') 	
+	{	
+		var val = val.replace(/ /g, '|')
+		res += prmName + '=' + val;
+		window.location.href = base + '?' + res; // перезагружает страницу, не дает работать AJAX
+		return false;
+	}
+}
+
+	
+</script>
+

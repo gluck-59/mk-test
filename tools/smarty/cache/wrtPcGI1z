@@ -1,0 +1,1853 @@
+535
+a:4:{s:8:"template";a:6:{s:73:"/home/motokofr/public_html/modules/blockadvancesearch_3/advancesearch.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./breadcrumb.tpl";b:1;s:52:"/home/motokofr/public_html/themes/Earth/./errors.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-sort.tpl";b:1;s:58:"/home/motokofr/public_html/themes/Earth/./product-list.tpl";b:1;s:56:"/home/motokofr/public_html/themes/Earth/./pagination.tpl";b:1;}s:9:"timestamp";i:1462369143;s:7:"expires";i:1462372743;s:13:"cache_serials";a:0:{}}
+<noindex>
+<h2>Фильтр
+<span>79&nbsp; ништяков</span>
+</h2>
+</noindex>
+
+<span id="advcCurSelection_3">&nbsp;</span>&nbsp;
+		<a class="ebutton blue" style="font-size: 1em; text-align: center; padding: 12px 0;" href="/modules/blockadvancesearch_3/advancesearch.php">Сброс</a><br>
+		
+
+	 
+<input required class="filter" type="text" name="filter" id="filter"  placeholder="накладка VTX — фильтр по словам">
+
+	<p class="tips">
+								&nbsp;<a class="tips" rel="Aero" onclick="setAttr('filter',getAttr('filter')+'Aero')">Aero</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="ACE" onclick="setAttr('filter',getAttr('filter')+'ACE')">ACE</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Fury" onclick="setAttr('filter',getAttr('filter')+'Fury')">Fury</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Magna" onclick="setAttr('filter',getAttr('filter')+'Magna')">Magna</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Phantom" onclick="setAttr('filter',getAttr('filter')+'Phantom')">Phantom</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Sabre" onclick="setAttr('filter',getAttr('filter')+'Sabre')">Sabre</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="Spirit" onclick="setAttr('filter',getAttr('filter')+'Spirit')">Spirit</a>&nbsp;
+						
+								&nbsp;<a class="tips" rel="VTX" onclick="setAttr('filter',getAttr('filter')+'VTX')">VTX</a>&nbsp;
+						
+			</p>
+
+
+<script type="text/javascript">
+blockAdvanceSearch_3.isSearchPage = true;
+</script>
+	
+	<!-- Sort products -->
+	
+
+	<!--p class="select" id="productsSortForm">
+				<select id="selectPrductSort" onchange="document.location.href = $(this).val();">
+							<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%93%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%B4%D0%BB%D1%8F+%D1%85%D0%BE%D0%BD%D0%B4%D0%B0&amp;supplier=5&amp;p=2&amp;filter=ACE&orderby=position&orderway=desc" selected="selected">--</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%93%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%B4%D0%BB%D1%8F+%D1%85%D0%BE%D0%BD%D0%B4%D0%B0&amp;supplier=5&amp;p=2&amp;filter=ACE&orderby=price&orderway=asc" >сначала дешевые</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%93%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%B4%D0%BB%D1%8F+%D1%85%D0%BE%D0%BD%D0%B4%D0%B0&amp;supplier=5&amp;p=2&amp;filter=ACE&orderby=price&orderway=desc" >сначала дорогие</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%93%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%B4%D0%BB%D1%8F+%D1%85%D0%BE%D0%BD%D0%B4%D0%B0&amp;supplier=5&amp;p=2&amp;filter=ACE&orderby=name&orderway=asc" >названию: А-Я</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%93%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%B4%D0%BB%D1%8F+%D1%85%D0%BE%D0%BD%D0%B4%D0%B0&amp;supplier=5&amp;p=2&amp;filter=ACE&orderby=name&orderway=desc" >названию: Я-А</option>
+			<option value="/modules/blockadvancesearch_3/advancesearch.php?search_query=%D0%93%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%B4%D0%BB%D1%8F+%D1%85%D0%BE%D0%BD%D0%B4%D0%B0&amp;supplier=5&amp;p=2&amp;filter=ACE&orderby=quantity&orderway=desc" >скидки</option>
+		</select>
+		<label for="selectPrductSort">сортировка:</label>
+
+
+	</p>
+<!-- /Sort products -->
+ 
+	
+	<!-- Products list -->
+	<ul id="product_list" class="clear">
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="153.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3955-3766.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3955"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product first_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3955" class="product_img_link" title="Водительские платформы Shadow ACE VT750 C">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3955-3766-large.jpg" alt="Водительские платформы Shadow ACE VT750 C" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3955" title="Водительские платформы Shadow ACE VT750 C">Водительские платформы Shadow ACE VT750 C</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3955">Неоригинал, комплект как на фото
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$153</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3955" href="/cart.php?add&amp;id_product=3955&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3955',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="487.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3084-2199.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3084"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3084" class="product_img_link" title="Дуги Lindby Linbar Highway для Shadow Ace 87-03">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3084-2199-large.jpg" alt="Дуги Lindby Linbar Highway для Shadow Ace 87-03" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3084" title="Дуги Lindby Linbar Highway для Shadow Ace 87-03">Дуги Lindby Linbar Highway для Shadow Ace 87-03</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3084"> Оригинальные 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$487</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3084" href="/cart.php?add&amp;id_product=3084&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3084',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="109.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3940-3751.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3940"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3940" class="product_img_link" title="Пассажирские платформы Shadow ACE VT750 2000">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3940-3751-large.jpg" alt="Пассажирские платформы Shadow ACE VT750 2000" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3940" title="Пассажирские платформы Shadow ACE VT750 2000">Пассажирские платформы Shadow ACE VT750 2000</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3940">Неоригинал, комплект как на фото
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$109</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3940" href="/cart.php?add&amp;id_product=3940&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3940',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="144.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2741-1486.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2741"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2741" class="product_img_link" title="Дуги Shadow ACE 400 / 750">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2741-1486-large.jpg" alt="Дуги Shadow ACE 400 / 750" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2741" title="Дуги Shadow ACE 400 / 750">Дуги Shadow ACE 400 / 750</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2741"> Дуги неоригинальные 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=2741" title="Дуги Shadow ACE 400 / 750"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 32  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$144</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2741" href="/cart.php?add&amp;id_product=2741&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2741',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="172.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2499-1181.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2499"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2499" class="product_img_link" title="Водительская спинка Shadow ACE VT750">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2499-1181-large.jpg" alt="Водительская спинка Shadow ACE VT750" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2499" title="Водительская спинка Shadow ACE VT750">Водительская спинка Shadow ACE VT750</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2499">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=2499" title="Водительская спинка Shadow ACE VT750"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 21  байкера</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$172</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2499" href="/cart.php?add&amp;id_product=2499&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2499',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="97.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3014-2121.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3014"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3014" class="product_img_link" title="Решетка  радиатора Shadow ACE VT ">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3014-2121-large.jpg" alt="Крышка радиатора Shadow ACE VT " />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3014" title="Крышка радиатора Shadow ACE VT ">Решетка  радиатора Shadow ACE VT </a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3014"> Хромированная 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$97</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3014" href="/cart.php?add&amp;id_product=3014&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3014',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="99.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3927-3738.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3927"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3927" class="product_img_link" title="Пассажирские платформы Shadow ACE VT750 2003">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3927-3738-large.jpg" alt="Пассажирские платформы Shadow ACE VT750 2003" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3927" title="Пассажирские платформы Shadow ACE VT750 2003">Пассажирские платформы Shadow ACE VT750 2003</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3927">Неоригинал, комплект как на фото
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$99</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3927" href="/cart.php?add&amp;id_product=3927&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3927',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="194.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2493-1169.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2493"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2493" class="product_img_link" title="Пассажирская спинка с багажником Shadow ACE VT750, C/CDC">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2493-1169-large.jpg" alt="Пассажирская спинка с багажником Shadow ACE VT750, C/CDC" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2493" title="Пассажирская спинка с багажником Shadow ACE VT750, C/CDC">Пассажирская спинка с багажником Shadow ACE VT750, C/CDC</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2493">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=2493" title="Пассажирская спинка с багажником Shadow ACE VT750, C/CDC"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 22  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$194</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2493" href="/cart.php?add&amp;id_product=2493&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2493',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="145.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2675-7218.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2675"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2675" class="product_img_link" title="Дуги Honda VT1100 Shadow Sabre / ACE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2675-7218-large.jpg" alt="Дуги Honda VT1100 Shadow Sabre / ACE" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2675" title="Дуги Honda VT1100 Shadow Sabre / ACE">Дуги Honda VT1100 Shadow Sabre / ACE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2675">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=2675" title="Дуги Honda VT1100 Shadow Sabre / ACE"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 25  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					color:#bbb; font-weight:normal; ">
+					$145</span>
+					</div>
+								
+				    				        				        				</span>
+        				<span class="ebutton inactive plist">В корзину</span>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2675',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Отсутствует</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="89.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3920-3731.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3920"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3920" class="product_img_link" title="Пассажирские платформы Shadow ACE VT750 01-03">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3920-3731-large.jpg" alt="Пассажирские платформы Shadow ACE VT750 01-03" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3920" title="Пассажирские платформы Shadow ACE VT750 01-03">Пассажирские платформы Shadow ACE VT750 01-03</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3920"> Неоригинал, комплект как на фото 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$89</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3920" href="/cart.php?add&amp;id_product=3920&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3920',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="194.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2489-1165.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2489"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2489" class="product_img_link" title="Пассажирская спинка с багажником Shadow, SABRE, ACE VT1100">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2489-1165-large.jpg" alt="Пассажирская спинка с багажником Honda Shadow, SABRE, ACE VT1100" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2489" title="Пассажирская спинка с багажником Honda Shadow, SABRE, ACE VT1100">Пассажирская спинка с багажником Shadow, SABRE, ACE VT1100</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2489">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=2489" title="Пассажирская спинка с багажником Honda Shadow, SABRE, ACE VT1100"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 24  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$194</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2489" href="/cart.php?add&amp;id_product=2489&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2489',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="93.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3002-8361.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3002"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3002" class="product_img_link" title="Решетка  радиатора Shadow ACE VT 400/750 ">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3002-8361-large.jpg" alt="Решетка  радиатора Shadow ACE VT 400/750 " />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3002" title="Решетка  радиатора Shadow ACE VT 400/750 ">Решетка  радиатора Shadow ACE VT 400/750 </a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3002"> Хромированная 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=3002" title="Решетка  радиатора Shadow ACE VT 400/750 "><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 22  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$93</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3002" href="/cart.php?add&amp;id_product=3002&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3002',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="94.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3908-3719.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3908"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3908" class="product_img_link" title="Пассажирские платформы Shadow ACE VT1100">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3908-3719-large.jpg" alt="Пассажирские платформы Shadow ACE VT1100" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3908" title="Пассажирские платформы Shadow ACE VT1100">Пассажирские платформы Shadow ACE VT1100</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3908"> Неоригинал, комплект как на фото 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$94</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3908" href="/cart.php?add&amp;id_product=3908&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3908',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="122.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3177-10437.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3177"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3177" class="product_img_link" title="Накладка для Shadow 1100 Tourer / Spirit / Sabre / ACE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3177-10437-large.jpg" alt="Накладка для Shadow 1100 Tourer / Spirit / Sabre / ACE" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3177" title="Накладка для Shadow 1100 Tourer / Spirit / Sabre / ACE">Накладка для Shadow 1100 Tourer / Spirit / Sabre / ACE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3177"> Карман и заклепки как на фото 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=3177" title="Накладка для Shadow 1100 Tourer / Spirit / Sabre / ACE"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 1  байкера</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$122</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3177" href="/cart.php?add&amp;id_product=3177&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3177',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="155.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/1205-957.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=1205"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=1205" class="product_img_link" title="Пассажирская спинка с багажником Shadow ACE 400/750">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/1205-957-large.jpg" alt="Honda Shadow ACE, Shadow SABRE, VT1100" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=1205" title="Honda Shadow ACE, Shadow SABRE, VT1100">Пассажирская спинка с багажником Shadow ACE 400/750</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=1205">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=1205" title="Honda Shadow ACE, Shadow SABRE, VT1100"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 26  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$155</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_1205" href="/cart.php?add&amp;id_product=1205&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '1205',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="106.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/4023-3844.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=4023"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=4023" class="product_img_link" title="Багажник для Shadow SABRE / ACE VT1100">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/4023-3844-large.jpg" alt="Багажник для Shadow SABRE / ACE VT1100" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=4023" title="Багажник для Shadow SABRE / ACE VT1100">Багажник для Shadow SABRE / ACE VT1100</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=4023"> Неоригинал 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$106</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_4023" href="/cart.php?add&amp;id_product=4023&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '4023',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="591.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6597-7709.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6597"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6597" class="product_img_link" title="Сиденье Mustang для 98-03 VT750C/CD Shadow ACE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/6597-7709-large.jpg" alt="Сиденье Mustang для 98-03 VT750C/CD Shadow ACE" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6597" title="Сиденье Mustang для 98-03 VT750C/CD Shadow ACE">Сиденье Mustang для 98-03 VT750C/CD Shadow ACE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6597">Оригинал Mustang
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$591</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6597" href="/cart.php?add&amp;id_product=6597&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6597',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="468.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2557-1242.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2557"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2557" class="product_img_link" title="Стекло для VT750CD SHADOW ACE DELUXE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2557-1242-large.jpg" alt="HONDA VT750CD SHADOW ACE DELUXE" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2557" title="HONDA VT750CD SHADOW ACE DELUXE">Стекло для VT750CD SHADOW ACE DELUXE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2557"> Небьющееся безопасное стекло из поликарбоната 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$468</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2557" href="/cart.php?add&amp;id_product=2557&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2557',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="112.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/4014-3835.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=4014"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=4014" class="product_img_link" title="Багажник для Shadow ACE VT750C 97-03">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/4014-3835-large.jpg" alt="Багажник для Shadow ACE VT750C 97-03" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=4014" title="Багажник для Shadow ACE VT750C 97-03">Багажник для Shadow ACE VT750C 97-03</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=4014">Неоригинал
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$112</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_4014" href="/cart.php?add&amp;id_product=4014&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '4014',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="182.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/1208-1971.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=1208"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=1208" class="product_img_link" title="Пассажирская спинка с багажником Shadow ACE, SABRE, VT1100">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/1208-1971-large.jpg" alt="Пассажирская спинка с багажником Shadow ACE, SABRE, VT1100" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=1208" title="Пассажирская спинка с багажником Shadow ACE, SABRE, VT1100">Пассажирская спинка с багажником Shadow ACE, SABRE, VT1100</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=1208">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=1208" title="Пассажирская спинка с багажником Shadow ACE, SABRE, VT1100"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 4  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$182</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_1208" href="/cart.php?add&amp;id_product=1208&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '1208',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="583.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2823-1614.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2823"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2823" class="product_img_link" title="Платформы и педаль КПП Shadow 750 ACE/Deluxe">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2823-1614-large.jpg" alt="Платформы и педаль КПП Shadow 750 ACE/Deluxe" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2823" title="Платформы и педаль КПП Shadow 750 ACE/Deluxe">Платформы и педаль КПП Shadow 750 ACE/Deluxe</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2823">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$583</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2823" href="/cart.php?add&amp;id_product=2823&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2823',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="333.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2555-1240.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2555"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2555" class="product_img_link" title="Стекло для VT750CD ACE DELUXE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2555-1240-large.jpg" alt="HONDA VT750CD ACE DELUXE" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2555" title="HONDA VT750CD ACE DELUXE">Стекло для VT750CD ACE DELUXE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2555"> Небьющееся безопасное стекло из поликарбоната 
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$333</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2555" href="/cart.php?add&amp;id_product=2555&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2555',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="589.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6583-7671.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6583"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6583" class="product_img_link" title="Сиденье Mustang для 98-03 VT750C/CD Shadow ACE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/6583-7671-large.jpg" alt="Сиденье Mustang для 98-03 VT750C/CD Shadow ACE" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6583" title="Сиденье Mustang для 98-03 VT750C/CD Shadow ACE">Сиденье Mustang для 98-03 VT750C/CD Shadow ACE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6583">Оригинал Mustang
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$589</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6583" href="/cart.php?add&amp;id_product=6583&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6583',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="122.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3173-2290.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3173"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3173" class="product_img_link" title="Накладка для Shadow 1100 Tourer / Spirit / Sabre / ACE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3173-2290-large.jpg" alt="Накладка для Shadow 1100 Tourer / Spirit / Sabre / ACE" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3173" title="Накладка для Shadow 1100 Tourer / Spirit / Sabre / ACE">Накладка для Shadow 1100 Tourer / Spirit / Sabre / ACE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3173">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$122</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3173" href="/cart.php?add&amp;id_product=3173&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3173',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="389.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2779-7322.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2779"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2779" class="product_img_link" title="Люстра National Cycle для SHADOW SABRE / ACE / ACE DELUXE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2779-7322-large.jpg" alt="Люстра National Cycle для Honda" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2779" title="Люстра National Cycle для Honda">Люстра National Cycle для SHADOW SABRE / ACE / ACE DELUXE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2779"> С фарами и поворотниками 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=2779" title="Люстра National Cycle для Honda"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 22  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$389</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_2779" href="/cart.php?add&amp;id_product=2779&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2779',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="122.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/2701-1419.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=2701"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=2701" class="product_img_link" title="Бугель для Shadow 750 ACE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/2701-1419-large.jpg" alt="Бугель для Shadow 750 ACE" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=2701" title="Бугель для Shadow 750 ACE">Бугель для Shadow 750 ACE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=2701">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=2701" title="Бугель для Shadow 750 ACE"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 25  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					color:#bbb; font-weight:normal; ">
+					$122</span>
+					</div>
+								
+				    				        				        				</span>
+        				<span class="ebutton inactive plist">В корзину</span>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '2701',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Отсутствует</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="116.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/3170-9619.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=3170"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=3170" class="product_img_link" title="Накладка для Shadow VT750 ACE 1998-2003">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/3170-9619-large.jpg" alt="Накладка для Shadow VT750 ACE 1998-2003" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=3170" title="Накладка для Shadow VT750 ACE 1998-2003">Накладка для Shadow VT750 ACE 1998-2003</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=3170"> Карман и заклепки как на фото. Без эмблемы на кармане. 
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=3170" title="Накладка для Shadow VT750 ACE 1998-2003"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 22  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$116</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_3170" href="/cart.php?add&amp;id_product=3170&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '3170',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="171.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/1198-946.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=1198"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product  alternate_item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=1198" class="product_img_link" title="Пассажирская спинка с багажником Shadow 400/750 ACE">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/1198-946-large.jpg" alt="Honda Shadow VT750 1997-2003" />
+										
+					
+										<div title="Этот ништяк уже есть у 46  байкеров"class="hot">hot</div>				</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=1198" title="Honda Shadow VT750 1997-2003">Пассажирская спинка с багажником Shadow 400/750 ACE</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=1198">
+    								</a>
+                </h5>				
+				<a href="http://motokofr.com/product.php?id_product=1198" title="Honda Shadow VT750 1997-2003"><div class="product_sales">
+				<h5 class="product_desc">Этот ништяк уже есть у 46  байкеров</h5></a></div>			</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$171</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_1198" href="/cart.php?add&amp;id_product=1198&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '1198',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+		
+		<div id="out" >
+		<div id="in">
+			<article itemscope itemtype="http://schema.org/Offer">	
+			<meta itemprop="price" content="198.00" />
+			<meta itemprop="priceCurrency" content="USD" />
+			<link itemprop="image" href="http://cdn.motokofr.com/img/p/6245-6800.jpg" />
+			<link itemprop="url" href="http://motokofr.com/product.php?id_product=6245"/ >
+
+				
+
+						
+			
+		
+			<li class="ajax_block_product last_item item">
+			<div class="center_block">
+				<a href="http://motokofr.com/product.php?id_product=6245" class="product_img_link" title="Багажник на крыло для SHADOW VT750 ACE 98-01">
+														
+					<img  width="200px" height="200px" src="http://cdn.motokofr.com/img/p/6245-6800-large.jpg" alt="Багажник на крыло для SHADOW VT750 ACE 98-01" />
+										
+					
+														</a>
+			
+				<!-- </a> -->
+				<h3 itemprop="name">
+				<a href="http://motokofr.com/product.php?id_product=6245" title="Багажник на крыло для SHADOW VT750 ACE 98-01">Багажник на крыло для SHADOW VT750 ACE 98-01</a>
+				</h3>
+				<h5 itemprop="description" class="product_desc">
+    				    				<a href="http://motokofr.com/product.php?id_product=6245">
+    								</a>
+                </h5>				
+							</div>
+
+						<div class="right_block">
+								
+								<div><span class="price" style="display: inline; 				
+					">
+					$198</span>
+					</div>
+								
+				    				        				        				<span class="align_center">
+        					<a class="ebutton  green plist" rel="ajax_id_product_6245" href="/cart.php?add&amp;id_product=6245&amp;token=34ecc0d5f7f86997ccfaad904cc4f530">В корзину</a>
+    				    
+    				<span class="align_center">
+    				<a href="javascript:;" class="ebutton orange plist" onclick="javascript:WishlistCart('wishlist_block_list', 'add', '6245',0,1);">
+    				В список хотелок</a>
+    				</span>				
+				
+								<div class="availability">Под заказ</div>
+			</div>
+					
+</div>
+</div>
+
+<br class="clear"/>
+	</li>
+	
+	</ul>
+
+<!-- /Products list -->
+								
+	<!-- не нашел ништяк -->	
+		<ul id="product_list" class="clear">
+		<div id="out">
+		<div id="in">
+	
+			<li class="ajax_block_product item">
+				<div class="center_block">
+					<a href="/contact-form.php" class="product_img_link" >
+							<img src="/img/no_product.png" style="height: 200px;">
+					</a>
+					
+					<h3>
+					<a href="/contact-form.php">Не нашел нужный ништяк?</a>
+					</h3>
+					
+					<p class="product_desc">Напиши нам и мы поищем его в каталогах поставщиков</p>
+	
+					<a href="/contact-form.php" ></a>
+					
+					</div>
+	
+					<div class="right_block">
+						<div>
+						<span class="price" style="display: inline;">&nbsp;</span>
+						</div>
+									
+						<span class="align_center">
+						<a class="ebutton blue plist" href="/contact-form.php">Написать</a>
+						</span>
+					</div>
+		</div>
+	</div>
+	<br class="clear"/>
+	</li>
+	</ul>
+	
+
+	<!-- Pagination -->
+	<div id="pagination" class="pagination">
+			<ul class="pagination">
+								<li id="pagination_previous">
+				<a class="ebutton blue small" href="/modules/blockadvancesearch_3/advancesearch.php?orderby=position&amp;orderway=desc&amp;search_query=%D0%93%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%B4%D0%BB%D1%8F+%D1%85%D0%BE%D0%BD%D0%B4%D0%B0&amp;supplier=5&amp;filter=ACE">&laquo;&nbsp;Назад</a>
+			</li>
+													<li><a href="/modules/blockadvancesearch_3/advancesearch.php?orderby=position&amp;orderway=desc&amp;search_query=%D0%93%D0%BB%D1%83%D1%88%D0%B8%D1%82%D0%B5%D0%BB%D1%8C+%D0%B4%D0%BB%D1%8F+%D1%85%D0%BE%D0%BD%D0%B4%D0%B0&amp;supplier=5&amp;filter=ACE">1</a></li>
+												<li class="current"><span>2</span></li>
+												<li id="pagination_next"><a class="ebutton small inactive">Вперед&nbsp;&raquo;</a></li>
+				</ul>
+		</div>
+	<!-- /Pagination -->
+	
+	
+
+
+
+
+
+
+
+<script language="JavaScript">
+    
+///////////////// лишний &amp генерится где-то здесь    
+	jQuery(document).ready(function()
+	{   
+		$("#filter").keypress(function(e)
+		{
+			if(e.keyCode==13)
+			{
+			
+						
+				setAttr('filter',getAttr('filter')+this.value);
+			
+				
+			
+			}
+		});
+	});
+
+
+function getAttr(prmName) 
+{ 
+   //var $_GET = {}; 
+   var d = window.location.search.substring(1).split("&"); 
+   for(var i=0; i< d.length; i++) { 
+      var getVar = d[i].split("="); 
+      if (getVar[0]==prmName)
+      {
+        //return typeof(getVar[1])=="undefined" ? "" : getVar[1]
+        return getVar[1]+'|';
+      }
+      //$_GET[getVar[0]] = typeof(getVar[1])=="undefined" ? "" : getVar[1]; 
+   } 
+   return '';
+   //return $_GET; 
+} 
+
+function setAttr(prmName,val)
+{
+    var res = '';
+	var d = location.href.split("#")[0].split("?");  
+	var base = d[0];
+	var query = d[1];
+	if(query) {
+		var params = query.split("&");  
+		for(var i = 0; i < params.length; i++) {  
+			var keyval = params[i].split("=");  
+			if(keyval[0] != prmName) {  
+				res += params[i] + '&';
+			}
+		}
+	}
+	
+	if (val != '') 	
+	{	
+		var val = val.replace(/ /g, '|')
+		res += prmName + '=' + val;
+		window.location.href = base + '?' + res; // перезагружает страницу, не дает работать AJAX
+		return false;
+	}
+}
+
+	
+</script>
+
