@@ -1,14 +1,14 @@
 <?php
 //include(dirname(__FILE__).'/../config/settings.inc.php');
 include(dirname(__FILE__).'/../config/config.inc.php');
-$link = mysql_connect('localhost', _DB_USER_, _DB_PASSWD_);
+$link = ($GLOBALS["___mysqli_ston"] = mysqli_connect('localhost',  _DB_USER_,  _DB_PASSWD_));
 if (!$link) {
-    die('ERROR: ' . mysql_error());
+    die('ERROR: ' . mysqli_error($GLOBALS["___mysqli_ston"]));
 }
 
-$db_selected = mysql_select_db(_DB_NAME_, $link);
+$db_selected = mysqli_select_db( $link, constant('_DB_NAME_'));
 if (!$db_selected) {
-    die ('Не удалось выбрать базу: ' . mysql_error());
+    die ('Не удалось выбрать базу: ' . mysqli_error($GLOBALS["___mysqli_ston"]));
 }
 
 // готовим мыло
@@ -34,7 +34,7 @@ $cancel_order = 5;
 foreach ($orders as $order)
 {
     if ($order['date_add'] == $today-$remind1)
-    { 
+    {
         $message .= $order['id_order']." — напоминание №1<br>";
     }
 

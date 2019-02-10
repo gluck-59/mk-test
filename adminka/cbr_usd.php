@@ -28,91 +28,91 @@ $gbp_old = round($usd_old / $gbp_old['conversion_rate'], 2);
 //получим новые курсы
 //  $usd = 0;
 //  $eur = 0;
-  error_reporting(0);
+error_reporting(0);
 
 
 // kovalut сейчас не нужен, берем с центробанка  $kov = simplexml_load_file('http://informer.kovalut.ru/webmaster/xml-table.php?kod=7701');
-    //if ($kov == false)
+//if ($kov == false)
 
-  	{
-	$cbr = simplexml_load_file('http://www.cbr.ru/scripts/XML_daily.asp?d=0');
-echo '<pre>';
-
-
+{
+    $cbr = simplexml_load_file('http://www.cbr.ru/scripts/XML_daily.asp?d=0');
+    echo '<pre>';
 
 
-		if (empty($cbr))
-	  	{
-	  		$message .= ('<p><span style="background:#fdd">cbr.ru в дауне, ничего не пишем</span></p>');
-	  		unset($usd);
-	  	}
-	  	else
-	  	{	  	
-    		foreach ($cbr->Valute as $item) 
-    		{
-    			if ($item->NumCode=="840")  {
-    				$usd = $item->Value;
-    			}
-    			if ($item->NumCode=="978")  {
-    				$eur = $item->Value;
-    			}
-    			if ($item->NumCode=="036")  {
-    				$aud = $item->Value;
-                }
-    			if ($item->NumCode=="826")  {
-    				$gbp = $item->Value;
-    			}
-    		}
-    		// математика для ЦБРФ
-    		$usd = round($usd * 1.030, 2);
-    		$eur = round($eur * 1.013, 2);
-    		$aud = round($aud * 1.017, 2);
-    		$gbp = round($gbp * 1.017, 2);
-		}
-  	}
+
+
+    if (empty($cbr))
+    {
+        $message .= ('<p><span style="background:#fdd">cbr.ru в дауне, ничего не пишем</span></p>');
+        unset($usd);
+    }
+    else
+    {
+        foreach ($cbr->Valute as $item)
+        {
+            if ($item->NumCode=="840")  {
+                $usd = $item->Value;
+            }
+            if ($item->NumCode=="978")  {
+                $eur = $item->Value;
+            }
+            if ($item->NumCode=="036")  {
+                $aud = $item->Value;
+            }
+            if ($item->NumCode=="826")  {
+                $gbp = $item->Value;
+            }
+        }
+        // математика для ЦБРФ
+        $usd = round($usd * 1.030, 2);
+        $eur = round($eur * 1.013, 2);
+        $aud = round($aud * 1.017, 2);
+        $gbp = round($gbp * 1.017, 2);
+    }
+}
 
 /*
-	else
-	{
-    //	берем с kovalut
+    else
+    {
+    //    берем с kovalut
         error_reporting(E_ALL ^ E_NOTICE);
-    	foreach ($kov->Actual_Rates->Bank as $bank) 
-    	{
-    		if ($bank->Name=="Сбербанк России")  
-    		    {
-    		       $usd = $bank->USD->Sell;
-    		       $eur = $bank->EUR->Sell;
-    		}
-    	}
-    	if (!$usd or !$eur) // смотрим старые курсы
-    	{
-    	  $message .= ('<p><span style="background:#fdd">Новых курсов нет, используем старые</span></p>');
-    	  foreach ($kov->Not_Actual_Rates->Bank as $bank) 
-    		{
-    		if ($bank->Name=="Сбербанк России")  
-    		    	{
-    		       $usd = $bank->USD->Sell;
-    		       $eur = $bank->EUR->Sell;
-    			}
-    		}
-    	}
+        foreach ($kov->Actual_Rates->Bank as $bank)
+        {
+            if ($bank->Name=="Сбербанк России")
+                {
+                   $usd = $bank->USD->Sell;
+                   $eur = $bank->EUR->Sell;
+            }
+        }
+        if (!$usd or !$eur) // смотрим старые курсы
+        {
+          $message .= ('<p><span style="background:#fdd">Новых курсов нет, используем старые</span></p>');
+          foreach ($kov->Not_Actual_Rates->Bank as $bank)
+            {
+            if ($bank->Name=="Сбербанк России")
+                    {
+                   $usd = $bank->USD->Sell;
+                   $eur = $bank->EUR->Sell;
+                }
+            }
+        }
 
         $usd = str_replace(",", ".", $usd);
         $eur = str_replace(",", ".", $eur);
-	}
+    }
 */
-	
 
-		
-		
+
+
+
 
 $message .= '<p style="margin-bottom:-10px;"><span style="font-size:16pt; ';
-	if ($usd < $usd_old) $message .= 'background:#dfd';
-	if ($usd > $usd_old) $message .= 'background:#fdd';
+if ($usd < $usd_old) $message .= 'background:#dfd';
+if ($usd > $usd_old) $message .= 'background:#fdd';
 $message .= '">$<strong> ' .$usd.'</strong></span>&nbsp;</p>';
 $message .= '<p><span style="font-size:16pt; ';
-	if ($eur < $eur_old) $message .= 'background:#dfd';
-	if ($eur > $eur_old) $message .= 'background:#fdd';
+if ($eur < $eur_old) $message .= 'background:#dfd';
+if ($eur > $eur_old) $message .= 'background:#fdd';
 $message .= '">€<strong> ' .$eur.'</strong></span></p>';
 
 // добавим графики курсов
@@ -148,39 +148,38 @@ $message .='</p>';
 
 
 /* блок записи в базу -- ДЛЯ ОТЛАДКИ ОТКЛЮЧАТЬ ЗДЕСЬ */
-$link = mysql_connect('localhost', _DB_USER_, _DB_PASSWD_);
+$link = ($GLOBALS["___mysqli_ston"] = mysqli_connect('localhost',  _DB_USER_,  _DB_PASSWD_));
 if (!$link) {
-	$message .= mysql_error();
+    $message .= mysqli_error($GLOBALS["___mysqli_ston"]);
 }
 
-$db_selected = mysql_select_db(_DB_NAME_, $link);
+$db_selected = mysqli_select_db( $link, constant('_DB_NAME_'));
 if (!$db_selected) {
-	$message .= mysql_error();
+    $message .= mysqli_error($GLOBALS["___mysqli_ston"]);
 }
 
 if ($usd !=0 and $eur !=0 and $gbp !=0 and $aud !=0)
-	{
-	$result = mysql_query('UPDATE presta_currency SET conversion_rate = '.$usd.' where id_currency = 3');
-	$result = mysql_query('UPDATE presta_currency SET conversion_rate = '.$eur.' where id_currency = 1');
-	$result = mysql_query('UPDATE presta_currency SET conversion_rate = '.$gbp.' where id_currency = 4');	
-	$result = mysql_query('UPDATE presta_currency SET conversion_rate = '.$aud.' where id_currency = 8');	
-		
-		if (!$result) {
-			$message .= mysql_error();
-		}
-	$message .= mysql_error();	
-	$message .= "<br>Запись в базу ОК";
-	}
+{
+    $result = mysqli_query($GLOBALS["___mysqli_ston"], 'UPDATE presta_currency SET conversion_rate = '.$usd.' where id_currency = 3');
+    $result = mysqli_query($GLOBALS["___mysqli_ston"], 'UPDATE presta_currency SET conversion_rate = '.$eur.' where id_currency = 1');
+    $result = mysqli_query($GLOBALS["___mysqli_ston"], 'UPDATE presta_currency SET conversion_rate = '.$gbp.' where id_currency = 4');
+    $result = mysqli_query($GLOBALS["___mysqli_ston"], 'UPDATE presta_currency SET conversion_rate = '.$aud.' where id_currency = 8');
+
+    if (!$result) {
+        $message .= mysqli_error($GLOBALS["___mysqli_ston"]);
+    }
+    $message .= mysqli_error($GLOBALS["___mysqli_ston"]);
+    $message .= "<br>Запись в базу ОК";
+}
 else $message .= ('<p><span style="background:#fdd">в значениях нули, в базу не пишем</span></p>');
-mysql_close($link);
+((is_null($___mysqli_res = mysqli_close($link))) ? false : $___mysqli_res);
 
 $message .= ('</body></html>');
 mail($to, $subject, $message, $headers);
 
-/* блок записи в базу */ 
+/* блок записи в базу */
 
 
 echo $message;
 
 ?>
-

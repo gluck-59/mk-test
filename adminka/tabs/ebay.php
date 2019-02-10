@@ -3,29 +3,29 @@
 //@ini_set('max_execution_time', 0);
 set_time_limit (180);
 include(dirname(__FILE__).'/../../config/config.inc.php');
-include(dirname(__FILE__).'/../../init.php'); 
+include(dirname(__FILE__).'/../../init.php');
 $cfgFile = dirname(__FILE__).'/../../config/settings.inc.php';
 require_once($cfgFile);
 
 
 // начало вывода файла
 $filename = "export.csv";
-			header('X-Accel-Buffering: yes');
-		    header('Content-Type: text/csv; charset=utf-8');
-		    header('Content-Disposition: attachment; filename="export.csv"');
-		    header('Pragma: no-cache');
-		    header('Expires: 0');
+header('X-Accel-Buffering: yes');
+header('Content-Type: text/csv; charset=utf-8');
+header('Content-Disposition: attachment; filename="export.csv"');
+header('Pragma: no-cache');
+header('Expires: 0');
 
 
 if (empty($_POST['export'])) exit('empty($_POST[export])');
 
-$db = mysql_connect(_DB_SERVER_, _DB_USER_, _DB_PASSWD_);
+$db = ($GLOBALS["___mysqli_ston"] = mysqli_connect(_DB_SERVER_,  _DB_USER_,  _DB_PASSWD_));
 if (!$db)
 {
     die('No connection to database');
 }
-mysql_select_db(_DB_NAME_, $db);
-mysql_query("SET NAMES 'utf8'");
+mysqli_select_db( $db, constant('_DB_NAME_'));
+mysqli_query($GLOBALS["___mysqli_ston"], "SET NAMES 'utf8'");
 
 // основные переменные
 $usd = Currency::getCurrency(3);
@@ -64,34 +64,34 @@ $weight_price = (float)$weight_price;
 
 // если "ключевые слова" содержит номер лота
 if (preg_match('/^\d{12}$/', trim($request)))
-$lots = Ebay_shopping::getSingleItem(trim($request));
+    $lots = Ebay_shopping::getSingleItem(trim($request));
 
 // если "ключевые слова" содержит слова
-else 
+else
 {
-	// если store указан
-	if ($store != '')
-	{
-    	$lots = Ebay_shopping::findItemsIneBayStores($request, $store, $minprice, $maxprice, $site_id);
+    // если store указан
+    if ($store != '')
+    {
+        $lots = Ebay_shopping::findItemsIneBayStores($request, $store, $minprice, $maxprice, $site_id);
     }
 
-	// если нет	
-	else
-	{
-    	$lots = Ebay_shopping::findItemsAdvanced($request, 0, 1);
+    // если нет
+    else
+    {
+        $lots = Ebay_shopping::findItemsAdvanced($request, 0, 1);
     }
 
-//echo '<pre>	';
+//echo '<pre>    ';
 //print_r($lots);
 }
 
 $categories = "";
 for ($cat_id = 1;$cat_id<=100;$cat_id++)
 {
- if (!empty($_POST['category_'.$cat_id])) 
-  {
-  $categories.=$_POST['category_'.$cat_id]."|"; 
-  }
+    if (!empty($_POST['category_'.$cat_id]))
+    {
+        $categories.=$_POST['category_'.$cat_id]."|";
+    }
 }
 
 // заголовки таблицы
@@ -101,49 +101,49 @@ echo("skip;Активен;Название;Категории;Цена вкл н
 foreach ($lots as $lot)
 {
 
-	// основное
-	if (strval($lot['type']) != "FixedPriceItem") continue; // пропускать если режим аукциона 
-	//    if (!$lot['shipping']) continue; // пропускать если нет доставки
+    // основное
+    if (strval($lot['type']) != "FixedPriceItem") continue; // пропускать если режим аукциона
+    //    if (!$lot['shipping']) continue; // пропускать если нет доставки
 
-	//  валюты, цены, округление
-	$ebay_currency = $lot['currency'];
-	if	($ebay_currency = "USD") $currency = 1;//$usd;
-	else $currency = $eur;
-	
-	$shipping = $lot['shipping'];
-  	$ebay_price = ($lot['price'] + $shipping);
-	$wholesale_price = round($ebay_price * $paypal * $currency);
-	$nacenka = $wholesale_price / 100 * (float)$nacenka_perc;
-	if ($nacenka < $min_prib) $nacenka = $min_prib;
-	if ($nacenka > $max_prib) $nacenka = $max_prib;
-	$price = round($wholesale_price + $nacenka - $weight_price);
-	
-    if (!$shipping) 
+    //  валюты, цены, округление
+    $ebay_currency = $lot['currency'];
+    if    ($ebay_currency = "USD") $currency = 1;//$usd;
+    else $currency = $eur;
+
+    $shipping = $lot['shipping'];
+    $ebay_price = ($lot['price'] + $shipping);
+    $wholesale_price = round($ebay_price * $paypal * $currency);
+    $nacenka = $wholesale_price / 100 * (float)$nacenka_perc;
+    if ($nacenka < $min_prib) $nacenka = $min_prib;
+    if ($nacenka > $max_prib) $nacenka = $max_prib;
+    $price = round($wholesale_price + $nacenka - $weight_price);
+
+    if (!$shipping)
     {
-    	$price = 'нет доставки';
-   	}
+        $price = 'нет доставки';
+    }
 
-	echo ";";						// --
-	echo $_POST['active'].";";		// Активен
-	echo $lot['name'].";";			// Название
-	echo $categories.";";			// Категории
-	echo $price.";";				// Цена вкл налоги
-	echo $lot['description'].";";	// Описание
-	echo $lot['compatibility'].";";	// Подходит для
-	echo $wholesale_price.";";		// Цена закупки
-	echo $desc_short.";";			// Короткое описание
-	echo $lot['seller'].";";		// Артикул №
-	echo $lot['lot'].";";			// Артикул поставщика
-	echo $lot['ean13'].";";			// EAN13
-	echo $supplier.";";				// Марка
-	echo $manufacturer.";";			// Произв
-	echo $weight.";";				// Вес
-	echo $quantity.";";				// Кол-во
-	echo $tags.";";					// Метки
-	echo $tags.";";					// Meta keywords
-	echo $lot['name'].";";			// Meta_description
-	echo $lot['image'].";";			// URL изображений
-	echo "\r\n";	
+    echo ";";                        // --
+    echo $_POST['active'].";";        // Активен
+    echo $lot['name'].";";            // Название
+    echo $categories.";";            // Категории
+    echo $price.";";                // Цена вкл налоги
+    echo $lot['description'].";";    // Описание
+    echo $lot['compatibility'].";";    // Подходит для
+    echo $wholesale_price.";";        // Цена закупки
+    echo $desc_short.";";            // Короткое описание
+    echo $lot['seller'].";";        // Артикул №
+    echo $lot['lot'].";";            // Артикул поставщика
+    echo $lot['ean13'].";";            // EAN13
+    echo $supplier.";";                // Марка
+    echo $manufacturer.";";            // Произв
+    echo $weight.";";                // Вес
+    echo $quantity.";";                // Кол-во
+    echo $tags.";";                    // Метки
+    echo $tags.";";                    // Meta keywords
+    echo $lot['name'].";";            // Meta_description
+    echo $lot['image'].";";            // URL изображений
+    echo "\r\n";
 }
 
 //echo('</pre>');
