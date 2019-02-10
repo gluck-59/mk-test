@@ -1,7 +1,7 @@
 <?php
 
 //установка локали
-mysql_query("SET lc_time_names = 'ru_RU'");
+mysqli_query($GLOBALS["___mysqli_ston"], "SET lc_time_names = 'ru_RU'");
 
 
 

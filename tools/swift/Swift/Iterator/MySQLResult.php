@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Swift Mailer MySQL Resultset Iterator
+ * Swift Mailer mysql Resultset Iterator
  * Please read the LICENSE file
  * @author Chris Corbyn <chris@w3style.co.uk>
  * @package Swift
@@ -12,15 +12,15 @@ require_once dirname(__FILE__) . "/../ClassLoader.php";
 Swift_ClassLoader::load("Swift_Iterator");
 
 /**
- * Swift Mailer MySQL Resultset Iterator.
- * Iterates over MySQL Resultset from mysql_query().
+ * Swift Mailer mysql Resultset Iterator.
+ * Iterates over mysql Resultset from mysql_query().
  * @package Swift
  * @author Chris Corbyn <chris@w3style.co.uk>
  */
 class Swift_Iterator_MySQLResult implements Swift_Iterator
 {
   /**
-   * The MySQL resource.
+   * The mysql resource.
    * @var resource
    */
   protected $resultSet;
@@ -47,7 +47,7 @@ class Swift_Iterator_MySQLResult implements Swift_Iterator
   public function __construct($rs)
   {
     $this->resultSet = $rs;
-    $this->numRows = mysql_num_rows($rs);
+    $this->numRows = mysqli_num_rows($rs);
   }
   /**
    * Get the resultset.
@@ -73,7 +73,7 @@ class Swift_Iterator_MySQLResult implements Swift_Iterator
   {
     if ($this->hasNext())
     {
-      $this->currentRow = mysql_fetch_array($this->resultSet);
+      $this->currentRow = mysqli_fetch_array($this->resultSet);
       $this->pos++;
       return true;
     }
@@ -89,9 +89,9 @@ class Swift_Iterator_MySQLResult implements Swift_Iterator
   {
     if ($pos >= 0 && $pos < $this->numRows)
     {
-      mysql_data_seek($this->resultSet, $pos);
-      $this->currentRow = mysql_fetch_array($this->resultSet);
-      mysql_data_seek($this->resultSet, $pos);
+      mysqli_data_seek($this->resultSet,  $pos);
+      $this->currentRow = mysqli_fetch_array($this->resultSet);
+      mysqli_data_seek($this->resultSet,  $pos);
       $this->pos = $pos;
       return true;
     }

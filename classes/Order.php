@@ -121,7 +121,7 @@ class		Order extends ObjectModel
 		'shipping_number' => 'isUrl'
 	);
 
-	/* MySQL does not allow 'order' for a table name */
+	/* mysql does not allow 'order' for a table name */
 	protected 	$table = 'orders';
 	protected 	$identifier = 'id_order';
 

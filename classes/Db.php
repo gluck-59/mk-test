@@ -14,7 +14,7 @@
 
 if (file_exists(dirname(__FILE__).'/../config/settings.inc.php'))
 	include_once(dirname(__FILE__).'/../config/settings.inc.php');
-include_once(dirname(__FILE__).'/../classes/MySQL.php');
+include_once(dirname(__FILE__).'/../classes/mysql.php');
 
 abstract class Db
 {
@@ -27,7 +27,7 @@ abstract class Db
 	/** @var string Database password (eg. can be empty !) */
 	protected $_password;
   
-	/** @var string Database type (MySQL, PgSQL) */
+	/** @var string Database type (mysql, PgSQL) */
 	protected $_type;
   
 	/** @var string Database name */
@@ -53,7 +53,7 @@ abstract class Db
 	public static function getInstance()
 	{
 		if(!isset(self::$_instance))
-			self::$_instance = new MySQL();
+			self::$_instance = new mysql();
 		return self::$_instance;
 	}
 
@@ -211,7 +211,7 @@ abstract class Db
 		 * Alias of Db::getInstance()->ExecuteS
 		 *
 		 * @acces string query The query to execute
-		 * @return array Array of line returned by MySQL
+		 * @return array Array of line returned by mysql
 		 */
 	static public function s($query)
 	{
@@ -256,7 +256,7 @@ function pSQL($string, $htmlOK = false)
 		$string = stripslashes($string);
 	if (!is_numeric($string))
 	{
-		$string = _PS_MYSQL_REAL_ESCAPE_STRING_ ? mysql_real_escape_string($string) : addslashes($string);
+		$string = _PS_MYSQL_REAL_ESCAPE_STRING_ ? mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $string) : addslashes($string);
 		if (!$htmlOK)
 			$string = strip_tags(nl2br2($string));
 	}

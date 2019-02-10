@@ -226,7 +226,7 @@ class Referrer extends ObjectModel
 			$referrer->cache_reg_rate = $statsVisits['uniqs'] ? intval($registrations) / $statsVisits['uniqs'] : 0;
 			$referrer->cache_order_rate = $statsVisits['uniqs'] ? intval($statsSales['orders']) / $statsVisits['uniqs'] : 0;
 			if (!$referrer->update())
-				Tools::dieObject(mysql_error());
+				Tools::dieObject(mysqli_error($GLOBALS["___mysqli_ston"]));
 			Configuration::updateValue('PS_REFERRERS_CACHE_LIKE', ModuleGraph::getDateBetween($employee));
 			Configuration::updateValue('PS_REFERRERS_CACHE_DATE', date('Y-m-d H:i:s'));
 		}

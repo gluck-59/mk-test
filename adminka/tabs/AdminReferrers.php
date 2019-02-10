@@ -285,7 +285,7 @@ class AdminReferrers extends AdminTab
 					</li>
 					<br />
 					<li>
-						'.$this->l('The simple mode uses the MySQL "LIKE", but for a higher potency you can use MySQL regular expressions.').'
+						'.$this->l('The simple mode uses the mysql "LIKE", but for a higher potency you can use mysql regular expressions.').'
 						<a href="http://dev.mysql.com/doc/refman/5.0/en/regexp.html" target="_blank" style="font-style: italic;">'.$this->l('Take a look to the documentation for more details...').'</a>
 					</li>
 				</ul>
@@ -318,7 +318,7 @@ class AdminReferrers extends AdminTab
 					<input type="submit" value="'.$this->l('   Save   ').'" name="submitAdd'.$this->table.'" class="button" />
 				</div>
 				<br class="clear" />
-				'.$this->l('If you know how to use MySQL regular expressions, you can use the').' <a style="cursor: pointer; font-weight: bold;" onclick="openCloseLayer(\'tracking_expert\');">'.$this->l('expert mode').'.</a>
+				'.$this->l('If you know how to use mysql regular expressions, you can use the').' <a style="cursor: pointer; font-weight: bold;" onclick="openCloseLayer(\'tracking_expert\');">'.$this->l('expert mode').'.</a>
 			</fieldset>
 			<br class="clear" />
 			<fieldset class="width4"><legend onclick="openCloseLayer(\'tracking_expert\')" style="cursor: pointer;"><img src="../img/admin/affiliation.png" /> '.$this->l('Technical information - Expert mode').'</legend>

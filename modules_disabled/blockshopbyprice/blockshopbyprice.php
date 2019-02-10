@@ -36,7 +36,7 @@ class Blockshopbyprice extends Module
         {
 		$db = Db::getInstance(); // create and object to represent the database
                 $result = $db->Execute("SELECT `minprice`, `maxprice` FROM `"._DB_PREFIX_."shopbyprice` ORDER BY `displayorder`"); //retrieve price ranges
-                while ($row = mysql_fetch_assoc($result))
+                while ($row = mysqli_fetch_assoc($result))
                 $results[] = $row;
                 if (empty($results)){$results = 0;} ; // if no results then set $results to 0s
                 global $cookie;
@@ -122,7 +122,7 @@ class Blockshopbyprice extends Module
                             <th style="color:blue">'.$this->l('Max Price').'</th>
 							<th style="color:blue">'.$this->l('Display Order').'</th>
                            </tr>';
-               while ($row = mysql_fetch_row($priceranges))
+               while ($row = mysqli_fetch_row($priceranges))
                {
                  $this->_html .=
                          '<tr>

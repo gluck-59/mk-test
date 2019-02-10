@@ -323,9 +323,9 @@ class Search
 			if (sizeof($queryArray) AND sizeof($queryArray2))
 			{
 				if (!($rows = $db->Execute('INSERT IGNORE INTO '._DB_PREFIX_.'search_word (id_lang, word) VALUES '.implode(',',$queryArray))) OR $rows != sizeof($queryArray))
-					Tools::d(array(mysql_error(), $queryArray));
+					Tools::d(array(mysqli_error($GLOBALS["___mysqli_ston"]), $queryArray));
 				if (!($rows = $db->Execute('INSERT INTO '._DB_PREFIX_.'search_index (id_product, id_word, weight) VALUES '.implode(',',$queryArray2).' ON DUPLICATE KEY UPDATE weight = weight + VALUES(weight)')) OR $rows != sizeof($queryArray2))
-					Tools::d(array(mysql_error(), $queryArray2));
+					Tools::d(array(mysqli_error($GLOBALS["___mysqli_ston"]), $queryArray2));
 			}
 			$db->Execute('UPDATE '._DB_PREFIX_.'product SET indexed = 1 WHERE id_product = '.intval($product['id_product']));
 		}

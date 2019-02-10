@@ -270,7 +270,7 @@ class BlockAdvancesearch_3 extends Module {
 	public function verifIndex() {
 		foreach($this->indexToVerif as $table_name=>$columns) {
 			foreach($columns as $column_name) {
-				if (! mysql_num_rows(mysql_query('SHOW INDEX FROM `'._DB_PREFIX_.$table_name.'` WHERE `column_name` = "'.$column_name.'"')))
+				if (! mysqli_num_rows(mysqli_query($GLOBALS["___mysqli_ston"], 'SHOW INDEX FROM `'._DB_PREFIX_.$table_name.'` WHERE `column_name` = "'.$column_name.'"')))
 					return false;
 			}
 		}
@@ -279,7 +279,7 @@ class BlockAdvancesearch_3 extends Module {
 	public function createIndex() {
 		foreach($this->indexToVerif as $table_name=>$columns) {
 			foreach($columns as $column_name) {
-				if (! mysql_num_rows(mysql_query('SHOW INDEX FROM `'._DB_PREFIX_.$table_name.'` WHERE `column_name` = "'.$column_name.'"')))
+				if (! mysqli_num_rows(mysqli_query($GLOBALS["___mysqli_ston"], 'SHOW INDEX FROM `'._DB_PREFIX_.$table_name.'` WHERE `column_name` = "'.$column_name.'"')))
 					if (! Db::getInstance()->Execute('ALTER TABLE `'._DB_PREFIX_.$table_name.'` ADD INDEX ( `'.$column_name.'`  )'))
 						return false;
 			}

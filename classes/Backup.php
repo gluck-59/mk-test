@@ -108,9 +108,9 @@ class Backup
 	 */
 	public function add()
 	{
-		if ( _DB_TYPE_ !== 'MySQL' )
+		if ( _DB_TYPE_ !== 'mysql' )
 		{
-			$this->error = Tools::displayError('Sorry, backup currently only supports MySQL database types. You are using') . ' "' . _DB_TYPE_ . '"';
+			$this->error = Tools::displayError('Sorry, backup currently only supports mysql database types. You are using') . ' "' . _DB_TYPE_ . '"';
 			return false;
 		}
 
@@ -181,7 +181,7 @@ class Backup
 				{
 					$s = '(';
 					foreach ($row as $field => $value)
-						$s .= "'" . mysql_real_escape_string($value) . "',";
+						$s .= "'" . mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $value) . "',";
 					$s = rtrim($s, ',');
 
 					if ($i%200 == 0 AND $i < $sizeof)

@@ -18,20 +18,20 @@ if (!file_exists($cfgFile))
 }
 require_once($cfgFile);
 
-$db = mysql_connect(_DB_SERVER_, _DB_USER_, _DB_PASSWD_);
+$db = ($GLOBALS["___mysqli_ston"] = mysqli_connect(_DB_SERVER_,  _DB_USER_,  _DB_PASSWD_));
 if (!$db)
 {
     die('No connection to database');
 }
 
-mysql_select_db(_DB_NAME_, $db);
-mysql_query("SET NAMES 'utf8'");
+mysqli_select_db( $db, constant('_DB_NAME_'));
+mysqli_query($GLOBALS["___mysqli_ston"], "SET NAMES 'utf8'");
 $expire_date = date('Y-m-d H:i');
 
 $currency = new Currency(3);
 $rate = $currency->conversion_rate;
 
-$res = mysql_query("
+$res = mysqli_query($GLOBALS["___mysqli_ston"], "
     SELECT
         c.id_category,
         c.id_parent,
@@ -66,7 +66,7 @@ file_put_contents($file, '<category id="1">Авто, мото</category>' , FILE
 
 
 // выдает категории из магазина 
-while ($row = mysql_fetch_assoc($res))
+while ($row = mysqli_fetch_assoc($res))
 {
     $categories[$row['id_category']] = $row['id_category'];
     $katname[$row['id_category']] = $row['name'];

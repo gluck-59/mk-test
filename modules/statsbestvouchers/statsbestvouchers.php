@@ -126,7 +126,7 @@ class StatsBestVouchers extends ModuleGrid
 	}
 
 	public function getData()
-	{	mysql_query("SET lc_time_names = 'ru_RU'");
+	{	mysqli_query($GLOBALS["___mysqli_ston"], "SET lc_time_names = 'ru_RU'");
 		$this->_totalCount = $this->getTotalCount();
 		$this->_query = '
 SELECT c.firstname, c.lastname, c.email, d.name, d.value, DATE_FORMAT(d.`date_to`, "%d %b %y") as date

@@ -3,7 +3,7 @@
 include(dirname(__FILE__).'/../../config/config.inc.php');
 include(dirname(__FILE__).'/../../init.php');
 
-mysql_query("SET lc_time_names = 'ru_RU'");
+mysqli_query($GLOBALS["___mysqli_ston"], "SET lc_time_names = 'ru_RU'");
  
 
 $users = Db::getInstance()->ExecuteS('

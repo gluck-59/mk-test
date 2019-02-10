@@ -31,7 +31,7 @@ class Connection extends ObjectModel
 	protected	$fieldsValidate = array ('id_guest' => 'isUnsignedId', 'id_page' => 'isUnsignedId',
 										 'ip_address' => 'isInt', 'http_referer' => 'isAbsoluteUrl');
 
-	/* MySQL does not allow 'connection' for a table name */ 
+	/* mysql does not allow 'connection' for a table name */ 
 	protected 	$table = 'connections';
 	protected 	$identifier = 'id_connections';
 	

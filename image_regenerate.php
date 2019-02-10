@@ -23,13 +23,13 @@ header('X-Accel-Buffering: no');
 ob_get_flush();
 echo('<pre>');
 
-$db = mysql_connect(_DB_SERVER_, _DB_USER_, _DB_PASSWD_);
+$db = ($GLOBALS["___mysqli_ston"] = mysqli_connect(_DB_SERVER_,  _DB_USER_,  _DB_PASSWD_));
 if (!$db)
 {
     die('No connection to database');
 }
-mysql_select_db(_DB_NAME_, $db);
-mysql_query("SET NAMES 'utf8'");
+mysqli_select_db( $db, constant('_DB_NAME_'));
+mysqli_query($GLOBALS["___mysqli_ston"], "SET NAMES 'utf8'");
 
 
 @ini_set('max_execution_time', 3600);

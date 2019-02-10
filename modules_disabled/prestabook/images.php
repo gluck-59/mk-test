@@ -70,13 +70,13 @@ $xml = fopen ("xml/config.xml", "w");
 	   $align2 = explode(",",$skipcategory); 
 for($a=0;$a<count($align2);$a++){
 	
-	 $sorgu=mysql_query("SELECT * FROM "._DB_PREFIX_."category WHERE id_category = '$align2[$a]' ");
-	  $veri= mysql_fetch_assoc($sorgu);
+	 $sorgu=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM "._DB_PREFIX_."category WHERE id_category = '$align2[$a]' ");
+	  $veri= mysqli_fetch_assoc($sorgu);
 	  $catid=$veri['id_category'];
 	  
 	  
-	  $sorgu2=mysql_query("SELECT * FROM "._DB_PREFIX_."category_lang WHERE id_category = '$align2[$a]' and id_lang = '1'");
-	  $veri2= mysql_fetch_assoc($sorgu2);
+	  $sorgu2=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM "._DB_PREFIX_."category_lang WHERE id_category = '$align2[$a]' and id_lang = '1'");
+	  $veri2= mysqli_fetch_assoc($sorgu2);
 	  $catname=$veri2['name'];
 	   if (file_exists('../../img/c/'.$align2[$a].'-bookcategory.jpg')){
 		   $contenidoxml = $contenidoxml .'<section title="'.$catname.'" img="../../img/c/'.$align2[$a].'-bookcategory.jpg" description="">';
@@ -87,8 +87,8 @@ for($a=0;$a<count($align2);$a++){
 		   }
    
 	
- $sorgu3=mysql_query("SELECT * FROM "._DB_PREFIX_."product WHERE id_category_default = '$align2[$a]' AND active = '1'");
-	  $veri3= mysql_fetch_assoc($sorgu3);
+ $sorgu3=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM "._DB_PREFIX_."product WHERE id_category_default = '$align2[$a]' AND active = '1'");
+	  $veri3= mysqli_fetch_assoc($sorgu3);
 	 
 	
 
@@ -98,10 +98,10 @@ do{
 	
         $no=$veri3['id_product'];	
 		
-	  	 $sorgu4=mysql_query("SELECT * FROM "._DB_PREFIX_."product_lang WHERE id_product = '$no' ");
-	  $veri4= mysql_fetch_assoc($sorgu4);
-	   $sorgu5=mysql_query("SELECT * FROM "._DB_PREFIX_."image WHERE id_product = '$no'");
-$veri5= mysql_fetch_assoc($sorgu5);
+	  	 $sorgu4=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM "._DB_PREFIX_."product_lang WHERE id_product = '$no' ");
+	  $veri4= mysqli_fetch_assoc($sorgu4);
+	   $sorgu5=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM "._DB_PREFIX_."image WHERE id_product = '$no'");
+$veri5= mysqli_fetch_assoc($sorgu5);
 echo "SELECT * FROM "._DB_PREFIX_."product_lang WHERE id_product = '$no' AND active = '1'";
 
 $link=$products[$i][link];
@@ -126,7 +126,7 @@ $id_image=$veri5['id_image'];
 
 } 
 
-	  while($veri3= mysql_fetch_assoc($sorgu3));
+	  while($veri3= mysqli_fetch_assoc($sorgu3));
 	 $contenidoxml = $contenidoxml .'  	</section>';
   }
    

@@ -94,7 +94,7 @@ if ($debug == "on") 	echo '<div class="conf confirm">';
 			
 			Db::getInstance()->Execute("  		
 			update presta_product_lang
-			set `meta_description` = '".mysql_real_escape_string(str_replace('#', '', $_POST['name'][$i]))."'
+			set `meta_description` = '".mysqli_real_escape_string($GLOBALS["___mysqli_ston"], str_replace('#', '', $_POST['name'][$i]))."'
 			where `id_product` = ".$_POST['id'][$i].";
 			");
 

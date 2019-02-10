@@ -458,7 +458,7 @@ class AdminImport extends AdminTab
 					else
 					{
 						$this->_errors[] = $categoryToCreate->name[$defaultLanguageId].(isset($categoryToCreate->id) ? ' ('.$categoryToCreate->id.')' : '').' '.Tools::displayError('cannot be saved');
-						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 					}
 				}
 			}
@@ -501,7 +501,7 @@ class AdminImport extends AdminTab
 			if (!$res)
 			{
 				$this->_errors[] = $info['name'].(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
-				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 			}
 		}
 		$this->closeCsvFile($handle);
@@ -549,7 +549,7 @@ class AdminImport extends AdminTab
 				else
 				{
 					$this->_errors[] = 'TAX '.$tax->name[$defaultLanguageId].' '.Tools::displayError('cannot be saved');
-					$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+					$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 				}
 			}
 			
@@ -568,7 +568,7 @@ class AdminImport extends AdminTab
 					else
 					{
 						$this->_errors[] = $manufacturer->name.(isset($manufacturer->id) ? ' ('.$manufacturer->id.')' : '').' '.Tools::displayError('cannot be saved');
-						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 					}
 				}
 			}
@@ -588,7 +588,7 @@ class AdminImport extends AdminTab
 					else
 					{
 						$this->_errors[] = $supplier->name.(isset($supplier->id) ? ' ('.$supplier->id.')' : '').' '.Tools::displayError('cannot be saved');
-						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 					}
 				}
 			}
@@ -627,7 +627,7 @@ class AdminImport extends AdminTab
 							else
 							{
 								$this->_errors[] = $categoryToCreate->name[$defaultLanguageId].(isset($categoryToCreate->id) ? ' ('.$categoryToCreate->id.')' : '').' '.Tools::displayError('cannot be saved');
-								$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+								$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 							}
 						}	
 					}
@@ -649,7 +649,7 @@ class AdminImport extends AdminTab
 							else
 							{
 								$this->_errors[] = $categoryToCreate->name[$defaultLanguageId].(isset($categoryToCreate->id) ? ' ('.$categoryToCreate->id.')' : '').' '.Tools::displayError('cannot be saved');
-								$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+								$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 							}
 						}
 					}
@@ -699,7 +699,7 @@ print_r($product->id);
 echo '</pre>';
     			
 				$this->_errors[] = $info['name'].(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
-				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 			}
 			else
 			{
@@ -727,7 +727,7 @@ echo '</pre>';
 							else
 							{
 								$this->_warnings[] = $image->legend[$defaultLanguageId].(isset($image->id_product) ? ' ('.$image->id_product.')' : '').' '.Tools::displayError('cannot be saved');
-								$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+								$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 							}
 						}
 				}
@@ -837,7 +837,7 @@ echo '</pre>';
 			if (!$res)
 			{
 				$this->_errors[] = $info['email'].(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
-				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 			}
 		}
 		$this->closeCsvFile($handle);
@@ -879,7 +879,7 @@ echo '</pre>';
 					else
 					{
 						$this->_errors[] = $country->name[$defaultLanguageId].' '.Tools::displayError('cannot be saved');
-						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 					}
 				}
 			}
@@ -907,7 +907,7 @@ echo '</pre>';
 					else
 					{
 						$this->_errors[] = $state->name.' '.Tools::displayError('cannot be saved');
-						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+						$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 					}
 				}
 			}
@@ -918,7 +918,7 @@ echo '</pre>';
 				if ($customer)
 					$address->id_customer = intval($customer);
 				else
-					$this->_errors[] = mysql_error().' '.$address->customer_email.' '.Tools::displayError('does not exist in base').' '.(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
+					$this->_errors[] = mysqli_error($GLOBALS["___mysqli_ston"]).' '.$address->customer_email.' '.Tools::displayError('does not exist in base').' '.(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
 			}
 
 			if (isset($address->manufacturer) AND is_numeric($address->manufacturer) AND Manufacturer::manufacturerExists(intval($address->manufacturer)))
@@ -931,8 +931,8 @@ echo '</pre>';
 					$address->id_manufacturer = intval($manufacturer->id);
 				else
 				{
-					$this->_errors[] = mysql_error().' '.$manufacturer->name.(isset($manufacturer->id) ? ' ('.$manufacturer->id.')' : '').' '.Tools::displayError('cannot be saved');
-					$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+					$this->_errors[] = mysqli_error($GLOBALS["___mysqli_ston"]).' '.$manufacturer->name.(isset($manufacturer->id) ? ' ('.$manufacturer->id.')' : '').' '.Tools::displayError('cannot be saved');
+					$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 				}
 			}
 			
@@ -946,8 +946,8 @@ echo '</pre>';
 					$address->id_supplier = intval($supplier->id);
 				else
 				{
-					$this->_errors[] = mysql_error().' '.$supplier->name.(isset($supplier->id) ? ' ('.$supplier->id.')' : '').' '.Tools::displayError('cannot be saved');
-					$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+					$this->_errors[] = mysqli_error($GLOBALS["___mysqli_ston"]).' '.$supplier->name.(isset($supplier->id) ? ' ('.$supplier->id.')' : '').' '.Tools::displayError('cannot be saved');
+					$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 				}
 			}
 
@@ -962,7 +962,7 @@ echo '</pre>';
 			if (!$res)
 			{
 				$this->_errors[] = $info['alias'].(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
-				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 			}
 		}
 		$this->closeCsvFile($handle);
@@ -992,8 +992,8 @@ echo '</pre>';
 			}
 			if (!$res)
 			{
-				$this->_errors[] = mysql_error().' '.$info['name'].(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
-				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysql_error();
+				$this->_errors[] = mysqli_error($GLOBALS["___mysqli_ston"]).' '.$info['name'].(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
+				$this->_errors[] = ($fieldError !== true ? $fieldError : '').($langFieldError !== true ? $langFieldError : '').mysqli_error($GLOBALS["___mysqli_ston"]);
 			}
 		}
 		$this->closeCsvFile($handle);
@@ -1021,7 +1021,7 @@ echo '</pre>';
 				if (!$res)
 					$res = $supplier->add();	
 				if (!$res)
-					$this->_errors[] = mysql_error().' '.$info['name'].(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
+					$this->_errors[] = mysqli_error($GLOBALS["___mysqli_ston"]).' '.$info['name'].(isset($info['id']) ? ' (ID '.$info['id'].')' : '').' '.Tools::displayError('cannot be saved');
 			}
 			else
 			{

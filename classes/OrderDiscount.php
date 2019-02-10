@@ -30,7 +30,7 @@ class OrderDiscount extends ObjectModel
 	protected	$fieldsRequired = array ('id_order', 'name', 'value');	
 	protected	$fieldsValidate = array ('id_order' => 'isUnsignedId', 'name' => 'isGenericName', 'value' => 'isInt');
 
-	/* MySQL does not allow 'order detail' for a table name */
+	/* mysql does not allow 'order detail' for a table name */
 	protected 	$table = 'order_discount';
 	protected 	$identifier = 'id_order_discount';
 	
