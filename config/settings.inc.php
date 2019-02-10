@@ -7,7 +7,7 @@ UpSCvEPsX0bq
 
 define('__PS_BASE_URI__', '/'); // оригинал
 define('_THEME_NAME_', 'Earth');
-define('_DB_NAME_', 'motokofr_gluck_motokofr');
+define('_DB_NAME_', 'motokofr');
 define('_DB_SERVER_', '127.0.0.1');
 define('_DB_USER_', 'motokofr_gluck');
 define('_DB_PREFIX_', 'presta_');
