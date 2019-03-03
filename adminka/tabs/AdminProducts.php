@@ -2817,7 +2817,7 @@ $(document).ready(function () {
           //else toastr.error(this.readyState, 'readyState');
         });
         
-        xhr.open("POST", "http://motokofr.com/adminka/ajaxProductUpdate.php");
+        xhr.open("POST", "//motokofr.com/adminka/ajaxProductUpdate.php");
         xhr.setRequestHeader("cache-control", "no-cache");
         xhr.send(data);
     })
