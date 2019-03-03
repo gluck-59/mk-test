@@ -37,7 +37,7 @@ require_once(dirname(__FILE__).'/init.php');
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
 <script type="text/javascript" src="<?php echo _PS_JS_DIR_ ?>jquery/jquery-1.2.6.pack.js"></script> <!-- ЭКСПЕРИМЕНТАЛЬНО ОТКЛЮЧЕНА -->
 <link href="http://motokofr.com/js/toastr/toastr.css" rel="stylesheet"/>
-<script src="http://motokofr.com/js/toastr/toastr.js"></script>
+<script src="//motokofr.com/js/toastr/toastr.js"></script>
 
 
 

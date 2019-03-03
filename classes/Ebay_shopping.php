@@ -1158,8 +1158,8 @@ return $arr;
 if (!isset($_POST['lot']))
 {
     echo '<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
-    <link href="http://motokofr.com/js/toastr/toastr.css" rel="stylesheet"/>
-    <script src="http://motokofr.com/js/toastr/toastr.js"></script>';
+    <link href="//motokofr.com/js/toastr/toastr.css" rel="stylesheet"/>
+    <script src="//motokofr.com/js/toastr/toastr.js"></script>';
 }
 
 ?>
