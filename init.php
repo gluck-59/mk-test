@@ -114,9 +114,10 @@ $protocol = 'http://';
 $protocol_ssl = 'https://';
 $protocol_link = (Configuration::get('PS_SSL_ENABLED')) ? $protocol_ssl : $protocol;
 $protocol_content = (isset($useSSL) AND $useSSL AND Configuration::get('PS_SSL_ENABLED')) ? $protocol_ssl : $protocol;
-define('_PS_BASE_URL_', $protocol.$server_host);
-define('_PS_IMG_URL_', $protocol.'img.'.$server_host);
-//define('_PS_IMG_URL_', $protocol.$server_host.'/img');
+define('_PS_BASE_URL_', $protocol_ssl.$server_host);
+
+//define('_PS_IMG_URL_', $protocol.'img.'.$server_host);
+define('_PS_IMG_URL_', $protocol_ssl.$server_host.'/img');
 
 if (!Configuration::get('PS_THEME_V11'))
 {

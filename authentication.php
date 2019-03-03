@@ -249,7 +249,7 @@ if (isset($create_account))
 	$smarty->assign('HOOK_CREATE_ACCOUNT_FORM', Module::hookExec('createAccountForm'));
 }
 // предзагрузим 
-$preload = array(_PS_BASE_URL_.__PS_BASE_URI__.'my-account.php');
+$preload = array(_PS_BASE_URL_SSL_.__PS_BASE_URI__.'my-account.php');
 include(dirname(__FILE__).'/header.php');
 
 $smarty->assign('errors', $errors);
