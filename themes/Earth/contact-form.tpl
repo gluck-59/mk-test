@@ -108,7 +108,7 @@ toastr.success('{l s='Your message has been successfully sent to our team.'}');
     <center>
         <p>Telegram:</p><br /> 
         <a href="https://telegram.me/motokofr" style=" border:0;">
-            <img style="width:60px;" src="https://desktop.telegram.org/img/td_logo.png" id="telegram" />
+            <img style="width:60px;" src="img/telegram_logo.png" id="telegram" />
             </a>
         
 
