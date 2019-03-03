@@ -9,6 +9,10 @@
 	RewriteCond %{HTTP_HOST} www.motokofr.com
 	RewriteRule (.*) http://motokofr.com/$1 [R=301,L]
 
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 </IfModule>
 
 <ifModule mod_deflate.c>
