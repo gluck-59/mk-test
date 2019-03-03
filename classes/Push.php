@@ -17,8 +17,8 @@ class Push extends ObjectModel
         $this->type = $type;
         $this->title = $title;
         $this->message = $message;
-        $this->url = 'http://motokofr.com';
-        $this->icon = 'http://motokofr.com/img/logo/logo.png';
+        $this->url = '//motokofr.com';
+        $this->icon = '//motokofr.com/img/logo/logo.png';
         $this->type = $type;
             
         if (!$type OR $type == 'self')        // приватные пуши
