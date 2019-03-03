@@ -108,12 +108,12 @@
     
     
     <!-- SEO schema -->
-    <footer hidden itemscope itemtype="http://schema.org/LocalBusiness">
-        <img itemprop="image" src="http://motokofr.com/img/logo/logo.png">
-        <span itemprop="url">http://motokofr.com</span>.
+    <footer hidden itemscope itemtype="//schema.org/LocalBusiness">
+        <img itemprop="image" src="//motokofr.com/img/logo/logo.png">
+        <span itemprop="url">https://motokofr.com</span>.
         <elem itemprop="priceRange">RUB</elem>
         ЕООД «<span itemprop="name">Мотокофр</span>»
-        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <div itemprop="address" itemscope itemtype="//schema.org/PostalAddress">
             <span itemprop="addressLocality">Москва</span>,
             <span itemprop="addressRegion">Москва</span>
             <meta itemprop="addressCountry" content="RU"/>
@@ -122,7 +122,7 @@
         <time itemprop="openingHours" datetime="Mo, Tu, We, Th, Fr, Sa, Su 10:00-0:00">10:00 - 20:00 Ежедневно</time>
         <span itemprop="telephone">+359892740300</span>.
         <span itemprop="email">support(at)motokofr.com</span>.
-        <meta itemprop="logo" content="http://motokofr.com/img/logo/logo_paypal.png"/>    
+        <meta itemprop="logo" content="//motokofr.com/img/logo/logo_paypal.png"/>
     </footer>	
     		
     {if $smarty.const.site_version == "full"}
@@ -191,7 +191,7 @@
             script.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'motokofr.com/js/reformal.js'; 
             document.getElementsByTagName('head')[0].appendChild(script);
         })();
-    </script><noindex><noscript><a href="http://reformal.ru">Отзывы и предложения</a><a href="http://motokofr.reformal.ru">Oтзывы и предложения</a></noscript></noindex>
+    </script><noindex><noscript><a href="https://reformal.ru">Отзывы и предложения</a><a href="//motokofr.reformal.ru">Oтзывы и предложения</a></noscript></noindex>
     
     
     <script>
