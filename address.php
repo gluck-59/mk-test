@@ -13,7 +13,7 @@ if (!$cookie->isLogged())
 //CSS ans JS file calls
 $js_files = array(
 	_THEME_JS_DIR_.'tools/statesManagement.js',
-	'http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js',
+	'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js',
 	'https://dadata.ru/static/js/lib/jquery.suggestions-4.10.min.js'
 );
 

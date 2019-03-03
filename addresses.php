@@ -11,7 +11,7 @@ $useSSL = true;
 
 // подключим скрипт google maps с левым API ключом (мой не работает)
 // ;key=ABQIAAAACHCJdlgAEGcD_flKUFEmVhQlAYd20Yeej0MiKNuYPUGBnCwDThQlwUCPtCqtX3RC7LUKE-JYan3T4g"
-$js_files = array('http://maps.google.com/maps?file=api&amp;v=2.x&amp></script>');
+$js_files = array('https://maps.google.com/maps?file=api&amp;v=2.x&amp></script>');
 
 include(dirname(__FILE__).'/config/config.inc.php');
 include(dirname(__FILE__).'/init.php');

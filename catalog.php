@@ -16,7 +16,7 @@ global $errors;
 $errors = array();
 
 // предзагрузим 
-	$preload = array("http://motokofr.com/catalog/kuryakyn/index.html", "http://motokofr.com/catalog/bbp/index.html", "http://motokofr.com/catalog/highway_hawk/index.html");	
+	$preload = array("//motokofr.com/catalog/kuryakyn/index.html", "//motokofr.com/catalog/bbp/index.html", "//motokofr.com/catalog/highway_hawk/index.html");
 include_once(dirname(__FILE__).'/header.php');
 
 

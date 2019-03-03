@@ -178,7 +178,7 @@ foreach ($products as &$orderdetail)
                         $push = new Push('self');
                         $push->title = 'Гдепосылка-Кабинет ошибка:';
                         $push->message = $shipping_number.' Ошибка из curl: '.$response->error;
-                        $push->url = 'http://pushall.ru/';
+                        $push->url = 'https://pushall.ru/';
                         $push->send();
                         
                     }

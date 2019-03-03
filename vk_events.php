@@ -34,7 +34,7 @@ else
         // Новое сообщение
         case 'message_new':
             // формируем текст для отправки сообщения
-            $text = "Новое сообщение в группе {$group_name} от {$user_firstname} {$user_lastname} http://vk.com/id{$user_id} \r\n {$data->object->body} \r\n https://vk.com/gim{$group_id}";
+            $text = "Новое сообщение в группе {$group_name} от {$user_firstname} {$user_lastname} https://vk.com/id{$user_id} \r\n {$data->object->body} \r\n https://vk.com/gim{$group_id}";
             echo('ok');
             break;
     
@@ -44,7 +44,7 @@ else
             $self = $data->object->self;
             
             // формируем текст для отправки сообщения            
-            $text = "{$user_firstname} {$user_lastname} (http://vk.com/id{$user_id}) покинул группу {$group_name} ";
+            $text = "{$user_firstname} {$user_lastname} (https://vk.com/id{$user_id}) покинул группу {$group_name} ";
             $text .= $self == 1 ? "" : "по решению администрации";
     
             echo('ok');
@@ -58,22 +58,22 @@ else
             $join_type = $data->object->join_type;
             // https://vk.com/dev/callback_api
             if ($join_type == "join") 
-                $text = "{$user_firstname} {$user_lastname} (http://vk.com/id{$user_id}) вступил в группу {$group_name}";
+                $text = "{$user_firstname} {$user_lastname} (https://vk.com/id{$user_id}) вступил в группу {$group_name}";
 
             elseif ($join_type == "unsure")
-                $text = "{$user_firstname} {$user_lastname} (http://vk.com/id{$user_id}) возможно пойдет на {$group_name}";
+                $text = "{$user_firstname} {$user_lastname} (https://vk.com/id{$user_id}) возможно пойдет на {$group_name}";
                 
             elseif ($join_type == "accepted")
-                $text = "{$user_firstname} {$user_lastname} (http://vk.com/id{$user_id}) принял приглашение в {$group_name}";                
+                $text = "{$user_firstname} {$user_lastname} (https://vk.com/id{$user_id}) принял приглашение в {$group_name}";                
                 
             elseif ($join_type == "approved")
-                $text = "Заявка {$user_firstname} {$user_lastname} (http://vk.com/id{$user_id}) на вступление в {$group_name} была одобрена руководителем сообщества";
+                $text = "Заявка {$user_firstname} {$user_lastname} (https://vk.com/id{$user_id}) на вступление в {$group_name} была одобрена руководителем сообщества";
 
             elseif ($join_type == "request")
-                $text = "{$user_firstname} {$user_lastname} (http://vk.com/id{$user_id}) подал заявку на вступление в {$group_name}";
+                $text = "{$user_firstname} {$user_lastname} (https://vk.com/id{$user_id}) подал заявку на вступление в {$group_name}";
 
             else
-                $text = "Неизвестный join_type в группе {$group_name}, юзер {$user_firstname} {$user_lastname} (http://vk.com/id{$user_id})";
+                $text = "Неизвестный join_type в группе {$group_name}, юзер {$user_firstname} {$user_lastname} (https://vk.com/id{$user_id})";
                 
             echo('ok');
             break;
@@ -82,7 +82,7 @@ else
         // Ответ в группу
         case 'wall_reply_new':
             $post_id = $data->object->id;
-            $text = ("{$user_firstname} {$user_lastname} (http://vk.com/id{$user_id}) ответил в группу {$group_name}: \r\n {$data->object->text} \r\n http://vk.com/wall-{$group_id}_{$post_id}");
+            $text = ("{$user_firstname} {$user_lastname} (https://vk.com/id{$user_id}) ответил в группу {$group_name}: \r\n {$data->object->text} \r\n https://vk.com/wall-{$group_id}_{$post_id}");
 
             echo('ok');
             break;                
@@ -97,13 +97,13 @@ else
             // Если это предложенная запись            
             if ($post_type == "suggest")  
             {                 
-                $text = "{$user_firstname} {$user_lastname} (http://vk.com/id{$user_id}) предложил запись в группу {$group_name}: \r\n {$data->object->text} \r\n http://vk.com/wall-{$group_id}_{$post_id}";
+                $text = "{$user_firstname} {$user_lastname} (https://vk.com/id{$user_id}) предложил запись в группу {$group_name}: \r\n {$data->object->text} \r\n https://vk.com/wall-{$group_id}_{$post_id}";
             }
             
             // Если это пост от юзера
             elseif ($post_type == "post")                 
             {
-                $text = "Новый пост в {$group_name} от {$user_firstname} {$user_lastname} http://vk.com/id{$user_id}: \r\n {$data->object->text} \r\n http://vk.com/wall-{$group_id}_{$post_id}";
+                $text = "Новый пост в {$group_name} от {$user_firstname} {$user_lastname} https://vk.com/id{$user_id}: \r\n {$data->object->text} \r\n https://vk.com/wall-{$group_id}_{$post_id}";
             }
             echo('ok');
             break;

@@ -23,7 +23,7 @@ echo '</pre-->';
 {
     $json = array( 
     'nick' => (isset($cookie->customer_firstname) ? $cookie->customer_firstname." ".$cookie->customer_lastname : 'Я'), 
-    'avatar' => 'http://motokofr.com/img/vtwin.png', 
+    'avatar' => '//motokofr.com/img/vtwin.png',
     'id' => (isset($cookie->id_customer) ? $cookie->id_customer : $cookie->id_guest),  
     'email' => $cookie->email,
     'data' => array('Город' => $city, 'Смотрел' => $cookie->viewed, 'Вишлист' => $cookie->id_wishlist, 'Валюта' => $cookie->id_currency)

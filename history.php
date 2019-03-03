@@ -12,7 +12,7 @@ if (!$cookie->isLogged())
 /* JS files call */
 $js_files = array(
 //__PS_BASE_URI__.'js/jquery/jquery.scrollto.js', // при старом jQuery
-_THEME_JS_DIR_.'history.js', 'http://maps.google.com/maps?file=api&amp;v=2.x&amp');
+_THEME_JS_DIR_.'history.js', 'https://maps.google.com/maps?file=api&amp;v=2.x&amp');
 
 if ($orders = Order::getCustomerOrders(intval($cookie->id_customer)))
 	foreach ($orders AS &$order)

@@ -8,7 +8,7 @@ $file = ('ym.xml');
 $fp = fopen($file, "w"); 
 
 
-$shopUrl = 'http://www.motokofr.com'; 
+$shopUrl = '//www.motokofr.com';
 include(dirname(__FILE__).'/config/config.inc.php');
 include(dirname(__FILE__).'/init.php'); 
 $cfgFile = dirname(__FILE__). '/config/settings.inc.php';
@@ -49,7 +49,7 @@ file_put_contents($file, '<?xml version="1.0" encoding="UTF-8"?>
 <shop>
 <name>Motokofr.com</name>
 <company>Автомобили от Япония ООД - Руска Федерация (гр. София, Република България)</company>
-<url>http://www.motokofr.com/</url>
+<url>//www.motokofr.com/</url>
 <platform>Prestashop</platform>
 <version>1.2.5.0</version>
 <email>support@motokofr.com</email>
@@ -224,7 +224,7 @@ file_put_contents($file, '<offer available="true" id="'.$row['id_product'].'">
     $photos = 0;
 	foreach ($images AS $img)
 	{
-	file_put_contents($file, '<picture>http://www.motokofr.com/img/p/'.$row['id_product'].'-'.$img['id_image'].'.jpg</picture>', FILE_APPEND);
+	file_put_contents($file, '<picture>//www.motokofr.com/img/p/'.$row['id_product'].'-'.$img['id_image'].'.jpg</picture>', FILE_APPEND);
 	$photos = $photos+1;
 	if ($photos == 10 ) break;
 	}
@@ -258,7 +258,7 @@ file_put_contents($file, '</offers>
 </yml_catalog>', FILE_APPEND);
 
 fclose($fp); //Закрытие файла
-echo (count($p).' товаров сгенерировано, http://www.motokofr.com/ym.xml создан');
+echo (count($p).' товаров сгенерировано, //www.motokofr.com/ym.xml создан');
 
 
 ?> 
