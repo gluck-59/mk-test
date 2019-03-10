@@ -25,11 +25,11 @@ if (!$fast) $fast = 5000; else $fast = 0;
     </script>
 <?     
 
-$prib = 1.17;					// % прибыль
-$min_prib = 17;					// в долларах
-$max_prib = 60;					// в долларах	
+$prib = 1.18;					// % прибыль
+$min_prib = 14;					// в долларах
+$max_prib = 45;					// в долларах
 $paypal_rate = 1;				// комиссия Paypal считается при чекауте
-$maintenance_interval = 15; 	// через сколько ДНЕЙ считать сверку товаров устаревшей
+$maintenance_interval = 30; 	// через сколько ДНЕЙ считать сверку товаров устаревшей
 $price_diff = 15; 				// если разница больше, то выводим красную или зеленую точку
 $price_alert_perc = 15; 		// если разница В ПРОЦЕНТАХ больше, то алерт
 $isnew = array('New', 'Neu', 'Nuovo', 'Neuf', 'Neu mit Etikett', 'Nuevo', 'Brand New', 'New with tags'); // состояние товара "новый" на разных языках
