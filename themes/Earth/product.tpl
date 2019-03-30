@@ -563,7 +563,7 @@ var fieldRequired = '{l s='Please fill all required fields' js=1}';
 				{if $product->id_manufacturer != 0}
 					<div id="manufacturer_logo">
 						<a href="{$base_dir}manufacturer.php?id_manufacturer={$product->id_manufacturer}">
-						<img alt="Все товары производства {$product->manufacturer_name}" title="Все товары производства {$product->manufacturer_name}" src="{$base_dir}img/tmp/manufacturer_mini_{$product->id_manufacturer}.jpg">
+						<img alt="Все товары производства {$product->manufacturer_name}" title="Все товары производства {$product->manufacturer_name}" src="{$base_dir}img/tmp/manufacturer_{$product->id_manufacturer}.jpg">
 						</a>
 					</div>
 				{/if}
@@ -571,7 +571,7 @@ var fieldRequired = '{l s='Please fill all required fields' js=1}';
 				{if $product->id_supplier != 0 && $product->id_supplier != 12}
 				<div id="supplier_logo">
 					<a href="{$base_dir}supplier.php?id_supplier={$product->id_supplier}">
-						<img title="Все товары для {$product->supplier_name}" alt="Все товары для {$product->supplier_name}" src="{$base_dir}img/tmp/supplier_mini_{$product->id_supplier}.jpg">
+						<img title="Все товары для {$product->supplier_name}" alt="Все товары для {$product->supplier_name}" src="{$base_dir}img/tmp/supplier_{$product->id_supplier}.jpg">
 					</a>
 				</div>
 				{/if}
