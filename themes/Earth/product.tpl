@@ -560,27 +560,27 @@ var fieldRequired = '{l s='Please fill all required fields' js=1}';
 
 <!-- таб description №1 -->
 			<div id="idTab1" class="rte description">
-				{if $product->id_manufacturer != 0}
+				{**if $product->id_manufacturer != 0}
 					<div id="manufacturer_logo">
 						<a href="{$base_dir}manufacturer.php?id_manufacturer={$product->id_manufacturer}">
 						<img alt="Все товары производства {$product->manufacturer_name}" title="Все товары производства {$product->manufacturer_name}" src="{$base_dir}img/tmp/manufacturer_{$product->id_manufacturer}.jpg">
 						</a>
 					</div>
-				{/if}
+				{/if**}
 			
-				{if $product->id_supplier != 0 && $product->id_supplier != 12}
+				{**if $product->id_supplier != 0 && $product->id_supplier != 12}
 				<div id="supplier_logo">
 					<a href="{$base_dir}supplier.php?id_supplier={$product->id_supplier}">
 						<img title="Все товары для {$product->supplier_name}" alt="Все товары для {$product->supplier_name}" src="{$base_dir}img/tmp/supplier_{$product->id_supplier}.jpg">
 					</a>
 				</div>
-				{/if}
+				{/if**}
 
 				{if $product->description_short}
 					<p>{$product->description_short}</p>
 				{/if}
 			
-			{if $category_desc}
+				{if $category_desc}
 				<noindex>
 				<!--div style="position:relative; float: left; margin-right:5px"><img style=" height:30px;" src="../themes/Earth/img/icon/best-sales.png"></div-->
 				<div class="product_cat_desc">{$category_desc}</div>
