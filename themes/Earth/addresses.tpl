@@ -21,7 +21,7 @@
 	{foreach from=$addresses item=address name=myLoop}
 		<fieldset class="address" id="{$address.id_address}">
 			<legend class="address_title">{$address.alias}</legend>
-		<div id="map_canvas_{$address.id_address}" class="map_canvas"></div>
+			{*<div id="map_canvas_{$address.id_address}" class="map_canvas"></div>*}
 			<p class="address_name">{$address.firstname} {$address.address2} {$address.lastname}</p>
 			<p class="address_address1">{$address.address1}</p>
 			<p class="address_country">{$address.postcode}, {$address.country}, {if isset($address.state)} ({$address.state}), {/if} {$address.city}</p>
@@ -61,8 +61,8 @@ var id = null;
 var address = '{/literal}{$address.country} {$address.city} {$address.address1}{literal}';
 var baloon = '{/literal}{$address.alias}{literal}';
 var id = '{/literal}{$address.id_address}{literal}';
-    
-if (GBrowserIsCompatible()) 
+
+if (GBrowserIsCompatible())
 {
 idg = new GClientGeocoder();
 
@@ -88,7 +88,7 @@ idg = new GClientGeocoder();
   }
 }
 }
-setTimeout(gmaps(), 1000);
+//setTimeout(gmaps(), 1000);
     </script>
 {/literal}
 <!-- /gmaps -->

@@ -48,7 +48,7 @@
 		<meta name="HandheldFriendly" content="true"/> 
 		<link rel="stylesheet" href="{$smarty.const._THEME_CSS_DIR_}tablet.css" />		
 		<link rel="stylesheet" href="{$smarty.const._THEME_CSS_DIR_}swiper.css" />		
-		<script defer src="http://js.motokofr.com/idangerous.swiper.js"></script> 
+		<script defer src="//motokofr.com/js/idangerous.swiper.js"></script>
 	{/if} 
 {/if}
 

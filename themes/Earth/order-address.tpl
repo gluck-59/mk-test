@@ -70,7 +70,7 @@
 		
 		<fieldset class="address item" id="address_delivery">
 			<legend id="address_title" class="address_title"></legend>
-			<div id="map_canvas" class="map_canvas"></div>			
+			{*<div id="map_canvas" class="map_canvas"></div>*}
 			{*<p class="address_title">{l s='Посылка поедет сюда:'}</p>*}
 			<p class="address_name"></p>
 			<p class="address_inn"><span style="background-color: red;color: white;padding: 4px;">Пожалуйста допиши ИНН</span></p>
@@ -79,14 +79,11 @@
 			<p class="address_city"></p>
 			<p class="address_address1"></p>
 			<p class="address_address2"></p> 			
-
-			<p>&nbsp;</p>
-			<p class="other"></p>			
+			<p class="other"></p>
 			<p class="address_phone_mobile"></p>
 			<p class="address_company"></p>
 
 			<p hidden id="maps" class="maps"></p>
-			<br>
 			<div class="buttons">
 				<a class="ebutton blue small" href="{$base_dir_ssl}address.php?id_address={$address.id_address|intval}&amp;back=order.php&amp;step=1" title="{l s='Редактировать адрес'}">{l s='Изменить'}</a>
 			</div>
@@ -133,7 +130,7 @@
     var geocoder = null;
 
     function initialize() {
-      if (GBrowserIsCompatible()) {
+      if (1==2 && GBrowserIsCompatible()) {
         geocoder = new GClientGeocoder();
       }
     

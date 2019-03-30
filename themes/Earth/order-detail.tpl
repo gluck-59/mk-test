@@ -116,7 +116,7 @@
 
 <fieldset class="address">
 			<legend class="address_title">{$address_delivery->alias}</legend>
-			<div id="map_canvas" class="map_canvas"></div>
+			{*<div id="map_canvas" class="map_canvas"></div>*}
 			<p class="address_address">Получатель:</p>			
 			<p class="address_name">&bull; {$address_delivery->firstname|escape:'htmlall':'UTF-8'} {$address_delivery->address2|escape:'htmlall':'UTF-8'} {$address_delivery->lastname|escape:'htmlall':'UTF-8'}</p>
 			<p class="address_address">&bull; {$address_delivery->address1|escape:'htmlall':'UTF-8'} {if $deliveryState} - {$deliveryState->name|escape:'htmlall':'UTF-8'}{/if}</p>
