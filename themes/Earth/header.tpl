@@ -231,7 +231,7 @@ function hidetits()
 	</div> 
 	
 	<div id="search_block_top" />
-	<form method="get" action="{$base_dir}search.php" id="searchbox">
+	<form method="get" action="{$base_dir}search.php" id="searchbox" style="display: inline-flex;">
 		<input type="hidden" name="orderby" value="position" />
 		<input type="hidden" name="orderway" value="desc" />
 		<span style="">
