@@ -231,7 +231,7 @@ function hidetits()
 	</div> 
 	
 	<div id="search_block_top" />
-	<form method="get" action="{$base_dir}search.php" id="searchbox" style="display: inline-flex;">
+	<form method="get" action="{$base_dir}search.php" id="searchbox">
 		<input type="hidden" name="orderby" value="position" />
 		<input type="hidden" name="orderway" value="desc" />
 		<span style="">
@@ -249,6 +249,7 @@ function hidetits()
 {/if}
 
 {if $smarty.const.site_version == "full"}
+	<center style="margin-top: -20px;">С 1 по 10 ноября мы в отпуске. Начнем отправлять заказы 11 ноября!</center>
 			<!-- Left -->
 			{* левая колонка для mobile отдается в footer.tpl *}
 			<div id="left_column" class="column">

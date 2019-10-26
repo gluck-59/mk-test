@@ -5,7 +5,7 @@
     
 {* рабочий *}
     <div id="search_block_top" />
-    	<form method="get" action="{$base_dir}search.php" id="searchbox">
+    	<form method="get" action="{$base_dir}search.php" id="searchbox"  style="display: inline-flex;">
             <input required type="text" id="search_query" name="search_query" value="{if $smarty.get.search_query}{$smarty.get.search_query|htmlentities:$ENT_QUOTES:'utf-8'|stripslashes}{/if}" />
     		<input type="hidden" name="orderby" value="position" />
     		<input type="hidden" name="orderway" value="desc" />
