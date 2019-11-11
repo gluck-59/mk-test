@@ -249,7 +249,6 @@ function hidetits()
 {/if}
 
 {if $smarty.const.site_version == "full"}
-	<center style="margin-top: -20px;">С 1 по 10 ноября мы в отпуске. Начнем отправлять заказы 11 ноября!</center>
 			<!-- Left -->
 			{* левая колонка для mobile отдается в footer.tpl *}
 			<div id="left_column" class="column">
