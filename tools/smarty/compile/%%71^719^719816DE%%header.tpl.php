@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2018-11-18 21:39:10
+<?php /* Smarty version 2.6.20, created on 2019-10-26 17:16:29
          compiled from /Users/gluck/Sites/motokofr.com/themes/Earth/header.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', '/Users/gluck/Sites/motokofr.com/themes/Earth/header.tpl', 5, false),array('modifier', 'htmlentities', '/Users/gluck/Sites/motokofr.com/themes/Earth/header.tpl', 239, false),array('modifier', 'stripslashes', '/Users/gluck/Sites/motokofr.com/themes/Earth/header.tpl', 239, false),)), $this); ?>
@@ -66,7 +66,7 @@ print.css" media="print" />
 tablet.css" />		
 		<link rel="stylesheet" href="<?php echo @_THEME_CSS_DIR_; ?>
 swiper.css" />		
-		<script defer src="http://js.motokofr.com/idangerous.swiper.js"></script> 
+		<script defer src="//motokofr.com/js/idangerous.swiper.js"></script>
 	<?php endif; ?> 
 <?php endif; ?>
 
@@ -301,6 +301,7 @@ search.php" id="searchbox">
 <?php endif; ?>
 
 <?php if (@site_version == 'full'): ?>
+	<center style="margin-top: -20px;">С 1 по 10 ноября мы в отпуске. Начнем отправлять заказы 11 ноября!</center>
 			<!-- Left -->
 						<div id="left_column" class="column">
 				<?php echo $this->_tpl_vars['HOOK_LEFT_COLUMN']; ?>

@@ -133,8 +133,8 @@ sitemap.php" title="<?php echo smartyTranslate(array('s' => 'sitemap','mod' => '
     
     
     <!-- SEO schema -->
-    <footer hidden itemscope itemtype="http://schema.org/LocalBusiness">
-        <img itemprop="image" src="http://motokofr.com/img/logo/logo.png">
+    <footer hidden itemscope itemtype="//schema.org/LocalBusiness">
+        <img itemprop="image" src="//motokofr.com/img/logo/logo.png">
         <span itemprop="url">http://motokofr.com</span>.
         <elem itemprop="priceRange">RUB</elem>
         ЕООД «<span itemprop="name">Мотокофр</span>»

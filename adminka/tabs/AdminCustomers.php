@@ -120,7 +120,9 @@ class AdminCustomers extends AdminTab
 		$carts = Cart::getCustomerCarts($customer->id);
 		$groups = $customer->getGroups();
 		$referrers = Referrer::getReferrers($customer->id);
-
+echo '<pre>';
+print_r($customer);
+echo '</pre>';
 		echo '
 		<div style="float: left">
 		<fieldset style="width: 400px"><div style="float: right"><a href="'.$currentIndex.'&addcustomer&id_customer='.$customer->id.'&token='.$this->token.'"><img src="../img/admin/edit.gif" /></a></div>

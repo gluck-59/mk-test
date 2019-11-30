@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.20, created on 2018-11-18 21:39:18
+<?php /* Smarty version 2.6.20, created on 2019-03-16 13:22:17
          compiled from /Users/gluck/Sites/motokofr.com/themes/Earth/footer.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'intval', '/Users/gluck/Sites/motokofr.com/themes/Earth/footer.tpl', 27, false),array('modifier', 'escape', '/Users/gluck/Sites/motokofr.com/themes/Earth/footer.tpl', 40, false),array('function', 'l', '/Users/gluck/Sites/motokofr.com/themes/Earth/footer.tpl', 45, false),)), $this); ?>
@@ -133,12 +133,12 @@ sitemap.php" title="<?php echo smartyTranslate(array('s' => 'sitemap','mod' => '
     
     
     <!-- SEO schema -->
-    <footer hidden itemscope itemtype="http://schema.org/LocalBusiness">
-        <img itemprop="image" src="http://motokofr.com/img/logo/logo.png">
-        <span itemprop="url">http://motokofr.com</span>.
+    <footer hidden itemscope itemtype="//schema.org/LocalBusiness">
+        <img itemprop="image" src="//motokofr.com/img/logo/logo.png">
+        <span itemprop="url">https://motokofr.com</span>.
         <elem itemprop="priceRange">RUB</elem>
         ЕООД «<span itemprop="name">Мотокофр</span>»
-        <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <div itemprop="address" itemscope itemtype="//schema.org/PostalAddress">
             <span itemprop="addressLocality">Москва</span>,
             <span itemprop="addressRegion">Москва</span>
             <meta itemprop="addressCountry" content="RU"/>
@@ -147,7 +147,7 @@ sitemap.php" title="<?php echo smartyTranslate(array('s' => 'sitemap','mod' => '
         <time itemprop="openingHours" datetime="Mo, Tu, We, Th, Fr, Sa, Su 10:00-0:00">10:00 - 20:00 Ежедневно</time>
         <span itemprop="telephone">+359892740300</span>.
         <span itemprop="email">support(at)motokofr.com</span>.
-        <meta itemprop="logo" content="http://motokofr.com/img/logo/logo_paypal.png"/>    
+        <meta itemprop="logo" content="//motokofr.com/img/logo/logo_paypal.png"/>
     </footer>	
     		
     <?php if (@site_version == 'full'): ?>
@@ -198,7 +198,7 @@ sitemap.php" title="<?php echo smartyTranslate(array('s' => 'sitemap','mod' => '
             script.src = (\'https:\' == document.location.protocol ? \'https://\' : \'http://\') + \'motokofr.com/js/reformal.js\'; 
             document.getElementsByTagName(\'head\')[0].appendChild(script);
         })();
-    </script><noindex><noscript><a href="http://reformal.ru">Отзывы и предложения</a><a href="http://motokofr.reformal.ru">Oтзывы и предложения</a></noscript></noindex>
+    </script><noindex><noscript><a href="https://reformal.ru">Отзывы и предложения</a><a href="//motokofr.reformal.ru">Oтзывы и предложения</a></noscript></noindex>
     
     
     <script>
