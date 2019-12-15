@@ -106,7 +106,7 @@
 	{* считаем пошлину *}
 	{if $total_price|replace:' ':'' > $notax}
 	<span id="ajax_tax" style="border-bottom: 1px dotted #F04B2D; margin-bottom:5px; cursor: help; font-style: italic; color: red" >
-	<acronym title="С 1 июля 2018 посылки стоимостью свыше {$porog} Евро облагаются пошлиной. Внимательно!">{l s='Import tax!' mod='blockcart'}</acronym>
+	<acronym title="С 1 января 2020 посылки стоимостью свыше {$porog} Евро облагаются пошлиной. Внимательно!">{l s='Import tax!' mod='blockcart'}</acronym>
 	</span>
 	{*<span style="margin-right: 17px; float:right; border-bottom: 1px dotted #F04B2D; margin-bottom:5px; cursor: help; font-style: italic; color: red">
 	<acronym title="Посылки стоимостью свыше {$porog} Евро облагаются пошлиной. Внимательно!">{math equation="round(( $total_price - $notax ) * 0.3 )"}  руб.</acronym>
