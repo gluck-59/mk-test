@@ -297,7 +297,7 @@
 		<p id="welcome" class="warning"></p>
 		<br>
 		<img src="{$base_dir}img/loader.gif">
-		<p>Сейчас я все запомню...</p>
+		<p>Сейчас я все вспомню...</p>
 	</div>			
 
 
