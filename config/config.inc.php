@@ -172,7 +172,7 @@ define(site_version, 'full');
 
 
 // беспошлинная сумма 
-$porog = 500; //порог беспошлинного ввоза в евро
+$porog = 200; //порог беспошлинного ввоза в евро
 $tax = Db::getInstance()->getValue('
 SELECT `conversion_rate`
 FROM `presta_currency`
