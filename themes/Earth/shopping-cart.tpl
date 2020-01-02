@@ -240,7 +240,7 @@
 
 {if $total_price|replace:' ':'' >= $notax}
 	{assign var=overprice value=$total_price-$notax}
-	{assign var=customs value=$overprice*0.3}
+	{assign var=customs value=$overprice*0.15}
 	
 	<div id="ajax_tax">
     <h2>Внимание, растаможка!</h2>
