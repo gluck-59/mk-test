@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ERROR);
+ini_set('display_errors','On');
+
 //header('X-Accel-Buffering: no');
 ob_get_flush();
 
@@ -15,6 +18,7 @@ if (!$debug) $debug = '';
 if (!$autorecord) $autorecord = 'off';
 if (!$_POST) $autorecord = 'on'; // запускает авторекорд с первого раза
 //if (!$_POST) $no_check_old = 'on'; // запускает не проверять старые с первого раза
+if (!$_POST) $fast = 'on'; // запускает не проверять старые с первого раза
 if (!$fast) $fast = 5000; else $fast = 0;
 
 //echo "<script>toastr.clear();</script>";
@@ -34,8 +38,6 @@ $price_diff = 15; 				// если разница больше, то выводи
 $price_alert_perc = 15; 		// если разница В ПРОЦЕНТАХ больше, то алерт
 $isnew = array('New', 'Neu', 'Nuovo', 'Neuf', 'Neu mit Etikett', 'Nuevo', 'Brand New', 'New with tags'); // состояние товара "новый" на разных языках
 
-//error_reporting(E_ALL);
-//ini_set('display_errors','On');
 
 include_once(PS_ADMIN_DIR.'/../classes/AdminTab.php');
 include_once(PS_ADMIN_DIR.'/tabs/AdminProfiles.php');
@@ -295,10 +297,10 @@ foreach ($products as $product)
     			
 //    			echo "<script>toastr.info('".$product['supplier_reference']."','Запрос getSingleItem: ');</script>";
 //    			ob_get_flush();
-    
-    			$new_product = array_values(Ebay_shopping::getSingleItem([trim($product['supplier_reference'])], $skip_no_spipping ))[0]; 
+
+    			$new_product = array_values(Ebay_shopping::getSingleItem([trim($product['supplier_reference'])], $skip_no_spipping ))[0];
     		}
-    	
+
     		if (!$new_product['lot'] && strripos($product['ean13'], 'http') === FALSE)
     		{
     			echo "<script>toastr.info('".$product['ean13']."','Запрос findItemsAdvanced: ');</script>";
@@ -367,11 +369,14 @@ foreach ($products as $product)
 		   $shipping = $shipping - $price_add;  
 	     }
 
-	    	     	
-	     if ($conversion_rate != 0) $ebay_price = intval((($paypal_rate * ($price + $shipping)) / $conversion_rate)); 
+
+	     if ($conversion_rate != 0) {
+	         $ebay_price = intval((($paypal_rate * ($price + $shipping)) / $conversion_rate));
+         }
 	
 		// посчитаем новую цену продажи
 		$new_price = ($ebay_price * $prib);
+
 		if (($new_price - $ebay_price) < $min_prib) 
 			{
 				$new_price = ($ebay_price + $min_prib);
