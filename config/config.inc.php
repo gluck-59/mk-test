@@ -1,6 +1,6 @@
 <?php
 
-
+// тест для проверки гита на хостере
 
 /* Improve PHP configuration to prevent issues */
 //@error_reporting(E_ALL ^ E_NOTICE);
