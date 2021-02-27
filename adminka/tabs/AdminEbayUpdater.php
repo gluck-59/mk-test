@@ -35,7 +35,7 @@ $max_prib = 45;					// в долларах
 $paypal_rate = 1;				// комиссия Paypal считается при чекауте
 $maintenance_interval = 30; 	// через сколько ДНЕЙ считать сверку товаров устаревшей
 $price_diff = 15; 				// если разница больше, то выводим красную или зеленую точку
-$price_alert_perc = 15; 		// если разница В ПРОЦЕНТАХ больше, то алерт
+$price_alert_perc = 30; 		// если разница В ПРОЦЕНТАХ больше, то алерт
 $isnew = array('New', 'Neu', 'Nuovo', 'Neuf', 'Neu mit Etikett', 'Nuevo', 'Brand New', 'New with tags'); // состояние товара "новый" на разных языках
 
 
@@ -140,26 +140,15 @@ left outer join `sync_price` sp on p.`id_product`=sp.`id_product`
 left join `presta_category_product` pcp on p.`id_product` = pcp.`id_product` 
 left join `presta_category` pc on pcp.`id_category` = pc.`id_category` 
 where pc.`active` = 1
-and p.`active` = 1
+/*and p.`active` = 1*/
 and (sp.`skip` = 0 OR sp.`skip` IS NULL) 
 
 and p.`supplier_reference` rlike "^[0-9]{12,}$" 
 
-/*and p.`reference` like "Dynamic%"*/
-/*and p.`quantity` = 0*/
 
-/*and p.`id_manufacturer`= 11*/
-/*and p.`id_category_default`= 25*/
-
-/*and p.`date_upd` BETWEEN "2010-01-01" AND (CURDATE() - INTERVAL '.$maintenance_interval.' DAY) */
-/*and p.`date_add` BETWEEN CURDATE() AND (CURDATE() - INTERVAL '.$maintenance_interval.' DAY) */
 and sp.`date_upd` BETWEEN "2010-01-01" AND (CURDATE() - INTERVAL '.$maintenance_interval.' DAY) 
-/*and sp.`date_upd` >= (CURDATE() - INTERVAL '.$maintenance_interval.' DAY) */
 
 ORDER BY sp.`date_upd` 
-/*ORDER BY sp.`date_upd` */
-/*ORDER BY p.`id_product` desc */
-/*ORDER BY p.`reference` desc*/
 
 LIMIT 0,'.abs($max_results));
 
