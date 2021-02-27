@@ -115,11 +115,11 @@ if ($debug == "on") echo '+++';
 		// если обе цены = ноль, то запись в presta_product только "колво = 0" и "Update = сегодня"
 		if ($_POST['price'][$i] == 0 && $_POST['wholesale_price'][$i] == 0)
 		{
-		
-if ($debug == "on") 			echo ' - пишем только колво=0 и обновление=сегодня';		
+		if ($debug == "on") echo ' - пишем: колво=0; active=0; обновление=сегодня';
+
 			Db::getInstance()->Execute("  		
 			update presta_product
-			set `quantity` = 0, `date_upd` = NOW()
+			set `quantity` = 0, `date_upd` = NOW(), active = 0
 			where `id_product` = ".$_POST['id'][$i]."
 			");
 		}

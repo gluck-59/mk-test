@@ -73,12 +73,13 @@ class Homecategories extends Module
         $categories = Category::getCategories($id_lang, true, true)[1];
         $result = array();
 
-        foreach ($products as $product)
-        {
-            $cat = new Category($product['id_category_default']);
-            $result[] = $cat->id_category;
+        if ($products) {
+            foreach ($products as $product)
+            {
+                $cat = new Category($product['id_category_default']);
+                $result[] = $cat->id_category;
+            }
         }
-        
         $values = array_count_values($result);
         arsort($values, SORT_NUMERIC);
        
