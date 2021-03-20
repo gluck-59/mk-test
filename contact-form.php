@@ -7,6 +7,11 @@ $smarty->assign('contacts', Contact::getContacts(intval($cookie->id_lang)));
 
         if (Tools::isSubmit('submitMessage'))
         {
+            // если скрытое поле firstname заполнено - это спамер
+            if(strlen($_POST['firstname']) > 0) {
+                $errors[] = Tools::displayError('firstname is empty');
+            }
+
             $recaptcha = $_POST['g-recaptcha-response'];
             if(!empty($recaptcha)) {
                 //Получаем HTTP от recaptcha
@@ -23,10 +28,11 @@ $smarty->assign('contacts', Contact::getContacts(intval($cookie->id_lang)));
                 //Выполняем запрос и получается ответ от сервера гугл
                 $curlData = curl_exec($curl);
 
-$curlData1 = print_r($curlData, true); // дебаг для отправки админу
-             
+                $curlData1 = print_r($curlData, true); // дебаг для отправки админу
+
                 curl_close($curl);  
                 $curlData = json_decode($curlData, true);
+
                 //Смотрим на результат 
                 if($curlData['success']) {
                     //Сюда попадем если капча пройдена, дальше выполняем обычные 
@@ -36,6 +42,7 @@ $curlData1 = print_r($curlData, true); // дебаг для отправки а�
                             $errors[] = Tools::displayError('invalid e-mail address');
                         elseif (!($message = nl2br2(Tools::getValue('message'))))
                             $errors[] = Tools::displayError('message cannot be blank');
+
                         elseif (!Validate::isMessage($message))
                             $errors[] = Tools::displayError('invalid message');
                         elseif (!($id_contact = intval(Tools::getValue('id_contact'))) OR !(Validate::isLoadedObject($contact = new Contact(intval($id_contact), intval($cookie->id_lang)))))

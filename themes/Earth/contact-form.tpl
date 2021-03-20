@@ -69,6 +69,7 @@ toastr.success('{l s='Your message has been successfully sent to our team.'}');
 		<p class="text" align="center">
 			<!--[if IE]><label for="email">{l s='E-mail'}</label><![endif]-->
 			<input required type="email" id="email" name="from" placeholder="...и e-mail для ответа" value="{if isset($smarty.cookies.email)}{$smarty.cookies.email}{/if}"/>
+			<input hidden type="text" name="firstname" value="" placeholder="Введите имя">
 		</p>
 		<br>
 		<p class="text" align="center">Письма на mail.ru НЕ ДОХОДЯТ. Пожалуйста используйте качественные почтовые сервисы.</p>
@@ -82,9 +83,9 @@ toastr.success('{l s='Your message has been successfully sent to our team.'}');
 	</fieldset>
 </form>
 
-<div class="rte">
+<!--div class="rte">
 
-    <!--h2>Бесплатный звонок</h2>
+    <h2>Бесплатный звонок</h2>
     <p align="center">Введите свой телефон с кодом страны в любом формате. <br>Свободный оператор тут же перезвонит. Бесплатно.</p>
     {*<p align="center"><script src="http://www.comtube.com/button_template.php?hash=DlyZnG9b1t0lsT@KpIwYHg" charset="utf-8" type="text/javascript"></script></p>*}
     <script src="http://comtube.com/get_js.php?option=callme_api&lang=ru" charset="utf-8" type="text/javascript"></script>
@@ -93,17 +94,18 @@ toastr.success('{l s='Your message has been successfully sent to our team.'}');
         <input placeholder="79876543210 " id="phonenum" type="text" onkeydown="callmeCheckEnter(event);" autocomplete="on"><br><br>
         <input class="ebutton large blue" type="button" onclick="callmeCall()" value="Позвонить">
     </p>    
-        <p>&nbsp;</p-->
+        <p>&nbsp;</p>
 
     
     
     <h2>Чат</h2>
-    <p align="center">Кнопка чата — в правом нижнем углу на всех страницах. <br /> Зайдите на страницу с интересующим ништяком и нажмите ее.</p>
+    <p align="center">Кнопка чата — в правом нижнем углу на всех страницах.
+        <br /> Зайдите на страницу с интересующим ништяком и нажмите ее.</p>
     <p>&nbsp;</p>
 
-</div>
+</div-->
 
-    <h2>Online-мессенджеры</h2>
+    <h2>Online-мессенджер</h2>
     
     <center>
         <p>Telegram:</p><br /> 
