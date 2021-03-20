@@ -9,7 +9,7 @@ $smarty->assign('contacts', Contact::getContacts(intval($cookie->id_lang)));
         {
             // если скрытое поле firstname заполнено - это спамер
             if(strlen($_POST['firstname']) > 0) {
-                $errors[] = Tools::displayError('firstname is empty');
+                die;
             }
 
             $recaptcha = $_POST['g-recaptcha-response'];
