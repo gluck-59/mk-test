@@ -183,6 +183,7 @@ foreach ($products as $product)
 		unset($new_product);	
 		$cover = Image::getCover($product['id_product']);
 		$skip_no_spipping = 1;
+        $skip = 0; // пишет в базу "неактивный товар
 		$currency=0;
 		$id_currency = 0;
 		$err = "";
@@ -442,12 +443,12 @@ foreach ($products as $product)
     Разница '.($price_alert >= $price_alert_perc ? '<input class="error"' : '<input').' id="different" readonly value="'.round($price_alert).'" style="width: 23px;text-align:right;
     border: 0;">%</span><br>
     </div>
-    
-    
+
     <div class="new_product">
     <!--a href="http://ebay.com/itm/'.$new_product['lot'].'" target="_blank"-->';
     if (!$new_product['lot'])
     {
+        $skip = 1;
     	echo '<input type="checkbox" id="'.$product['id_product'].'" name="skip[]" '.($skip == 1 ? 'checked' : '').'><label style="float:none; font-weight:normal" for="'.$product['id_product'].'"> Товар в архив</label> <span class="error">'.$error.'</span> <br>';
     	if ($skip==0)
     	{
