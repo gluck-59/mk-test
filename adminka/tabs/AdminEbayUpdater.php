@@ -36,6 +36,7 @@ $paypal_rate = 1;				// комиссия Paypal считается при чек
 $maintenance_interval = 30; 	// через сколько ДНЕЙ считать сверку товаров устаревшей
 $price_diff = 15; 				// если разница больше, то выводим красную или зеленую точку
 $price_alert_perc = 30; 		// если разница В ПРОЦЕНТАХ больше, то алерт
+$sellerEbayPositive = 70; 		// процент положительных отзывов о продавце на Ebay. Если ниже - пропускаем
 $isnew = array('New', 'Neu', 'Nuovo', 'Neuf', 'Neu mit Etikett', 'Nuevo', 'Brand New', 'New with tags'); // состояние товара "новый" на разных языках
 
 
@@ -461,7 +462,7 @@ foreach ($products as $product)
     
     if ($new_product['lot'])
     {
-    	echo $new_product['seller'].' '. ($new_product['positive'] ? '('.$new_product['feedback'].' - '.($new_product['positive'] < 98 ? '<span class="error">' : ''). $new_product['positive'].'%</span>)' : '').'<br>'.mb_substr($new_product['ean13'], 0, 30).'</a><br>';
+    	echo $new_product['seller'].' '. ($new_product['positive'] ? '('.$new_product['feedback'].' - '.($new_product['positive'] < $sellerEbayPositive ? '<span class="error">' : ''). $new_product['positive'].'%</span>)' : '').'<br>'.mb_substr($new_product['ean13'], 0, 30).'</a><br>';
     }
     else echo 'найдена пара<br>';
     
@@ -733,12 +734,14 @@ console.log('price-итог',price);
 				id_product = <?php echo $product['id_product']; ?>,
 				positive = <?php if (isset($new_product['positive'])) echo $new_product['positive']; else echo '0'; ?>,
 				fast = <?php echo $fast; ?>,
+                sellerEbayPositive = <?php echo $sellerEbayPositive; ?>,
+
 				different = document.getElementById('different').value;
 
 //console.log('price_alert = '+price_alert+' '+'price_alert_perc = '+price_alert_perc+' '+'different = '+different);
 
 
-				if (price_alert >= price_alert_perc && positive >= 98)
+				if (price_alert >= price_alert_perc && positive >= sellerEbayPositive)
 				{
 					var audio = new Audio(); // Создаём новый элемент Audio
 					audio.src = '../../error.wav'; // Указываем путь к звуку "клика"
