@@ -612,7 +612,7 @@ function do_math(id,rate)
 	var min_prib = <?php echo number_format($min_prib,2,'.',''); ?>;
 	var max_prib = <?php echo number_format($max_prib,2,'.',''); ?>;
 	var paypal_rate = <?php echo number_format($paypal_rate,2,'.',''); ?>;
-    var price_test = document.getElementById('price_test_'+id).value;
+    var price_test = (document.getElementById('price_test_'+id).value != 'undefined' ?  document.getElementById('price_test_'+id).value : 0);
     var shipping1 = document.getElementById('shipping_'+id).value;
     var res = new Function('return ' + shipping1);
     var shipping = res();
