@@ -225,7 +225,7 @@ foreach ($products as $product)
                    
                     // заполним поля с ценой
                     document.getElementsByName('price_test[]')[0].value = $('.sellers:last').attr('id'); 
-                    document.getElementsByName('wholesale_price[]')[0].value = $('.sellers:last').attr('id'); // добавил
+                    document.getElementsByName('wholesale_price[]')[0].value = parseFloat($('.sellers:last').attr('id'));
                     document.getElementsByName('shipping[]')[0].value = 0; // добавил                    
                     
                     // заполним поле с поставщиком
@@ -635,7 +635,8 @@ function do_math(id,rate)
     if (!isNaN(Math.ceil(wholesale_price/1)*1)) document.getElementById('wholesale_price_'+id).value = Math.ceil(wholesale_price/1)*1;
 
 
-/*
+
+console.log('do_math()');
 console.log('prib',prib);
 console.log('min_prib',min_prib);
 console.log('max_prib',max_prib);
@@ -646,7 +647,7 @@ console.log('wholesale_price',wholesale_price);
 console.log('presta_price',presta_price);
 console.log('price',price);
 console.log('price-итог',price);
-*/
+
 
 
     if (wholesale_price > wholesale_price_old)
