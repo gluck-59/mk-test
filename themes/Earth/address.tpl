@@ -99,14 +99,10 @@
 
 <br><br>
 	</div>
-<a href="javascript::">
-     <h2 class="cabinet" id="bl1" name="bl1" onclick="javascript:$('#textbl1').toggle(100)">
-Дополнительная информация <span>(редактировать)</span></h2>
-</a>
 
 <div class="add_address">
 
-<div hidden {*if $address->phone_mobile or $address->address2 or $address->company}"javascript:$('#textbl1').show(100)"{/if*} id='textbl1'>
+<div {*if $address->phone_mobile or $address->address2 or $address->company}"javascript:$('#textbl1').show(100)"{/if*} >
 <br><br>
 
 	<fieldset class="add_address">		
