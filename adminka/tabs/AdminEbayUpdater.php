@@ -623,14 +623,18 @@ function do_math(id,rate)
 	var price = Math.round(wholesale_price*prib);  
     var presta_price = document.getElementById('presta_price_'+id).value;	
 
-	if ((wholesale_price*prib)-wholesale_price < min_prib )
-    {
-		var price = Math.round(wholesale_price+min_prib); 
+    if (price_test > 0) {
+        if ((wholesale_price*prib)-wholesale_price < min_prib )
+        {
+            var price = Math.round(wholesale_price+min_prib);
+        }
+        if ((wholesale_price*prib)-wholesale_price > max_prib )
+        {
+            var price = Math.round(wholesale_price+max_prib);
+        }
+    } else {
+        var price = 0;
     }
-	if ((wholesale_price*prib)-wholesale_price > max_prib )
-    {
-		var price = Math.round(wholesale_price+max_prib); 
-    } 
 
     price = Math.ceil(price/1)*1; // 10 = округл до десятков, 100 = до сотен
     document.getElementById('sum_'+id).value = isNaN(sum) ? '' : sum;
