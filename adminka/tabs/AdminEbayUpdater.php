@@ -229,7 +229,10 @@ foreach ($products as $product)
                     document.getElementsByName('shipping[]')[0].value = 0; // добавил                    
                     
                     // заполним поле с поставщиком
-                    document.getElementsByName('reference[]')[0].value = ($('.sellers:last')[0] !== undefined ? $('.sellers:last')[0].dataset.supplier : '');  
+                    if (document.getElementsByName('reference[]')[0] !== undefined && $('.sellers:last')[0] !== undefined) {
+                        document.getElementsByName('reference[]')[0].value = $('.sellers:last')[0].dataset.supplier;    
+                    }
+                    
                     
                     // вызовем пересчет
                     do_math($('[name=old_product]').val(), $conversion_rate);
