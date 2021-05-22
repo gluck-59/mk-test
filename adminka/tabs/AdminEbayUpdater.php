@@ -453,8 +453,11 @@ foreach ($products as $product)
     <!--a href="http://ebay.com/itm/'.$new_product['lot'].'" target="_blank"-->';
     if (!$new_product['lot'])
     {
-        $skip = 1;
-    	echo '<input type="checkbox" id="'.$product['id_product'].'" name="skip[]" '.($skip == 1 AND $pair > 0 ? 'checked' : '').'><label style="float:none; font-weight:normal" for="'.$product['id_product'].'"> Товар в архив</label> <span class="error">'.$error.'</span> <br>';
+        if ($pair == null AND $product['quantity'] == 0) {
+            $skip = 1;
+        }
+
+    	echo '<input type="checkbox" id="'.$product['id_product'].'" name="skip[]" '.($skip == 1 ? 'checked' : '').'><label style="float:none; font-weight:normal" for="'.$product['id_product'].'"> Товар в архив</label> <span class="error">'.$error.'</span> <br>';
     	if ($skip==0)
     	{
     		echo '<input type="hidden" name="skip[]" value="off">
