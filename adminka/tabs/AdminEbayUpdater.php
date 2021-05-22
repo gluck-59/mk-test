@@ -209,7 +209,8 @@ foreach ($products as $product)
     	if ($pair != FALSE)
     	{
 			echo "<script>toastr.info('".$product['ean13']."','Запрос findPair: ');</script>";
-    		echo Ebay_shopping::findPair($product['ean13']);
+            $pairFound = Ebay_shopping::findPair($product['ean13']);
+    		echo $pairFound;
     		$err = 1;
             ob_get_flush();    		
 
@@ -277,7 +278,8 @@ foreach ($products as $product)
                 } );
             </script>";  
 
-            echo 'Клик на нужном диве подставит его цену';  		
+            if ($pairFound != null) echo 'Клик на нужном диве подставит его цену';
+            else echo 'Ни одной пары не найдено';
             ob_get_flush();
     	}
     
@@ -431,7 +433,7 @@ foreach ($products as $product)
     <a href="http://ebay.com/itm/'.$new_product['lot'].'" target="_blank">
     <img id="cover_new" style="height:140px; width: 240px; object-fit: contain;'.(!$cover_new ? 'width:129px"' : '"src="'.$cover_new.'"').'></a>
     ';
-    
+
     echo '
     <div class="old_product">
     '.( $product['supplier_reference'] != $new_product['lot'] ? '<font color="#AAA">' : '').'
@@ -452,7 +454,7 @@ foreach ($products as $product)
     if (!$new_product['lot'])
     {
         $skip = 1;
-    	echo '<input type="checkbox" id="'.$product['id_product'].'" name="skip[]" '.($skip == 1 ? 'checked' : '').'><label style="float:none; font-weight:normal" for="'.$product['id_product'].'"> Товар в архив</label> <span class="error">'.$error.'</span> <br>';
+    	echo '<input type="checkbox" id="'.$product['id_product'].'" name="skip[]" '.($skip == 1 AND $pair > 0 ? 'checked' : '').'><label style="float:none; font-weight:normal" for="'.$product['id_product'].'"> Товар в архив</label> <span class="error">'.$error.'</span> <br>';
     	if ($skip==0)
     	{
     		echo '<input type="hidden" name="skip[]" value="off">
@@ -468,7 +470,7 @@ foreach ($products as $product)
     {
     	echo $new_product['seller'].' '. ($new_product['positive'] ? '('.$new_product['feedback'].' - '.($new_product['positive'] < $sellerEbayPositive ? '<span class="error">' : ''). $new_product['positive'].'%</span>)' : '').'<br>'.mb_substr($new_product['ean13'], 0, 30).'</a><br>';
     }
-    else echo 'найдена пара<br>';
+    elseif ($pair > 0 AND $pairFound != null) echo 'найдена пара<br>';
     
     echo '<input autofocus onchange="do_math('.$product['id_product'].','.$conversion_rate.')" name="shipping[]" autocomplete="off" id="shipping_'.$product['id_product'].'" style=" width: 55px; " value="'.ceil($shipping).'"> '.($err == 2 ? '<span class="error">'.$error.'</span>' : 'Доставка').'<br>';
     
