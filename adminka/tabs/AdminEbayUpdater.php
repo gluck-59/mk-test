@@ -36,7 +36,7 @@ $paypal_rate = 1;				// комиссия Paypal считается при чек
 $maintenance_interval = 30; 	// через сколько ДНЕЙ считать сверку товаров устаревшей
 $price_diff = 15; 				// если разница больше, то выводим красную или зеленую точку
 $price_alert_perc = 30; 		// если разница В ПРОЦЕНТАХ больше, то алерт
-$sellerEbayPositive = 70; 		// процент положительных отзывов о продавце на Ebay. Если ниже - пропускаем
+$sellerEbayPositive = Ebay_shopping::getsellerEbayPositive(); 		// процент положительных отзывов о продавце на Ebay. Если ниже - пропускаем
 $isnew = array('New', 'Neu', 'Nuovo', 'Neuf', 'Neu mit Etikett', 'Nuevo', 'Brand New', 'New with tags'); // состояние товара "новый" на разных языках
 
 

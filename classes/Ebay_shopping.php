@@ -13,18 +13,18 @@ class Ebay_shopping
 	var $price;
 	var $shipping;
 	var $images = array();
-	var $sellerfeedback;
 	var $siteid;
 	var $error = '';
 	
 	public	function __construct($lot)
 	{
-//		var_dump($this);
 		$this->lotnum = $lot;
 		$this->name = $responseXML->Item->Title;
-		//return $fields;		
 	}
 
+    static function getsellerEbayPositive() {
+        return 90; // процент позитивных отзывов
+    }
 
 	// устанавливает номер лота из параметра
 	function setLot($lot)
@@ -482,7 +482,7 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
 			
 			// пропустим селлеров с positive feedback меньше X
 			// не учитываем kakahealthcare, Meow-Auctshop, Mutazu
-			if ((float)$item->sellerInfo->positiveFeedbackPercent < 98.0 && ($item->sellerInfo->sellerUserName != 'mutazu' && $item->sellerInfo->sellerUserName != 'kakahealthcare' && $item->sellerInfo->sellerUserName != 'Meow-Auctshop')   )		
+			if ((float)$item->sellerInfo->positiveFeedbackPercent < self::getsellerEbayPositive() && $item->sellerInfo->sellerUserName != 'mutazu')
 			{
 				continue;
 			}
