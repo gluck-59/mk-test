@@ -17,7 +17,7 @@ if (!$no_check_old) $no_check_old = '';
 if (!$debug) $debug = '';
 if (!$autorecord) $autorecord = 'off';
 if (!$_POST) $autorecord = 'on'; // запускает авторекорд с первого раза
-//if (!$_POST) $no_check_old = 'on'; // запускает не проверять старые с первого раза
+if (!$_POST) $no_check_old = 'on'; // запускает не проверять старые с первого раза
 if (!$_POST) $fast = 'on'; // запускает не проверять старые с первого раза
 if (!$fast) $fast = 5000; else $fast = 0;
 

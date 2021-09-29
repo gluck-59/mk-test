@@ -28,8 +28,8 @@ $orders = Order::getOrdersRemindByDate($date_from, $today, NULL, 1);
 
 // зададим через сколько дней посылать напоминания и отменять заказ
 $remind1 = 1;
-$remind2 = 3;
-$cancel_order = 5;
+$remind2 = 2;
+$cancel_order = 3;
 
 foreach ($orders as $order)
 {
