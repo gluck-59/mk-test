@@ -287,7 +287,7 @@ foreach ($products as $product)
     	{
 //if ($product['reference'] != 'Dynamic Cycle Parts')
 // надо не делать findItemsAdvanced если поставщик Крис
-    		if ( /* $product['supplier_reference'] !== '' &&  */$no_check_old == '' && preg_match('/^\d{12}$/', trim($product['supplier_reference'])))
+    		if ( /* $product['supplier_reference'] !== '' &&  $no_check_old == '' &&*/ preg_match('/^\d{12}$/', trim($product['supplier_reference'])))
     		{
     			if ($product['reference'] == 'kakahealthcare' || $product['reference'] == 'Meow-Auctshop' ) $skip_no_spipping = 0; 
     			
