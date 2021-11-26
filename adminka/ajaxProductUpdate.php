@@ -15,13 +15,11 @@ ini_set("display_errors", 1);
     //echo "\r\ngetSingleItem\r\n"; 
     // идем на ебей за лотом
     $lot = Ebay_shopping::getSingleItem(array($item), 1, 1);
-
-    if (empty($lot)) 
+    if (empty($lot))
     {
         echo json_encode(array('error' => 'Пустой ответ от Ебея. Лот протух?'));
         die;
     }
-
 
     // если товар уже есть, нужно передать в $_POST его id_product
     // и взять вес товара из базы

@@ -2817,7 +2817,8 @@ $(document).ready(function () {
           //else toastr.error(this.readyState, 'readyState');
         });
         
-        xhr.open("POST", "//motokofr.com/adminka/ajaxProductUpdate.php");
+        // xhr.open("POST", "//motokofr.com/adminka/ajaxProductUpdate.php");
+        xhr.open("POST", "/adminka/ajaxProductUpdate.php");
         xhr.setRequestHeader("cache-control", "no-cache");
         xhr.send(data);
     })
@@ -2831,7 +2832,7 @@ $(document).ready(function () {
         }
         catch (e)
         {
-            console.log(typeof(e));
+            console.log('parseResponse', typeof(e), e);
             return;
         }
         
@@ -2851,11 +2852,13 @@ $(document).ready(function () {
     
     function set(responseText, item)
     {
+// console.log('responseText', responseText );
+// console.log('item', item );
         $('body').css('opacity','1');
         
         response = response[item];
-        console.log( response );
-        
+        console.log('response', response );
+
         // установим цены и все такое
         $('[name=wholesale_price]').val(parseInt(response.ebay_price));
         $('#priceTE').val(parseInt(response.priceTE));

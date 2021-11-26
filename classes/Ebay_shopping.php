@@ -46,7 +46,7 @@ class Ebay_shopping
     'hondaeasttoledo'
     );
 
-	    $endpoint = 'http://open.api.ebay.com/shopping?';
+	    $endpoint = 'https://open.api.ebay.com/shopping?';
 	    $session  = curl_multi_init();                       // create a curl session
 	    //print_r($request); die;
 	    //exit;
@@ -112,7 +112,7 @@ class Ebay_shopping
 		$info = curl_multi_info_read( $session );
        	if ( $info!==false )  
 	   		{
-//	   			print_r($info);
+//	   			prettyDump($info);
 		   	}
 		} while ( $status === CURLM_CALL_MULTI_PERFORM || $running);
 		
@@ -121,6 +121,9 @@ class Ebay_shopping
     foreach ( $chs as $ch ) 
     {
         $responseXML = curl_multi_getcontent($ch);
+$a = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+prettyDump($a);
+prettyDump($responseXML);
 		$responseXML = simplexml_load_string($responseXML);
 
 		// если лот не BIN
@@ -138,7 +141,7 @@ class Ebay_shopping
 		{
     		if ($ajax == 0)
     		{
-                echo '<script>toastr.warning(\'<a target="_blank" href="http://ebay.com/itm/'.$responseXML->Item->ItemID.'">Лот '.$responseXML->Item->ItemID.' протух, ищем другой по partnumber</a>\',\'Ответ getSingleItem:\');</script>';
+                echo '<script>toastr.warning(\'<a target="_blank" href="https://ebay.com/itm/'.$responseXML->Item->ItemID.'">Лот '.$responseXML->Item->ItemID.' протух, ищем другой по partnumber</a>\',\'Ответ getSingleItem:\');</script>';
                 ob_get_flush();			
             }
 			return;
@@ -350,7 +353,7 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
 	// выдает ошибку если нет доставки
 	//
 	*/
-	public static function getShipping( $request, $skip_no_spipping = 1, $endpoint = 'http://open.api.ebay.com/shopping?' )
+	public static function getShipping( $request, $skip_no_spipping = 1, $endpoint = 'https://open.api.ebay.com/shopping?' )
 	{
 	    $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
 	    $xmlRequest .= "<GetShippingCostsRequest xmlns='urn:ebay:apis:eBLBaseComponents'><ItemID>".$request."</ItemID>";
@@ -421,9 +424,9 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
         );
     	
 
-		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1?';
+		$endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?';
 	    $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-	    $xmlRequest .= "<findItemsAdvancedRequest xmlns='http://www.ebay.com/marketplace/search/v1/services'>";
+	    $xmlRequest .= "<findItemsAdvancedRequest xmlns='https://www.ebay.com/marketplace/search/v1/services'>";
 	    $xmlRequest .= "<categoryId>10063</categoryId>"; // 10063 - запчасти для мотоциклов // 6028 - запчасти вообще
 	    $xmlRequest .= "<descriptionSearch>false</descriptionSearch>"; // ИНОГДА может найти полную хуйню, отключено
 	    $xmlRequest .= "<keywords>".$request."</keywords>";
@@ -592,7 +595,7 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
                     {
                         $tmp1[$seller]['total_price'] += round($product['ebay_price']);
                         $data .= '<br><div style=""><img style="width: 150px; height: 80px; margin-right: 20px; object-fit: contain; border: #d0d1d5 solid 1px; border-radius: 5px;" src="'.$product['cover'].'">';
-                        $data .= '<a href="http://www.ebay.com/itm/'.$product['lot'].'" target="_blank">$'.$product['ebay_price'].' — '.$product['ean13'].'</div></a>';
+                        $data .= '<a href="https://www.ebay.com/itm/'.$product['lot'].'" target="_blank">$'.$product['ebay_price'].' — '.$product['ean13'].'</div></a>';
                         $tmp2[] = $product;
                         
                         // набиваем массив с ценами для послед проверки
@@ -629,10 +632,10 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
 	// не работает если лот протух окончательно	
 	// использовать непонятно где
 	*/
-	public static function getSimilarItemsRequest( $request, $endpoint = 'http://svcs.ebay.com/MerchandisingService?' )
+	public static function getSimilarItemsRequest( $request, $endpoint = 'https://svcs.ebay.com/MerchandisingService?' )
 	{
 	    $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-	    $xmlRequest .= "<getSimilarItemsRequest xmlns=\"http://www.ebay.com/marketplace/services\">";
+	    $xmlRequest .= "<getSimilarItemsRequest xmlns=\"https://www.ebay.com/marketplace/services\">";
 		$xmlRequest .= "<itemId>".$request."</itemId>";
 		$xmlRequest .= "<listingType>FixedPriceItem</listingType>";
 //		$xmlRequest .= "<maxPrice>20</maxPrice>"; // если ограничить цену, может найти еще более полную хуйню
@@ -662,10 +665,10 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
 	// НЕ ПОНИМАЕТ страну!
 	// выводит SellerInfo
 	*/ 			
-	public static function findItemsByKeywordsRequest( $request, $endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1?' )
+	public static function findItemsByKeywordsRequest( $request, $endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?' )
 	{
 	    $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-	    $xmlRequest .= "<findItemsByKeywordsRequest xmlns='http://www.ebay.com/marketplace/search/v1/services'>";
+	    $xmlRequest .= "<findItemsByKeywordsRequest xmlns='https://www.ebay.com/marketplace/search/v1/services'>";
 	    $xmlRequest .= "<keywords>".$request."</keywords>";
 	    $xmlRequest .= "<itemFilter>";
    	    $xmlRequest .= "<name>Condition</name><value>1000</value>";							// либо ListingType, либо Condition
@@ -708,10 +711,10 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
 	// <sortOrder>BestMatch|CurrentPriceHighest|DistanceNearest|EndTimeSoonest|PricePlusShippingLowest|PricePlusShippingHighest|StartTimeNewest|BidCountMost|BidCountFewest|CountryAscending(Only showing first 10 of 11)</sortOrder>
 	*/
 	
-	public static function findItemsByEPID( $request, $endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1?' )
+	public static function findItemsByEPID( $request, $endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?' )
 	{
 	    $xmlRequest  = '<?xml version="1.0" encoding="utf-8"?>';
-	    $xmlRequest  .= '<findItemsByProductRequest xmlns="http://www.ebay.com/marketplace/search/v1/services">
+	    $xmlRequest  .= '<findItemsByProductRequest xmlns="https://www.ebay.com/marketplace/search/v1/services">
 	    <itemFilter><name>FeedbackScoreMin</name><value>10000</value></itemFilter>
 	    <productId type="ReferenceID">'.$request.'</productId>
 	    <outputSelector>SellerInfo</outputSelector>	    
@@ -760,9 +763,9 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
 	*/
 	public static function findItemsIneBayStores( $request, $store, $minprice = 0, $maxprice = 99999, $site_id = 'MOTOR')
 	{
-		$endpoint = 'http://svcs.ebay.com/services/search/FindingService/v1?';
+		$endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?';
 	    $xmlRequest  = '<?xml version="1.0" encoding="utf-8"?>';
-	    $xmlRequest  .= '<findItemsIneBayStoresRequest xmlns="http://www.ebay.com/marketplace/search/v1/services">
+	    $xmlRequest  .= '<findItemsIneBayStoresRequest xmlns="https://www.ebay.com/marketplace/search/v1/services">
 		<keywords>'.$request.'</keywords>
 		<storeName>'.$store.'</storeName>
 		<itemFilter><name>MinPrice</name><value>'.$minprice.'</value></itemFilter><itemFilter><name>MaxPrice</name><value>'.$maxprice.'</value></itemFilter>  
@@ -853,7 +856,7 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
 
 
 	// ищет юзера, смотрит positive feedback 
-	public static function GetUserProfile( $request, $endpoint = 'http://open.api.ebay.com/shopping?' )
+	public static function GetUserProfile( $request, $endpoint = 'https://open.api.ebay.com/shopping?' )
 	{
 	    $xmlRequest  = '<?xml version="1.0" encoding="utf-8"?><GetUserProfileRequest xmlns="urn:ebay:apis:eBLBaseComponents"><UserID>'.$request.'</UserID></GetUserProfileRequest>';
     
@@ -899,7 +902,7 @@ $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
 		$xmlRequest  = '<?xml version="1.0" encoding="utf-8"?>
 		<GetMyeBayBuyingRequest xmlns="urn:ebay:apis:eBLBaseComponents">
 		<RequesterCredentials>
-		<eBayAuthToken>AgAAAA**AQAAAA**aAAAAA**/t6FUw**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wMkoKnDZWKoASdj6x9nY+seQ**6dABAA**AAMAAA**MZvV97RUr0PGlAYrScS+Ue88NZfRbJkV0AU3delwQHq5yClREduOpeII9aHsL/0EYAOwPvIhJJ+3xmPb/Pu81lCK7ewYMJ6eGjyQZzF8kYH7U2dAJt909rKey6c5rlSZn3eP7y9qVcToDXh4LLy2OVeG3A12j664Y/GnCEWxUNOk79jdZmBPianhfLyXnm+vrh6dabRShC0DRzrhGAu1H5knQBZC+O22xbVL63Lv9tFeJvudcbecYU70YEC6y60v1pEj5jOHonhSZNoRDjR4maVffP27tDjE/OqxuqEGL6fPugu3sKq3hgmhKDziQFSLi5F6h9SLyb2C1YtoNMEp9z4pQVk5IC374Wkw7i6+51bA91J3IP8QgzQbp+hHBOxgmTjn3h/p/sdkWVV0v4SLhnpp0hdnHf+j/XNhOn4DO09/e133HTi+4DZwhSG7NDApZZJDjZsk+0vGd6MGp25hrKxH7503EPoLVdnrH6xrinCC0DCeFwCDUyFGKsxlr/LJk1l5umrWQC2mqcXa/bd+NvmasDVdrQaz4yFoGMvtCIGD+ugkBj/CYxwegY3MzHJH4Vb7EWh8+w4MHsvMYyhb5qvj09aNw5gKTfeZhrkanQBlBGh9z+OhWlhAW95DtJg1T1SjJ1Ty3DkvEgvjaTpr0jLhVsBK/8DsK//X+nrihIfCxltyqIApVueKBJYep/NzrZcBn8Q+84+8BwPmcshJ0wUylc1QToxq7fwm1NMv/qYY4n3k/8NORPfVAdFAtng7</eBayAuthToken>
+		<eBayAuthToken>AgAAAA**AQAAAA**aAAAAA**+qagYQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wMkoKnDZWKoASdj6x9nY+seQ**6dABAA**AAMAAA**l8Ymv8jzMCpd99nZwy1YKOsndPAqRmkeOU0bpBT1CtkgeoNReEkkkfQ4PbChdsGPfEtZ5pRItxg0rTovMW3zSX8O1wfOXyzatB8D0/MYOVD/FweMcyQ/GbiNqnC83kIw4UjFC/tWV8xLu5mYL8ICrRvNsOp2lV5Fr2IBMYWSLDeVrZR6ws9lle4hj0M8MKpTe/in3qCoeyfGzfPth8wb/rT1KzO39guxNKOoUyBxiSTk2/vgwC7JNOM+UDkxGsTetDEPMzNgY5taRifC4hBorN9LM8ZaMpEVClUQ364yo8LDVdU5ZXkdmCmExtVkwttCHATkgA0koP0nB1Z8TOZKrN0LDgHQXJQ899aVk7ZRW3rTtZdemyu/H1GOEgUsq/dIJHVEkgZ9Y1E5xCoDdw9DeyVB9L3Cw/ZDv861pUoAXVOG7IRC6vpqxsQhyL/MtH9ZlAl0QpGOuCoSKUaG47Cjo2bucJxLD3B+7JWSJK1Y78rKB5Osl4SHY8Mo+c7pfYuBenpyImOPknYxeBlv6CuYHfCyYRFfvS+Y1dLcZdUaS86KstrAR9fSzW7ELH59fskM9D5EmRUugtC2PROfMLWPtdU4ruR7NkWGf1Ns4YNijUQxkl6ZsBW4iNn1ALiM8jlroFK9MhSE2zD1mhpgw70EIVXO8GvhMA4tiNwDsHUSkmvfDwisCNJNKXOrCQac3pydflXmGryEf8Vqbo6LE3MEvj1w39vWq8PULw0HDtAE/ZowTEnOMU8aRYxaBp/RBbp+</eBayAuthToken>
 		</RequesterCredentials>
 		
 		<WonList>

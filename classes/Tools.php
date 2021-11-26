@@ -964,4 +964,13 @@ function cmpPriceDesc($a,$b)
 }
 
 
+function prettyDump($data = null, $die = false)
+{
+	echo "<pre>";
+	print_r($data);
+	echo "</pre>";
+	if ($die) die;
+}
+
+
 ?>
