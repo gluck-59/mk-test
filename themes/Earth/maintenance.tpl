@@ -17,7 +17,10 @@
 		<div id="maintenance">
 			 <p><img src="{$content_dir}img/logo.jpg" alt="logo" /><br /><br /></p>
 			 <p id="message">
-				<img src="{$content_dir}img/admin/tab-tools.gif" style="margin-right:10px; float:left;" alt="" />{l s='In order to perform site maintenance, our online shop has been taken offline temporarily. We apologize for the inconvenience, and ask that you please try again later !'}
+				 Мотокофр временно приостанавливает работу из-за нарушения логистических цепочек в мире. При первой же возможности мы вернемся и продолжим радовать вас новыми ништяками.
+				 <br><br>Все отправленные посылки едут как обычно и мы надеемся, что даже если они и опоздают, то ненадолго.
+				 <br><br>При задержке вашей посылки обратитесь к перевозчику, доставляющему посылку.
+				 <br><br>Перевозчика можно определить по трек-номеру, который мы прислали вам при отправке посылки.
 			 </p>
 			 <span style="clear:both;">&nbsp;</span>
 		</div>

@@ -2852,8 +2852,6 @@ $(document).ready(function () {
     
     function set(responseText, item)
     {
-// console.log('responseText', responseText );
-// console.log('item', item );
         $('body').css('opacity','1');
         
         response = response[item];
