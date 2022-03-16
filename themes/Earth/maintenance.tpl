@@ -10,7 +10,7 @@
 		<meta name="keywords" content="{$meta_keywords|escape:'htmlall':'UTF-8'}" />
 {/if}
 		<meta name="robots" content="{if isset($nobots)}no{/if}index,follow" />
-		<link rel="shortcut icon" href="{$img_dir}favicon.ico" />
+		<link rel="shortcut icon" href="../img/favicon.ico" />
 		<link href="{$css_dir}maintenance.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
@@ -19,8 +19,9 @@
 			 <p id="message">
 				 Мотокофр временно приостанавливает работу из-за нарушения логистических цепочек в мире. При первой же возможности мы вернемся и продолжим радовать вас новыми ништяками.
 				 <br><br>Все отправленные посылки едут как обычно и мы надеемся, что даже если они и опоздают, то ненадолго.
-				 <br><br>При задержке вашей посылки обратитесь к перевозчику, доставляющему посылку.
-				 <br><br>Перевозчика можно определить по трек-номеру, который мы прислали вам при отправке посылки.
+				 <small><br><br>При задержке вашей посылки обратитесь к перевозчику, доставляющему посылку.
+				 <br>Перевозчика можно определить по трек-номеру, который мы прислали вам при отправке посылки.
+                 </small>
 			 </p>
 			 <span style="clear:both;">&nbsp;</span>
 		</div>
