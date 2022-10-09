@@ -72,6 +72,40 @@ class Delivery extends ObjectModel
         ');
         return (float)$weight_price;
 	}
+
+
+    public function getQwintryCost($weight = null, $hub = 'DE1') {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://q3-api.qwintry.com/ru/frontend/calculator/calculate',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+                "hub":"'.$hub.'",
+                "weight":"'.$weight.'",
+                "weightMeasurement":"kg",
+                "country":"RU", 
+                "city": 4290
+                }
+            ',
+            CURLOPT_HTTPHEADER => array(
+                'Content-Type: application/json'
+            ),
+        ));
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $ship = json_decode($response, true, 512, JSON_NUMERIC_CHECK);
+//prettyDump($ship['costs']['ecopost']['cost']['totalCost'], 1);
+
+        $deliveryPrice = $ship['costs']['ecopost']['cost']['totalCost'];
+        echo '<script>toastr.info(\''.$weight.' кг через '.$hub.' = $'.$deliveryPrice.'\', \'Ответ Бандерольки:\')</script>';
+        return $deliveryPrice;
+    }
 }
 
 ?>

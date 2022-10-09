@@ -1,1168 +1,946 @@
-<?php
-error_reporting( E_ERROR );
-set_time_limit (60);
+<?php /** @noinspection PhpUndefinedFunctionInspection */
+    error_reporting(E_ERROR);
+    set_time_limit (60);
 
-if (!isset($_POST['lot']))
-    echo '<body id="php">';
+    if (!isset($_POST['lot']))
+        echo '<body id="php">';
 
-class Ebay_shopping
-{
-	var $lotnum;
-	var $name;
-	var $currency;
-	var $price;
-	var $shipping;
-	var $images = array();
-	var $siteid;
-	var $error = '';
-	
-	public	function __construct($lot)
-	{
-		$this->lotnum = $lot;
-		$this->name = $responseXML->Item->Title;
-	}
+    class Ebay_shopping
+    {
+        const EBAY_CLIENT_ID     = 'RubenYak-81fb-43e6-b05e-58e99eeaf19e';
+        const EBAY_API_VER       = '889';
+        const EBAY_TOKEN         = 'v^1.1#i^1#I^3#f^0#r^1#p^3#t^Ul4xMF83OjVGMEVDRDM0QjYyMUY0M0UyMEY2Q0Y5RUFFRTU3QUE0XzJfMSNFXjI2MA==';
+        const EBAY_CLIENT_SECRET = '56e007b5-0a25-48d0-997b-28377c615dc6';
 
-    static function getsellerEbayPositive() {
-        return 90; // процент позитивных отзывов
-    }
+        var $lotnum;
+        var $name;
+        var $currency;
+        var $price;
+        var $shipping;
+        var $images = array();
+        var $siteid;
+        var $error = '';
+        var $lot   = null;
 
-	// устанавливает номер лота из параметра
-	function setLot($lot)
-	{
-		$this->lot = $lot;
-	}
+        public static $banlist_OLD = array(
+            'speedoutfitters',
+            'motorcityperformanceplus',
+            'ridersaddiction',
+            'hondaeasttoledo'
+        );
+        public static $banlist = [];
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	public static function getSingleItem( $request, $skip_no_spipping = 1, $ajax = 0 )
-	{
-    
-    // бан-лист продавцов-гандонов SELLER NAME
-    // бан-лист объявляется в ДВУХ функциях: getsingleItem и finditemAdvanced
-  	$banlist = array(               
-    'speedoutfitters',
-    'motorcityperformanceplus',
-    'ridersaddiction',
-    'hondaeasttoledo'
-    );
+        public function __construct($lot)
+        {
+//            $this->lotnum = $lot;
+            if (!empty($responseXML)) $this->name = $responseXML->Item->Title;
+        }
 
-	    $endpoint = 'https://open.api.ebay.com/shopping?';
-	    $session  = curl_multi_init();                       // create a curl session
-	    //print_r($request); die;
-	    //exit;
-	    // 
-	    $results = array();
-	    $headersShip = array(
-	      'X-EBAY-API-CALL-NAME: GetShippingCosts',
-	      'X-EBAY-API-SITE-ID: 0',                              
-	      'X-EBAY-API-APP-ID: RubenYak-81fb-43e6-b05e-58e99eeaf19e',
-	      'X-EBAY-API-VERSION: 889',
-	      "X-EBAY-API-REQUEST-ENCODING: XML",    
-	      'Content-Type: text/xml;charset=utf-8',
-	    );
 
-	    // 
-		$headers = array(
-	      'X-EBAY-API-CALL-NAME: GetSingleItem',
-	      'X-EBAY-API-SITE-ID: 0',                                 // Site 0 is for US
-	      'X-EBAY-API-APP-ID: RubenYak-81fb-43e6-b05e-58e99eeaf19e',//ВОТ ЗДЕСЬ нужен ваш APPID
-	      'X-EBAY-API-VERSION: 889',
-	      "X-EBAY-API-REQUEST-ENCODING: XML",    // for a POST request, the response by default is in the same format as the request
-	      'Content-Type: text/xml;charset=utf-8',
-	    );
-	
-	    
-	    $chs = array();
-////printf(" (старт мультикурла getSingleItem: %.2f сек)<br>", (microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]));						
-		foreach ( $request as $url ) 
-		{
-			// подготовим мультикурл для GetSingleItem
-			$chs[] = ( $ch = curl_init() );
-			$xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-			$xmlRequest .= '<GetSingleItemRequest xmlns="urn:ebay:apis:eBLBaseComponents"><ItemID>'.$url.'</ItemID>';
-			$xmlRequest .= '<IncludeSelector>Compatibility,Details,ItemSpecifics,TextDescription</IncludeSelector>';
-			$xmlRequest .= '</GetSingleItemRequest>​';        	
- 			curl_setopt( $ch, CURLOPT_URL, $endpoint );
-			curl_setopt($ch, CURLOPT_POST, true);              // POST request type
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $xmlRequest); // set the body of the POST
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);    // return values as a string - not to std out
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);    //set headers using the above array of headers
-			curl_multi_add_handle( $session, $ch );
+        /**
+         * Возвращает приемлемый процент позитивных отзывов
+         * @return int
+         */
+        public static function getsellerEbayPositive()
+        {
+            return 90;
+        }
 
-			// подготовим мультикурл для getShipping
-			$chs[] = ( $ch = curl_init() );
-			$xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-			$xmlRequest .= "<GetShippingCostsRequest xmlns='urn:ebay:apis:eBLBaseComponents'><ItemID>".$url."</ItemID>";
-			$xmlRequest .= "<MessageID>".$url."</MessageID>"; 
-			$xmlRequest .= "<DestinationCountryCode>RU</DestinationCountryCode>";
-			$xmlRequest .= "<IncludeDetails>false</IncludeDetails>"; // false|true необязательно
-			$xmlRequest .= "</GetShippingCostsRequest>​";
-			curl_setopt( $ch, CURLOPT_URL, $endpoint );
-			curl_setopt($ch, CURLOPT_POST, true);              // POST request type
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $xmlRequest); // set the body of the POST
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);    // return values as a string - not to std out
-			curl_setopt($ch, CURLOPT_HTTPHEADER, $headersShip);    //set headers using the above array of headers
-			curl_multi_add_handle( $session, $ch );
-		}
+        /**
+         * Устанавливает номер лота из параметра
+         * @param mixed $lot  Lot
+         */
+        function setLot($lot)
+        {
+            $this->lot = $lot;
+        }
 
-    do {
-    	// запустим мультикурл 
-        $status = curl_multi_exec( $session, $running );
-		// получаю информацию о текущих соединениях
-		$info = curl_multi_info_read( $session );
-       	if ( $info!==false )  
-	   		{
-//	   			prettyDump($info);
-		   	}
-		} while ( $status === CURLM_CALL_MULTI_PERFORM || $running);
-		
+        /**
+         * Get single item
+         * @param $request
+         * @param int $skip_no_spipping
+         * @param int $ajax
+         * @return array|bool
+         */
+        public static function getSingleItem($request, $skip_no_spipping = 1, $ajax = 0)
+        {
+//            echo '<br>==================запрос getSingleItem, $request = ';
+//prettyDump($request);
+            $auth = self::getAuthorization();
+            if (empty($auth['access_token'])) return false;
+
+            $endpoint = 'https://open.api.ebay.com/shopping?';
+            $session  = curl_multi_init();                       // create a curl session
+            //print_r($request); die;
+            //exit;
+            //
+            $results = array();
+
+            $headersShip = array(
+                'X-EBAY-API-CALL-NAME: GetShippingCosts',
+                'X-EBAY-API-SITE-ID: 0',
+                'X-EBAY-API-APP-ID: RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-API-VERSION: 889',
+                "X-EBAY-API-REQUEST-ENCODING: XML",
+                'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
+                'Content-Type: text/xml;charset=utf-8',
+            );
+
+            //
+            $headers = array(
+                'X-EBAY-API-CALL-NAME: GetSingleItem',
+                'X-EBAY-API-SITE-ID: 0',                                 // Site 0 is for US
+                'X-EBAY-API-APP-ID: RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-API-VERSION: 889',
+                "X-EBAY-API-REQUEST-ENCODING: XML",    // for a POST request, the response by default is in the same format as the request
+                'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
+                'Content-Type: text/xml;charset=utf-8',
+            );
+
+            $chs = array();
+            //printf(" (старт мультикурла getSingleItem: %.2f сек)<br>", (microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]));
+            foreach ( $request as $url )
+            {
+//var_dump($url);
+                // подготовим мультикурл для GetSingleItem
+                $chs[] = ( $ch = curl_init() );
+
+                $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+                $xmlRequest .= '<GetSingleItemRequest xmlns="urn:ebay:apis:eBLBaseComponents"><ItemID>'.$url.'</ItemID>';
+//                $xmlRequest .= '<IncludeSelector>ShippingCosts,Compatibility,Details,ItemSpecifics</IncludeSelector>';
+                $xmlRequest .= '<IncludeSelector>ShippingCosts,Details,ItemSpecifics</IncludeSelector>';
+                $xmlRequest .= '</GetSingleItemRequest>​';
+                curl_setopt($ch, CURLOPT_URL, $endpoint );
+                curl_setopt($ch, CURLOPT_POST, true);              // POST request type
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $xmlRequest); // set the body of the POST
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);    // return values as a string - not to std out
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);    //set headers using the above array of headers
+
+//echo '<br>GetSingleItemRequest<br>';
+//curl_setopt($ch, CURLOPT_VERBOSE, true); // лог апача
+
+                curl_multi_add_handle( $session, $ch );
+
+                // подготовим мультикурл для getShipping ---- кажется это лишнее - порождает запросы-дубликаты
+                // при доставке в США запрашивать шиппинг отдельно неактуально
+                /*$chs[] = ( $ch = curl_init() );
+                $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+                $xmlRequest .= "<GetShippingCostsRequest xmlns='urn:ebay:apis:eBLBaseComponents'>";
+                $xmlRequest .= "<ItemID>$url</ItemID>";
+                $xmlRequest .= "<DestinationCountryCode>RU</DestinationCountryCode>";
+                //$xmlRequest .= "<DestinationPostalCode>19720</DestinationPostalCode>";
+                $xmlRequest .= "<QuantitySold>1</QuantitySold>";
+                $xmlRequest .= "<IncludeDetails>false</IncludeDetails>"; // false|true необязательно
+                $xmlRequest .= "</GetShippingCostsRequest>​";
+                curl_setopt( $ch, CURLOPT_URL, $endpoint );
+                curl_setopt($ch, CURLOPT_POST, true);              // POST request type
+                curl_setopt($ch, CURLOPT_POSTFIELDS, $xmlRequest); // set the body of the POST
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);    // return values as a string - not to std out
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headersShip);    //set headers using the above array of headers
+
+//echo '<br>GetShippingCostsRequest<br>'.$url;
+//curl_setopt($ch, CURLOPT_VERBOSE, true);  // лог апача
+
+                curl_multi_add_handle( $session, $ch );
+                */
+            }
+
+
+            do {
+                // запустим мультикурл
+                $status = curl_multi_exec( $session, $running );
+                // получаю информацию о текущих соединениях
+                $info = curl_multi_info_read( $session );
+                if ( $info!==false )
+                {
+//	   			prettyDump($info);  // Resource id
+                }
+            }
+            while ( $status === CURLM_CALL_MULTI_PERFORM || $running);
+
 
 ///////////////////// главный цикл  /////////////////////
-    foreach ( $chs as $ch ) 
-    {
-        $responseXML = curl_multi_getcontent($ch);
-$a = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
-prettyDump($a);
-prettyDump($responseXML);
-		$responseXML = simplexml_load_string($responseXML);
-
-		// если лот не BIN
-		// почему-то вседа выполняется continue независимо от 	ListingType
-		// continue пока отключено
-		if ($responseXML->Item->ListingType != 'FixedPriceItem') 
-		{
-            echo			$error = $responseXML->Item->ItemID.' '.$responseXML->Item->ListingType;
-            ob_get_flush();
-            //			continue;
-		}
-
-		// если лот протух
-		if ($responseXML->Item->ListingStatus == 'Completed') 
-		{
-    		if ($ajax == 0)
-    		{
-                echo '<script>toastr.warning(\'<a target="_blank" href="https://ebay.com/itm/'.$responseXML->Item->ItemID.'">Лот '.$responseXML->Item->ItemID.' протух, ищем другой по partnumber</a>\',\'Ответ getSingleItem:\');</script>';
-                ob_get_flush();			
-            }
-			return;
-
-			if (isset($responseXML->Item->ProductID)) 
-				{
-//					 echo $error = ('EPID = '. $responseXML->Item->ProductID);
-					 echo '<div id="console">'.$error = ('EPID = '. $responseXML->Item->ProductID).'</div>';
-					 ob_get_flush();
-					 self::findItemsByEPID($responseXML->Item->ProductID);
-				}
-			else
-			{
-				echo $error = ('EPID не найден, доделать. ');
-				ob_get_flush();
-			}
-		}
-		
-
-        // если продавец (userID) в бан-листе - пропускаем
-        // бан-лист объявляется в ДВУХ функциях: getsingleItem и finditemAdvanced
-        if (in_array($responseXML->Item->Seller->UserID, $banlist)) 
-        {
-            if ($ajax == 0)
+            foreach ( $chs as $ch )
             {
-                echo "<script>toastr.warning('забанен, пропускаем', '".$responseXML->Item->Seller->UserID."');</script>";    
-                ob_get_flush();        
-            }
-            else {
-                return json_decode(array('error'=>'Селлер забанен'));
-            }
-            //echo '========= ПИДОРАС: ';
-            //echo $responseXML->Item->Seller->UserID.'<br>';
-            //ob_get_flush();    
-            continue;
-        }
+                $responseXML = curl_multi_getcontent($ch);
+                $responseXML = simplexml_load_string($responseXML);
 
 
+// дебаг
+//$curlURL = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+//prettyDump($curlURL);
 
+//prettyDump('getSingleItem '.__LINE__);
+//prettyDump($responseXML);
 
-		
-		// найдем epid
-		unset($epid);
-		$epid = strval($responseXML->Item->ProductID[0]);
+                // если лот не BIN
+                // почему-то вседа выполняется continue независимо от 	ListingType
+                // continue пока отключено
+                if ($responseXML->Item->ListingType != 'FixedPriceItem')
+                {
+                    echo			$error = $responseXML->Item->ItemID.' '.$responseXML->Item->ListingType;
+                    ob_get_flush();
+                    //			continue;
+                }
 
-		// обработаем производителя: Part Brand или Brand
-		unset($brand);
-		$partnumbers = self::simplexmlelement2array($responseXML->Item->ItemSpecifics->NameValueList);
-		if ($partnumbers['Part Brand'] && $partnumbers['Brand']) 
-		{
-			$brand = $partnumbers['Part Brand'].' ';
-		}
-		elseif ($partnumbers['Part Brand'])
-		{
-			$brand = $partnumbers['Part Brand'].' ';
-		}
-		else
-		{
-			$brand = $partnumbers['Brand'].' ';
-		}
-
-
-		// обработаем парт-номер: Manufacturer Part Number или MPN или OEM
-		unset($partnumber);
-		if ($partnumbers['Manufacturer Part Number'] && $partnumbers['MPN']) 
-		{
-			$partnumber = $partnumbers['Manufacturer Part Number'];
-		}
-		elseif ($partnumbers['Manufacturer Part Number'])
-		{
-			$partnumber = $partnumbers['Manufacturer Part Number'];
-		}
-		elseif ($partnumbers['OEM'])
-		{
-			$partnumber = $partnumbers['OEM'];
-		}
-		else
-		{
-			$partnumber = $partnumbers['MPN'];
-		}
-
-		if (!$partnumber) 
-		{
-//			echo '<div id="console">PartNumber не найден.</div>';
-//			ob_get_flush();
-		}
-		else 
-		// сформируем поле "производитель" + "партномер"
-		{
-			$partnumber = $brand.$partnumber;
-//			echo '<div id="console">partnumber = '.$partnumber.'</div>';
-//			ob_get_flush();
-		}
-
-		// обработаем совместимость с марками-моделями (если указано) -- РАБОТАЕТ НЕ У ВСЕХ ЛОТОВ
-
-/*
-		unset($compatibility);
-		$compatibilities = $responseXML->Item->ItemCompatibilityList;
-		if ($compatibilities->Compatibility)
-		{
-			$compatibility = '<p>Подходит для:</p><ul>';
-			foreach ($compatibilities->Compatibility as $models)
-			{
-				$model = self::simplexmlelement2array($models);
-				$compatibility .= '<li>'.$model['Make'].' '.$model['Model'].' '.$model['Submodel'].' '.$model['Year'].'</li>';
-			} 
-			$compatibility .= '</ul>';
-		}
-*/
-		
-//print_r($compatibilities = $responseXML->Item); 		
-//die;  
-		
-		
-		
-		// обработаем фотки
-		unset($image);
-		if (empty($responseXML->CorrelationID))
-		{
-            $i=0;
-			foreach ($responseXML->Item->PictureURL as $images)
-			{
-				$imgs = $images->$i;
-				$images1[] = self::imageNameTrim($imgs);
-				$i++;
-			}
-            $cover = $responseXML->Item->GalleryURL;
-            $image = implode("|", $images1); 
-		}
-
-		// обработаем стоимость доставки
-	        if (isset($responseXML->CorrelationID))
-		    {
-		    
-		    	$results[strval($responseXML->CorrelationID)]['shipping'] = strval($responseXML->ShippingCostSummary->ListedShippingServiceCost); 
-		    	$results[strval($responseXML->CorrelationID)]['ebay_price'] = strval($responseXML->ShippingCostSummary->ListedShippingServiceCost)+$results[strval($responseXML->CorrelationID)]['price']; 
-			}
-
-		    else
-		    {
-			    $out = array (
-			    'lot' => strval($responseXML->Item->ItemID),
-			    'status' => strval($responseXML->Item->ListingStatus),
-				'condition' => strval($responseXML->Item->ConditionDisplayName),
-//				'quantity' => strval($responseXML->Item->QuantitySoldByPickupInStore),
-//				'conditiondesc' => strip_tags($responseXML->Item->Description),
-				'type' => strval($responseXML->Item->ListingType),
-			    'name' => strval($responseXML->Item->Title), 
-			    'epid' => $epid,
-			    'ean13' => $partnumber, 
-//			    'currency' => strval($responseXML->Item->CurrentPrice['currencyID']), 
-//			    'price' => strval($responseXML->Item->CurrentPrice),
-			    'currency' => strval($responseXML->Item->ConvertedCurrentPrice['currencyID']), 
-			    'price' => strval($responseXML->Item->ConvertedCurrentPrice),			    
-				'shipping' => $results[$responseXML['lot']]['shipping'],
-				'seller' => strval($responseXML->Item->Storefront->StoreName),
-				'feedback' => strval($responseXML->Item->Seller->FeedbackScore),
-				'positive' => strval($responseXML->Item->Seller->PositiveFeedbackPercent),
-			    'image' => $image,
-                'cover' => $cover,
-//			    'description' => self::cleanText(strip_tags(strval($responseXML->Item->Description))),
-				'ebay_price' => $results[$responseXML['lot']]['shipping']+strval($responseXML->Item->CurrentPrice),
-			    'compatibility' => $compatibility
-			    );
-			    $results[$out['lot']] = $out;
-			}		    
-
-
-			if ($responseXML->Errors->LongMessage) 
-			{
-    			if ($ajax == 0)
-    			{
-    				echo '<script>toastr.error(\'<a target="_blank" href="http://ebay.com/itm/'.$responseXML->CorrelationID.'">'.$responseXML->CorrelationID.' — '.$responseXML->Errors->LongMessage[0].'</a>\', \'Ответ getSingleItem: \');</script>';	
-    				ob_get_flush();
-				}
-			}
-	    
-        curl_multi_remove_handle( $session, $ch );
-        curl_close( $ch );
-
-    } //end foreach
-
-	// отбросим не имеющие доставки 
-	foreach ($results as $result)
-	    {
-		    if ($skip_no_spipping==1)
-		      if ($result['shipping']=='')
-		      {
-			       unset($results[$result['lot']]);
-				   continue;
-		      }
-
-		     else 
-		    $results[$result['lot']]['ebay_price'] = str_replace(',','.',strval($results[$result['lot']][price]+$results[$result['lot']]['shipping']));  
-
-// передадим остальные лоты в отдельном массиве $variations
-$variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
-	    }
-
-    curl_multi_close($session);
-    return $results;
-}	
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-	/* ищет стоимость доставки по номеру лота	
-	// выдает ошибку если нет доставки
-	//
-	*/
-	public static function getShipping( $request, $skip_no_spipping = 1, $endpoint = 'https://open.api.ebay.com/shopping?' )
-	{
-	    $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-	    $xmlRequest .= "<GetShippingCostsRequest xmlns='urn:ebay:apis:eBLBaseComponents'><ItemID>".$request."</ItemID>";
-		$xmlRequest .= "<DestinationCountryCode>RU</DestinationCountryCode>";
-		$xmlRequest .= "<MessageID>".strval($request)."</MessageID>"; // необязательно
-		$xmlRequest .= "<IncludeDetails>false</IncludeDetails>"; // false|true необязательно
-		$xmlRequest .= "</GetShippingCostsRequest>​";
-	    $session  = curl_init($endpoint);                       
-	    curl_setopt($session, CURLOPT_POST, true);              
-	    curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest); 
-	    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    
-	    $headers = array(
-	      'X-EBAY-API-CALL-NAME: GetShippingCosts',
-	      'X-EBAY-API-SITE-ID: 0',                              
-	      'X-EBAY-API-APP-ID: RubenYak-81fb-43e6-b05e-58e99eeaf19e',
-	      'X-EBAY-API-VERSION: 889',
-	      "X-EBAY-API-REQUEST-ENCODING: XML",    
-	      'Content-Type: text/xml;charset=utf-8',
-	    );
-	    curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
-	    $responseXML = curl_exec($session);
-	    curl_close($session);
-	    $responseXML = simplexml_load_string($responseXML);
-
-		if (!$responseXML->ShippingCostSummary->ListedShippingServiceCost && $skip_no_spipping == 0) 
-		{
-			echo '<div id="console">нет доставки, ищем другой лот</div>';
-			ob_get_flush();
-			// здесь запускаем другой лот из найденного
-		}
-		elseif ($responseXML->Errors->LongMessage) 
-		{
-			echo 'хуйня с доставкой ';
-			ob_get_flush();
-			return array('ListedShippingServiceCost' => $responseXML->Errors->LongMessage);
-		}
-		else
-		{
-//printf(" (getShipping: %.2f сек)<br>", (microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]));						
-		    return array(
-		    'lot' => $request,
-		    'ShippingServiceName' => $responseXML->ShippingCostSummary->ShippingServiceName,
-		    'ListedShippingServiceCost' => $responseXML->ShippingCostSummary->ListedShippingServiceCost,
-		    'currencyID' => $responseXML->ShippingCostSummary->ListedShippingServiceCost['currencyID']
-		    );
-	    }
-	}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-	/* ищет товары по ключевым словам ВО ВСЕХ store	
-	// в качестве ключевых слов понимает partnumber
-	// 
-	// использовать в EbayUpdater
-	*/
-	public static function findItemsAdvanced( $request, $findpair = 0, $csv = 0 )
-	{
-        // бан-лист продавцов-гандонов
-        // бан-лист объявляется в ДВУХ функциях: getsingleItem и finditemAdvanced
-      	$banlist = array(               
-        'speedoutfitters',
-        'motorcityperformanceplus',
-        'ridersaddiction',
-        'hondaeasttoledo',
-        'riderswarehouse'
-        );
-    	
-
-		$endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?';
-	    $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-	    $xmlRequest .= "<findItemsAdvancedRequest xmlns='https://www.ebay.com/marketplace/search/v1/services'>";
-	    $xmlRequest .= "<categoryId>10063</categoryId>"; // 10063 - запчасти для мотоциклов // 6028 - запчасти вообще
-	    $xmlRequest .= "<descriptionSearch>false</descriptionSearch>"; // ИНОГДА может найти полную хуйню, отключено
-	    $xmlRequest .= "<keywords>".$request."</keywords>";
-	    
-	    $xmlRequest .= "<itemFilter><name>Condition</name><value>New</value></itemFilter>"; 
-	    $xmlRequest .= "<itemFilter><name>FeedbackScoreMin</name><value>1000</value></itemFilter>"; 	    
-	    $xmlRequest .= "<itemFilter><name>ListingType</name><value>FixedPrice</value></itemFilter>"; 	    
-	    $xmlRequest .= "<itemFilter><name>AvailableTo</name><value>RU</value></itemFilter>";
-	    $xmlRequest .= "<itemFilter><name>PaymentMethod</name><value>PayPal</value></itemFilter>"; 	
-		$xmlRequest .= "<itemFilter><name>HideDuplicateItems</name><value>true</value></itemFilter>"; 	
-		
-		/* пока не работает 
-		$xmlRequest .= "<itemFilter><name>ExcludeSeller</name>
-						<value>".implode("|", $banlist)."</value></itemFilter>"; 
-        */
-        
-	    $xmlRequest .= "<outputSelector>SellerInfo</outputSelector>
-		<paginationInput><entriesPerPage>100</entriesPerPage></paginationInput> 
-	    <sortOrder>PricePlusShippingLowest</sortOrder>"; 
-	    
-		$xmlRequest .= "</findItemsAdvancedRequest>";
-	    $session  = curl_init($endpoint);                       
-	    curl_setopt($session, CURLOPT_POST, true);              
-	    curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest); 
-	    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    
-	    $headers = array(
-	      'X-EBAY-SOA-SERVICE-NAME:FindingService',
-	      'X-EBAY-SOA-OPERATION-NAME:findItemsAdvanced',                              
-	      'X-EBAY-SOA-SERVICE-VERSION:1.12.0',
-	      'X-EBAY-SOA-GLOBAL-ID:EBAY-US',
-	      'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
-	      "X-EBAY-API-REQUEST-ENCODING: XML",    
-	      'Content-Type: text/xml;charset=utf-8',
-	    );
-	    curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
-	    $responseXML = curl_exec($session);
-	    curl_close($session);
-
-   
-//print_r($responseXML); 
-//die;
-
-	    $responseXML = simplexml_load_string($responseXML); 
-	    
-//echo '<br><br>';
-//print_r($responseXML); 	    
-
-		foreach ($responseXML->searchResult->item as $item) 
-		{
-
-			if (strval($item->sellingStatus->sellingState) !== 'Active')		// пропустим проданные лоты
-			{
-				$error = 'Лот продан';
-				continue; 	
-			}
-			
-			// пропустим селлеров с positive feedback меньше X
-			// не учитываем kakahealthcare, Meow-Auctshop, Mutazu
-			if ((float)$item->sellerInfo->positiveFeedbackPercent < self::getsellerEbayPositive() && $item->sellerInfo->sellerUserName != 'mutazu')
-			{
-				continue;
-			}
-			
-
-            // если продавец (название магазина) в бан-листе - пропускаем
-            // бан-лист объявляется в ДВУХ функциях: getsingleItem и finditemAdvanced            
-            if (in_array($item->sellerInfo->sellerUserName, $banlist)) {
-                echo "<script>toastr.warning('забанен, пропускаем', '".$item->sellerInfo->sellerUserName."');</script>";    
-                ob_get_flush();        
-                
-                //echo '============= ПИДОРАС: ';
-                //echo $item->sellerInfo->sellerUserName.'<br>';
-                //ob_get_flush();    
-                
-                continue;
-            }
-			
-
-  		$items[] = $item;
-  		$itemslots[] = strval($item->itemId);
-		}
-		
-		$results = (self::getSingleItem($itemslots, 1));
-//$results = self::priceSort($results);
-
-//return $results; 
-		
-		// если ищется одиночный товар
-		if ($findpair == 0) 
-		{
-			$results = self::priceSort($results);
-			
-			// если запрос не для вывода в файл
-			if ($csv == 0)
-			return $results;
-			
-			else 
-			{
-				$results[$results['lot']] = $results;
-//				$results =(self::getSingleItem($results,0)); // отправить на return
-//				print_r($results);die;
-				return $results;
-			}
-
-		}
-		
-
-		// если ищется парный товар
-        else
-		{
-            echo "<script>toastr.info('$item->title','findItemsAdvanced:');</script>";
-            ob_get_flush();
-			$results = array_values($results);
-			return $results; 
-		}
-
-
-
-		
-	} // end of findItemsAdvanced
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-	/* ищет составные товары из нескольких лотов
-	// принимает строку с разделителями
-	// разделитель — знак плюса +
-	// понимает номера лотов
-	*/
-	public static function findPair( $request )
-	{
-        $tmp = array();
-        $tmp1 = array();
-        echo 'Ищем '. $request.'<br><br>';
-        
-    	$request = explode('+', $request);
-    	foreach ($request as $keyword)
-    	{
-            $results[trim($keyword)] = self::findItemsAdvanced(trim($keyword) ,1);
-    	}
-
-    	foreach ($results as $result => $values)
-    	{
-            foreach ($values as $value)
-    	    {  
-    		    $tmp[$value['seller']][] = $value;
-    	  	}
-    	}
-
-    	foreach ($tmp as $seller => $products)
-        {
-            if (count($products) >= count($request)) 
-            {
-                $tmp1[$seller] = $products;
-                $data = '';
-                $price = array();
-                $total = 0;
-                foreach ($tmp1[$seller] as $product)
-                {   
-                    // сравним текущую цену с забитыми ранее
-                    if ( !in_array($product['price'], $price) )
+                // если лот протух
+                if ($responseXML->Item->ListingStatus == 'Completed')
+                {
+                    if ($ajax == 0)
                     {
-                        $tmp1[$seller]['total_price'] += round($product['ebay_price']);
-                        $data .= '<br><div style=""><img style="width: 150px; height: 80px; margin-right: 20px; object-fit: contain; border: #d0d1d5 solid 1px; border-radius: 5px;" src="'.$product['cover'].'">';
-                        $data .= '<a href="https://www.ebay.com/itm/'.$product['lot'].'" target="_blank">$'.$product['ebay_price'].' — '.$product['ean13'].'</div></a>';
-                        $tmp2[] = $product;
-                        
-                        // набиваем массив с ценами для послед проверки
-                        array_push($price, $product['price']); 
-                        $total++;                    
+                        echo '<script>toastr.warning(\'<a target="_blank" href="https://ebay.com/itm/'.$responseXML->Item->ItemID.'">Лот '.$responseXML->Item->ItemID.' протух, ищем другой по partnumber</a>\',\'Ответ1 getSingleItem:\');</script>';
+                        ob_get_flush();
+                    }
+                    return;
+
+                    if (isset($responseXML->Item->ProductID))
+                    {
+//					 echo $error = ('EPID = '. $responseXML->Item->ProductID);
+                        echo '<div id="console">'.$error = ('EPID = '. $responseXML->Item->ProductID).'</div>';
+                        ob_get_flush();
+                        self::findItemsByEPID($responseXML->Item->ProductID);
+                    }
+                    else
+                    {
+                        echo $error = ('EPID не найден, доделать. ');
+                        ob_get_flush();
                     }
                 }
-                $tmp2['total_price'] = $tmp1[$seller]['total_price'];
-                
-                // если колво товаров меньше запрошенных - ничего не выводим
-                if ($total >= count($request))
+
+                // если продавец (userID) в бан-листе - пропускаем
+                if (in_array($responseXML->Item->Seller->UserID, self::$banlist))
                 {
-                    
-                    
-                    $return .= '
-                    <div class="sellers" data-price="'.$tmp1[$seller]['total_price'].'" data-supplier="'.$seller.'" id="'.$tmp1[$seller]['total_price'].'"> 
-                        <hr><h1>$'.$tmp1[$seller]['total_price'].' — '.$seller.'</h1><p></p>
-                        '.$data.'<br></div><br>';
+                    if ($ajax == 0)
+                    {
+                        echo "<script>toastr.warning('getSingleItem: cеллер забанен, пропускаем', '".$responseXML->Item->Seller->UserID."');</script>";
+                        ob_get_flush();
+                    }
+                    else {
+                        return json_decode(array('error'=>'Селлер забанен'));
+                    }
+                    continue;
+                }
+
+
+                // найдем epid
+                unset($epid);
+                $epid = strval($responseXML->Item->ProductID[0]);
+
+                // обработаем производителя: Part Brand или Brand
+                unset($brand);
+                $partnumbers = self::simplexmlelement2array($responseXML->Item->ItemSpecifics->NameValueList);
+                if ($partnumbers['Part Brand'] && $partnumbers['Brand'])
+                {
+                    $brand = $partnumbers['Part Brand'].' ';
+                }
+                elseif ($partnumbers['Part Brand'])
+                {
+                    $brand = $partnumbers['Part Brand'].' ';
+                }
+                else
+                {
+                    $brand = $partnumbers['Brand'].' ';
+                }
+
+
+                // обработаем парт-номер: Manufacturer Part Number или MPN или OEM
+                unset($partnumber);
+                if ($partnumbers['Manufacturer Part Number'] && $partnumbers['MPN'])
+                {
+                    $partnumber = $partnumbers['Manufacturer Part Number'];
+                }
+                elseif ($partnumbers['Manufacturer Part Number'])
+                {
+                    $partnumber = $partnumbers['Manufacturer Part Number'];
+                }
+                elseif ($partnumbers['OEM'])
+                {
+                    $partnumber = $partnumbers['OEM'];
+                }
+                else
+                {
+                    $partnumber = $partnumbers['MPN'];
+                }
+
+                if (!$partnumber)
+                {
+                    //			echo '<div id="console">PartNumber не найден.</div>';
+                    //			ob_get_flush();
+                }
+                else
+                    // сформируем поле "производитель" + "партномер"
+                {
+                    $partnumber = $brand.$partnumber;
+//                    echo '<div id="console">partnumber = '.$partnumber.'</div>';
+//                    ob_get_flush();
+                }
+
+                // обработаем совместимость с марками-моделями (если указано) -- РАБОТАЕТ НЕ У ВСЕХ ЛОТОВ
+                        unset($compatibility);
+                        $compatibilities = $responseXML->Item->ItemCompatibilityList;
+                        if ($compatibilities->Compatibility)
+                        {
+                            $compatibility = '<p>Подходит для:</p><ul>';
+                            foreach ($compatibilities->Compatibility as $models)
+                            {
+                                $model = self::simplexmlelement2array($models);
+                                $compatibility .= '<li>'.$model['Make'].' '.$model['Model'].' '.$model['Submodel'].' '.$model['Year'].'</li>';
+                            }
+                            $compatibility .= '</ul>';
+                        }
+
+                // обработаем фотки
+                unset($image);
+                if (empty($responseXML->CorrelationID))  {
+                    $i=0;
+                    foreach ($responseXML->Item->PictureURL as $images)
+                    {
+                        $imgs = $images->$i;
+                        $images1[] = self::imageNameTrim($imgs);
+                        $i++;
+                    }
+                    $cover = $responseXML->Item->GalleryURL;
+                    $image = implode("|", $images1);
+                }
+
+                // обработаем стоимость доставки
+                if (isset($responseXML->CorrelationID))
+                {
+                    echo '<hr>зачем нужен CorrelationID?<hr>';
+                    $results[strval($responseXML->CorrelationID)]['shipping'] = strval($responseXML->ShippingCostSummary->ListedShippingServiceCost);
+                    $results[strval($responseXML->CorrelationID)]['ebay_price'] = strval($responseXML->ShippingCostSummary->ListedShippingServiceCost)+$results[strval($responseXML->CorrelationID)]['price'];
+                } else {
+//prettyDump('getSingleItem $responseXML');
+//prettyDump($responseXML);
+//echo '<hr>';
+                    $out = array (
+                        'lot' => strval($responseXML->Item->ItemID),
+                        'status' => strval($responseXML->Item->ListingStatus),
+                        'condition' => strval($responseXML->Item->ConditionDisplayName),
+                        'conditionId' => $responseXML->Item->ConditionID,
+                        'type' => strval($responseXML->Item->ListingType),
+                        'name' => strval($responseXML->Item->Title),
+                        'epid' => $epid,
+                        'ean13' => $partnumber,
+                        'currency' => strval($responseXML->Item->ConvertedCurrentPrice['currencyID']),
+                        'price' => strval($responseXML->Item->ConvertedCurrentPrice),
+                        'shipping' => strval($responseXML->Item->ShippingCostSummary->ListedShippingServiceCost),
+                        'seller' => strval($responseXML->Item->Storefront->StoreName),
+                        'sellerCountry' => strval($responseXML->Item->Country),
+                        'feedback' => strval($responseXML->Item->Seller->FeedbackScore),
+                        'positive' => strval($responseXML->Item->Seller->PositiveFeedbackPercent),
+                        'image' => $image,
+                        'cover' => $cover,
+//			    'description' => self::cleanText(strip_tags(strval($responseXML->Item->Description))),
+                        'ebay_price' => (float)$responseXML->Item->ShippingCostSummary->ListedShippingServiceCost*1 + (float)$responseXML->Item->ConvertedCurrentPrice*1,
+                        'compatibility' => empty($compatibility) ? '' : $compatibility
+                    );
+                    $results[$out['lot']] = $out;
+                }
+//prettyDump('$results '.__LINE__);
+//prettyDump($results);
+                if ($responseXML->Errors->LongMessage)
+                {
+                    if ($ajax == 0)
+                    {
+                        echo '<script>toastr.error(\'<a target="_blank" href="http://ebay.com/itm/'.$responseXML->CorrelationID.'">'.$responseXML->CorrelationID.' — '.$responseXML->Errors->LongMessage[0].'</a>\', \'Ответ2 getSingleItem: \');</script>'; // оригинал
+                        ob_get_flush();
+                    }
+                }
+
+                curl_multi_remove_handle( $session, $ch );
+                curl_close( $ch );
+
+            } //end foreach
+
+            // отбросим не имеющие доставки (актуально только при доств=авк в рашку)
+//            foreach ($results as $result)
+//            {
+//                if ($skip_no_spipping == 1)
+//                    if ($result['shipping'] == '')
+//                    {
+//                        unset($results[$result['lot']]);
+//                        continue;
+//                    } else {
+//                        $results[$result['lot']]['ebay_price'] = str_replace(',','.',strval($results[$result['lot']][price]+$results[$result['lot']]['shipping']));
+//                    }
+//
+//                // передадим остальные лоты в отдельном массиве $variations
+//                $variations[$result['lot']] = ($results[$result['lot']]['ebay_price']);
+//            }
+
+            curl_multi_close($session);
+//prettyDump('$results '.__LINE__);
+//prettyDump($results);
+            return $results;
+        } // /getSingleItem
+
+        /**
+         * Ищет стоимость доставки по номеру лота, выдает ошибку если нет доставки
+         * @param $request
+         * @param int $skip_no_spipping
+         * @param string $endpoint
+         * @return array|bool|null
+         */
+        public static function getShipping($request, $skip_no_spipping = 1, $endpoint = 'https://open.api.ebay.com/shopping?')
+        {
+            $auth = self::getAuthorization();
+            if (empty($auth['access_token'])) return false;
+            $xmlRequest = <<<xml
+<?xml version="1.0" encoding="utf-8"?>
+<GetShippingCostsRequest xmlns='urn:ebay:apis:eBLBaseComponents'>
+    <ItemID>{$request}</ItemID>
+    <DestinationCountryCode>US</DestinationCountryCode>
+    <DestinationPostalCode>19720</DestinationPostalCode>
+    <QuantitySold>1</QuantitySold>
+    <MessageID>{$request}</MessageID>
+    <IncludeDetails>false</IncludeDetails>
+</GetShippingCostsRequest>
+xml;
+            $responseXML = self::getXMLRequest($endpoint, $xmlRequest, array(
+                'X-EBAY-API-CALL-NAME: GetShippingCosts',
+                'X-EBAY-API-SITE-ID: 0',
+                'X-EBAY-API-APP-ID: ' . self::EBAY_CLIENT_ID,
+                'X-EBAY-API-VERSION: ' . self::EBAY_API_VER,
+                'X-EBAY-API-REQUEST-ENCODING: XML',
+                'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
+                'Content-Type: text/xml;charset=utf-8',
+            ));
+            if (!$responseXML->ShippingCostSummary->ListedShippingServiceCost && $skip_no_spipping == 0) {
+                echo '<div id="console">нет доставки, ищем другой лот</div>';
+                ob_get_flush();
+                return null;
+                // здесь запускаем другой лот из найденного
+            } elseif ($responseXML->Errors->LongMessage) {
+                echo 'хуйня с доставкой ';
+                ob_get_flush();
+                return array('ListedShippingServiceCost' => $responseXML->Errors->LongMessage);
+            } else {
+                return array(
+                    'lot' => $request,
+                    'ShippingServiceName' => $responseXML->ShippingCostSummary->ShippingServiceName,
+                    'ListedShippingServiceCost' => $responseXML->ShippingCostSummary->ListedShippingServiceCost,
+                    'currencyID' => $responseXML->ShippingCostSummary->ListedShippingServiceCost['currencyID']
+                );
+            }
+        }
+
+        /**
+         * Ищет товары по ключевым словам ВО ВСЕХ store
+         * в качестве ключевых слов понимает partnumber
+         * использовать в EbayUpdater
+         *
+         * @param $request // ean13, meta description
+         * @param int $findpair
+         * @param int $csv
+         * @return array|bool|float
+         */
+        public static function findItemsAdvanced($request, $findpair = 0, $csv = 0) {
+            $auth = self::getAuthorization();
+            if (empty($auth['access_token'])) return false;
+
+            $endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?';
+/*            $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";*/
+//            $xmlRequest .= "<findItemsAdvancedRequest xmlns='https://www.ebay.com/marketplace/search/v1/services'>";
+//            $xmlRequest .= "<categoryId>10063</categoryId>"; // 10063 - запчасти для мотоциклов // 6028 - запчасти вообще
+//            $xmlRequest .= "<descriptionSearch>false</descriptionSearch>"; // ИНОГДА может найти полную хуйню, отключено
+//            $xmlRequest .= "<keywords>".$request."</keywords>";
+//
+//            $xmlRequest .= "<itemFilter><name>Condition</name><value>New</value></itemFilter>";
+//            $xmlRequest .= "<itemFilter><name>FeedbackScoreMin</name><value>1000</value></itemFilter>";
+//            $xmlRequest .= "<itemFilter><name>ListingType</name><value>FixedPrice</value></itemFilter>";
+//            $xmlRequest .= "<itemFilter><name>AvailableTo</name><value>RU</value></itemFilter>";
+//            $xmlRequest .= "<itemFilter><name>PaymentMethod</name><value>PayPal</value></itemFilter>";
+//            $xmlRequest .= "<itemFilter><name>HideDuplicateItems</name><value>true</value></itemFilter>";
+//
+//            /* пока не работает
+//            $xmlRequest .= "<itemFilter><name>ExcludeSeller</name>
+//                            <value>".implode("|", $banlist)."</value></itemFilter>";
+//            */
+//            $xmlRequest .= "<outputSelector>SellerInfo</outputSelector>
+//		<paginationInput><entriesPerPage>10</entriesPerPage></paginationInput>
+//	    <sortOrder>PricePlusShippingLowest</sortOrder>";
+//            $xmlRequest .= "</findItemsAdvancedRequest>";
+
+
+$xmlRequest = "<?xml version='1.0' encoding='UTF-8'?>
+<findItemsAdvancedRequest xmlns='http://www.ebay.com/marketplace/search/v1/services'>
+    <categoryId>10063</categoryId>
+  <descriptionSearch>false</descriptionSearch>
+  
+  <itemFilter><name>Condition</name><value>New</value></itemFilter>    
+  <itemFilter><name>FeedbackScoreMin</name><value>1000</value></itemFilter>
+  <itemFilter><name>ListingType</name><value>FixedPrice</value></itemFilter>
+  <itemFilter><name>HideDuplicateItems</name><value>true</value></itemFilter>
+  
+  <outputSelector>SellerInfo</outputSelector>
+  
+  <paginationInput>
+    <entriesPerPage>100</entriesPerPage>
+  </paginationInput>
+  <keywords>$request</keywords>
+  <sortOrder>PricePlusShippingLowest</sortOrder>
+</findItemsAdvancedRequest>";
+
+            $session  = curl_init($endpoint);
+            curl_setopt($session, CURLOPT_POST, true);
+            curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest);
+            curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+
+            $headers = array(
+                'X-EBAY-SOA-SERVICE-NAME:FindingService',
+                'X-EBAY-SOA-OPERATION-NAME:findItemsAdvanced',
+                'X-EBAY-SOA-SERVICE-VERSION:1.12.0',
+                'X-EBAY-SOA-GLOBAL-ID:EBAY-US',
+                'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                "X-EBAY-API-REQUEST-ENCODING: XML",
+                'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
+                'Content-Type: text/xml;charset=utf-8',
+            );
+            curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
+
+            $responseXML = curl_exec($session);
+            curl_close($session);
+            $responseXML = simplexml_load_string($responseXML);
+
+//        prettyDump('findItemsAdvanced');
+//        prettyDump($responseXML);
+
+            if (!isset($responseXML->searchResult->item)) {
+                echo "<script>toastr.error('Не найдено ни одного лота для $request', 'Ответ findItemsAdvanced:');</script>";
+                ob_get_flush();
+                return;
+            }
+
+            foreach ($responseXML->searchResult->item as $item) {
+                if (strval($item->sellingStatus->sellingState) !== 'Active')		// пропустим проданные лоты
+                {
+                    $error = 'Лот продан';
+                    continue;
+                }
+
+                // пропустим селлеров с positive feedback меньше X
+                // не учитываем kakahealthcare, Meow-Auctshop, Mutazu
+                if ((float)$item->sellerInfo->positiveFeedbackPercent < self::getsellerEbayPositive() && $item->sellerInfo->sellerUserName != 'mutazu')
+                {
+                    continue;
+                }
+
+
+                // если продавец (название магазина) в бан-листе - пропускаем
+                if (in_array($item->sellerInfo->sellerUserName, self::$banlist)) {
+                    echo "<script>toastr.warning('".$item->sellerInfo->sellerUserName." забанен, пропускаем', 'Ответ findItemsAdvanced:');</script>";
+                    continue;
+                }
+
+
+                $items[] = $item;
+                $itemslots[] = strval($item->itemId);
+            }
+            // и тут нужно снова вызвать getSingleItem для получения полной инфы по лоту
+            echo "<script>toastr.info('$item->itemId', 'Повторный getSingleItem:');</script>";
+
+            // лоты в $itemslots уже отсортированы по цене ебейским параметром PricePlusShippingLowest
+            // возьмем ВТОРОЙ лот чтобы отсечь возможные глючные лоты с неверно указанным ценником
+            // если в массиве содержится только один номер лота — его и возьмем
+            if (sizeof($itemslots) > 1) $itemslot[] = $itemslots[1];
+            else $itemslot[] = $itemslots[0];
+
+            $results = (self::getSingleItem($itemslot, 1));
+
+            // если ищется одиночный товар
+            if ($findpair == 0)
+            {
+                //$results = self::priceSort($results);
+                // если запрос не для вывода в файл
+                if ($csv == 0) {
+                    return $results[$itemslot[0]];
+                } else {
+                    $results[$results['lot']] = $results;
+                    return $results;
                 }
             }
-            unset($tmp2);
+            // если ищется парный товар
+            else {
+                echo "<script>toastr.info('$item->title','Ответ findItemsAdvanced для пары:');</script>";
+                ob_get_flush();
+                $results = array_values($results);
+                return $results;
+            }
+        } // /findItemsAdvanced
+
+        /**
+         * Ищет составные товары из нескольких лотов
+         * принимает строку с разделителями
+         * разделитель — знак плюса +
+         * понимает номера лотов
+         *
+         * @param $request
+         * @return string
+         */
+        public static function findPair($request)
+        {
+            $tmp = array();
+            $tmp1 = array();
+            echo 'Ищем ' . $request . '<br><br>';
+            $request = explode('+', $request);
+            foreach ($request as $keyword) {
+                $results[trim($keyword)] = self::findItemsAdvanced(trim($keyword), 1);
+            }
+            foreach ($results as $result => $values) {
+                foreach ($values as $value) $tmp[$value['seller']][] = $value;
+            }
+            foreach ($tmp as $seller => $products) {
+                if (count($products) >= count($request)) {
+                    $tmp1[$seller] = $products;
+                    $data = '';
+                    $price = array();
+                    $total = 0;
+                    foreach ($tmp1[$seller] as $product) {
+                        // сравним текущую цену с забитыми ранее
+                        if (!in_array($product['price'], $price)) {
+                            $tmp1[$seller]['total_price'] += round($product['ebay_price']);
+                            $data .= '<br><div style=""><img style="width: 150px; height: 80px; margin-right: 20px; object-fit: contain; border: #d0d1d5 solid 1px; border-radius: 5px;" src="'.$product['cover'].'">';
+                            $data .= '<a href="https://www.ebay.com/itm/'.$product['lot'].'" target="_blank">$'.$product['ebay_price'].' — '.$product['ean13'].'</div></a>';
+                            $tmp2[] = $product;
+                            // набиваем массив с ценами для послед проверки
+                            array_push($price, $product['price']);
+                            $total++;
+                        }
+                    }
+                    $tmp2['total_price'] = $tmp1[$seller]['total_price'];
+                    // если колво товаров меньше запрошенных - ничего не выводим
+                    if ($total >= count($request)) {
+                        $return = <<<html
+<div class="sellers" data-price="{$tmp1[$seller]['total_price']}" data-supplier="{$seller}" id="{$tmp1[$seller]['total_price']}"> 
+<hr>
+<h1>${$tmp1[$seller]['total_price']} — {$seller}</h1>
+<p></p>
+{$data}<br>
+</div><br>
+html;
+                    }
+                }
+                unset($tmp2);
+            }
+            return $return;
         }
 
-        return $return;
-}
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-	/* ищет похожие товары по номеру лота на основе ключевых слов взятых из имени оригинального лота
-	// частенько ищет полную хуйню
-	// не работает если лот протух окончательно	
-	// использовать непонятно где
-	*/
-	public static function getSimilarItemsRequest( $request, $endpoint = 'https://svcs.ebay.com/MerchandisingService?' )
-	{
-	    $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-	    $xmlRequest .= "<getSimilarItemsRequest xmlns=\"https://www.ebay.com/marketplace/services\">";
-		$xmlRequest .= "<itemId>".$request."</itemId>";
-		$xmlRequest .= "<listingType>FixedPriceItem</listingType>";
-//		$xmlRequest .= "<maxPrice>20</maxPrice>"; // если ограничить цену, может найти еще более полную хуйню
-//		$xmlRequest .= "<maxResults>25</maxResults>";
-		$xmlRequest .= "</getSimilarItemsRequest>";
-	    
-	    $session  = curl_init($endpoint);                       
-	    curl_setopt($session, CURLOPT_POST, true);              
-	    curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest); 
-	    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    
-	    $headers = array(
-		'X-EBAY-SOA-OPERATION-NAME:getSimilarItems',
-		'EBAY-SOA-CONSUMER-ID:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
-		'X-EBAY-SOA-REQUEST-DATA-FORMAT:XML',
-		'X-EBAY-SOA-SERVICE-NAME:MerchandisingService'
-	    );
-	    curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
-	    $responseXML = curl_exec($session);
-	    curl_close($session);
-	    return simplexml_load_string($responseXML);
-	}
-	
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-	/* ищет товары по ключевым словам
-	// НЕ ПОНИМАЕТ страну!
-	// выводит SellerInfo
-	*/ 			
-	public static function findItemsByKeywordsRequest( $request, $endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?' )
-	{
-	    $xmlRequest  = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-	    $xmlRequest .= "<findItemsByKeywordsRequest xmlns='https://www.ebay.com/marketplace/search/v1/services'>";
-	    $xmlRequest .= "<keywords>".$request."</keywords>";
-	    $xmlRequest .= "<itemFilter>";
-   	    $xmlRequest .= "<name>Condition</name><value>1000</value>";							// либо ListingType, либо Condition
-//   	    $xmlRequest .= "<paramName>HideDuplicateItems</paramName><paramValue>true</paramValue>";// непонятно работает или нет
-//   	    $xmlRequest .= "<paramName>AvailableTo</paramName><paramValue>RU</paramValue>"; 	// НЕ РАБОТАЕТ
-//   	    $xmlRequest .= "<name>ListingType</name><value>FixedPrice</value>"; 					// либо ListingType, либо Condition
-	    $xmlRequest .= "</itemFilter>";	    
-	    $xmlRequest .= "<sortOrder>PricePlusShippingLowest</sortOrder>";
-	    $xmlRequest .= "<outputSelector>SellerInfo</outputSelector>";
-   	    $xmlRequest .= "</findItemsByKeywordsRequest>";
-    
-	    $session  = curl_init($endpoint);                       
-	    curl_setopt($session, CURLOPT_POST, true);              
-	    curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest); 
-	    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    
-	    $headers = array(
-		'X-EBAY-SOA-SERVICE-NAME:FindingService',
-		'X-EBAY-SOA-OPERATION-NAME:findItemsByKeywords',
-		'X-EBAY-SOA-SERVICE-VERSION:1.12.0',
-		'X-EBAY-SOA-GLOBAL-ID:EBAY-MOTOR',
-		'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
-		'X-EBAY-SOA-REQUEST-DATA-FORMAT:XML'
-	    );
-	    curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
-	    $responseXML = curl_exec($session);
-	    curl_close($session);
-		return simplexml_load_string($responseXML);
-	}
-	
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-	/* ищет товары по EPID, показывает %PositiveFeedback
-	// имеет фильтр по колву feedback продавца
-	// показывает большие фотки
-	// не показывает стоимость доставки
-	//
-	// <outputSelector>SellerInfo|StoreInfo|AspectHistogram|ConditionHistogram|GalleryInfo|PictureURLSuperSize|PictureURLLarge|UnitPriceInfo</outputSelector>
-	// <sortOrder>BestMatch|CurrentPriceHighest|DistanceNearest|EndTimeSoonest|PricePlusShippingLowest|PricePlusShippingHighest|StartTimeNewest|BidCountMost|BidCountFewest|CountryAscending(Only showing first 10 of 11)</sortOrder>
-	*/
-	
-	public static function findItemsByEPID( $request, $endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?' )
-	{
-	    $xmlRequest  = '<?xml version="1.0" encoding="utf-8"?>';
-	    $xmlRequest  .= '<findItemsByProductRequest xmlns="https://www.ebay.com/marketplace/search/v1/services">
-	    <itemFilter><name>FeedbackScoreMin</name><value>10000</value></itemFilter>
-	    <productId type="ReferenceID">'.$request.'</productId>
-	    <outputSelector>SellerInfo</outputSelector>	    
-	    <outputSelector>PictureURLLarge</outputSelector>	    
-		<sortOrder>PricePlusShippingLowest</sortOrder>
-	    <paginationInput><entriesPerPage>10</entriesPerPage></paginationInput>
-	    </findItemsByProductRequest>';
-    
-	    $session  = curl_init($endpoint);                       
-	    curl_setopt($session, CURLOPT_POST, true);              
-	    curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest); 
-	    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    
-	    $headers = array(
-		'X-EBAY-SOA-SERVICE-NAME:FindingService',
-		'X-EBAY-SOA-OPERATION-NAME:findItemsByProduct',
-		'X-EBAY-SOA-SERVICE-VERSION:1.12.0',
-		'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
-		'X-EBAY-SOA-REQUEST-DATA-FORMAT:XML'
-	    );
-	    curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
-	    $responseXML = curl_exec($session);
-	    curl_close($session);
-		$responseXML = simplexml_load_string($responseXML);
-		
-		if (!isset($responseXML->errorMessage))
-		{
-			foreach ($responseXML->searchResult->item as $lots)
-			{
-				print_r($lots);die;
-				return $responseXML;
-			}
-		}
-		else return $responseXML->errorMessage->error->message;
-		
-	}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-	/*
-	// ищет ключевые слова в заданной store
-	// аналог RSS
-	// понимает доставку в рашку
-	// itemFilter - http://developer.ebay.com/Devzone/finding/CallRef/findItemsIneBayStores.html искать по itemFilter.name
-	*/
-	public static function findItemsIneBayStores( $request, $store, $minprice = 0, $maxprice = 99999, $site_id = 'MOTOR')
-	{
-		$endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?';
-	    $xmlRequest  = '<?xml version="1.0" encoding="utf-8"?>';
-	    $xmlRequest  .= '<findItemsIneBayStoresRequest xmlns="https://www.ebay.com/marketplace/search/v1/services">
-		<keywords>'.$request.'</keywords>
-		<storeName>'.$store.'</storeName>
-		<itemFilter><name>MinPrice</name><value>'.$minprice.'</value></itemFilter><itemFilter><name>MaxPrice</name><value>'.$maxprice.'</value></itemFilter>  
-		<itemFilter><name>AvailableTo</name><value>RU</value></itemFilter>
-		<itemFilter><name>Condition</name><value>1000</value></itemFilter>
-		
-		<paginationInput>
-		<entriesPerPage>100</entriesPerPage>  
-		<pageNumber>0</pageNumber>
-		</paginationInput>
-
-		</findItemsIneBayStoresRequest>
-		';
-	    $headers = array(
-        'X-EBAY-SOA-SERVICE-NAME:FindingService',
-        'X-EBAY-SOA-OPERATION-NAME:findItemsIneBayStores',
-        'X-EBAY-SOA-SERVICE-VERSION:1.13.0',
-        'X-EBAY-SOA-GLOBAL-ID:EBAY-US',
-        'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
-        'X-EBAY-SOA-REQUEST-DATA-FORMAT:XML'
-	    );
-    
-	    $session  = curl_init($endpoint);                       
-	    curl_setopt($session, CURLOPT_POST, true);              
-	    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    
-	    curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
-
-		$curr_page = 0;
-		$totalpages = 0;
-		do
-		{
-		$xmlRequest = str_replace('<pageNumber>'.$curr_page.'</pageNumber>', '<pageNumber>'.($curr_page+1).'</pageNumber>', $xmlRequest);
-	    curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest); 
-	    $responseXML = curl_exec($session);
-		$responseXML = simplexml_load_string($responseXML);
-//echo '<pre>';
-//print_r($responseXML)		;die;
-		// ошибка
-		if ($responseXML->errorMessage)
-		return $responseXML->errorMessage->error->message;
-		
-		// ничего не найдено
-		elseif ($responseXML->searchResult['count'] == 0)
-		return '<div id="console">'.$error = 'Ничего не найдено. Возможно нет доставки?</div';
-
-		// выведем результаты в виде номеров лотов
-		else
-		{ 
-		  if ($totalpages==0)
-		   {
-			echo $error = 'Найдено '. strval($responseXML->paginationOutput->totalEntries).' лотов ('.strval($responseXML->paginationOutput->totalPages).' страниц).<br>';
-
-			// если лотов больше 100, запросим след страницу
-			// результат в виде номеров лотов запишем в $items
-			$totalpages = strval($responseXML->paginationOutput->totalPages);
-			}
-
-		   foreach ($responseXML->searchResult->item as $item)
-			{
-				$items[] = strval($item->itemId);
-		
-			} // end foreach
-			
-			
-		}
-
-		$curr_page++;
-		} 
-		while ($curr_page<$totalpages);
-		unset($curr_page);
-		// end DO
-		
-	    curl_close($session);
-
-//echo '<pre>';
-//print_r($items);
-//die;	    
-  		$out =(self::getSingleItem($items,0)); // отправить на return
-
-	return ($out);
-		
-		
-	} // end findItemsIneBayStores()
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-	// ищет юзера, смотрит positive feedback 
-	public static function GetUserProfile( $request, $endpoint = 'https://open.api.ebay.com/shopping?' )
-	{
-	    $xmlRequest  = '<?xml version="1.0" encoding="utf-8"?><GetUserProfileRequest xmlns="urn:ebay:apis:eBLBaseComponents"><UserID>'.$request.'</UserID></GetUserProfileRequest>';
-    
-	    $session  = curl_init($endpoint);                       
-	    curl_setopt($session, CURLOPT_POST, true);              
-	    curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest); 
-	    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    
-	    $headers = array(
-		'X-EBAY-API-APP-ID:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
-		'X-EBAY-API-VERSION:889',
-		'X-EBAY-API-CALL-NAME:GetUserProfile',
-		'X-EBAY-API-REQUEST-ENCODING:XML',
-		'Content-type:text/xml;charset=utf-8' //////////////////// этой ебаной бляди надо ИНОГДА указывать эту строку //////////////////////////////////////////////
-	    );
-	    curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
-	    $responseXML = curl_exec($session);
-	    curl_close($session);
-	    $responseXML = simplexml_load_string($responseXML);
-
-		if (!isset($responseXML->Errors))
-		{
-		return $responseXML->User;
-/*	    return array(
-	    'FeedbackScore' => $responseXML->User->FeedbackScore,
-	    'PositiveFeedbackPercent' => $responseXML->User->PositiveFeedbackPercent
-	    );
-*/	    
-		}
-		else return $error = $responseXML->Errors->LongMessage;
-	}
-	
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-	/*
-	// ищет мои покупки за Х дней
-	//
-	*/
-	public static function GetMyeBayBuying($days, $endpoint = 'https://api.ebay.com/ws/api.dll')
-	{
-		$xmlRequest  = '<?xml version="1.0" encoding="utf-8"?>
-		<GetMyeBayBuyingRequest xmlns="urn:ebay:apis:eBLBaseComponents">
-		<RequesterCredentials>
-		<eBayAuthToken>AgAAAA**AQAAAA**aAAAAA**+qagYQ**nY+sHZ2PrBmdj6wVnY+sEZ2PrA2dj6wMkoKnDZWKoASdj6x9nY+seQ**6dABAA**AAMAAA**l8Ymv8jzMCpd99nZwy1YKOsndPAqRmkeOU0bpBT1CtkgeoNReEkkkfQ4PbChdsGPfEtZ5pRItxg0rTovMW3zSX8O1wfOXyzatB8D0/MYOVD/FweMcyQ/GbiNqnC83kIw4UjFC/tWV8xLu5mYL8ICrRvNsOp2lV5Fr2IBMYWSLDeVrZR6ws9lle4hj0M8MKpTe/in3qCoeyfGzfPth8wb/rT1KzO39guxNKOoUyBxiSTk2/vgwC7JNOM+UDkxGsTetDEPMzNgY5taRifC4hBorN9LM8ZaMpEVClUQ364yo8LDVdU5ZXkdmCmExtVkwttCHATkgA0koP0nB1Z8TOZKrN0LDgHQXJQ899aVk7ZRW3rTtZdemyu/H1GOEgUsq/dIJHVEkgZ9Y1E5xCoDdw9DeyVB9L3Cw/ZDv861pUoAXVOG7IRC6vpqxsQhyL/MtH9ZlAl0QpGOuCoSKUaG47Cjo2bucJxLD3B+7JWSJK1Y78rKB5Osl4SHY8Mo+c7pfYuBenpyImOPknYxeBlv6CuYHfCyYRFfvS+Y1dLcZdUaS86KstrAR9fSzW7ELH59fskM9D5EmRUugtC2PROfMLWPtdU4ruR7NkWGf1Ns4YNijUQxkl6ZsBW4iNn1ALiM8jlroFK9MhSE2zD1mhpgw70EIVXO8GvhMA4tiNwDsHUSkmvfDwisCNJNKXOrCQac3pydflXmGryEf8Vqbo6LE3MEvj1w39vWq8PULw0HDtAE/ZowTEnOMU8aRYxaBp/RBbp+</eBayAuthToken>
-		</RequesterCredentials>
-		
-		<WonList>
-		<IncludeNotes>true</IncludeNotes>
-		<DurationInDays>'.$days.'</DurationInDays>
-		</WonList>
-		  
-		<DeletedFromWonList>
-		<Include>true</Include>
-		<DurationInDays>'.$days.'</DurationInDays>
-		<Sort>EndTime</Sort>
-		<IncludeNotes>true</IncludeNotes>
-		</DeletedFromWonList>
-		  
-		<ErrorLanguage>RU</ErrorLanguage>
-		</GetMyeBayBuyingRequest>​';
-		$session  = curl_init($endpoint);                       
-	    curl_setopt($session, CURLOPT_POST, true);              
-	    curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest); 
-	    curl_setopt($session, CURLOPT_RETURNTRANSFER, true);    
-	    $headers = array(
-	    'X-EBAY-API-COMPATIBILITY-LEVEL:893',
-		'X-EBAY-API-DEV-NAME:0e75d032-06df-4b04-82e8-c45a6f7f5515',
-		'X-EBAY-API-APP-NAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
-		'X-EBAY-API-CERT-NAME:56e007b5-0a25-48d0-997b-28377c615dc6',
-		'X-EBAY-API-SITEID:0',
-		'X-EBAY-API-CALL-NAME:GetMyeBayBuying'
-		);
-		curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
-	    $responseXML = curl_exec($session);
-	    curl_close($session);
-	    $responseXML = simplexml_load_string($responseXML);
-
-		// текущий purchase history
-		foreach ($responseXML->WonList->OrderTransactionArray->OrderTransaction as $transaction) 
-		{
-			// если несколько лотов в одном заказе
-			if ($transaction->Order)
-			{
-				foreach ($transaction->Order->TransactionArray->Transaction as $order) 
-				{
-				$currency = 0;
-				if ($order->Item->SellingStatus->CurrentPrice['currencyID'] == 'USD')
-				{
-					$currency = Currency::getCurrency(2);
-				}
-				if ($order->Item->SellingStatus->CurrentPrice['currencyID'] == 'EUR')
-				{
-					$currency = Currency::getCurrency(1);
-				}			
-					$currency = (1 / $currency['conversion_rate']);			
-					$result .= $order->Item->ItemID.' '.$order->FeedbackReceived->CommentType.' (';
-					$result .= $order->Item->PrivateNotes.')<br>';			
-					$result .= $order->Item->Title.'<br>Цена '.$order->Item->SellingStatus->CurrentPrice['currencyID'].' ';
-					$result .= floatval($order->Item->SellingStatus->CurrentPrice).'<br>Доставка '.$order->Item->SellingStatus->CurrentPrice['currencyID'].' ';
-					$result .= floatval($order->Item->ShippingDetails->ShippingServiceOptions->ShippingServiceCost).'<br>Итого: ';
-					$result .= round(((floatval($order->Item->SellingStatus->CurrentPrice) + floatval($order->Item->ShippingDetails->ShippingServiceOptions->ShippingServiceCost)) * $currency), -2).'р.<br><br>';						
-				$currency = 0;				
-//print_r($order->Item->SellingStatus->CurrentPrice['currencyID']);
-				}
-				continue;
-			}
-
-				$currency = 0;
-				if ($transaction->Transaction->Item->SellingStatus->CurrentPrice['currencyID'] == 'USD')
-				{
-					$currency = Currency::getCurrency(2);
-				}
-				if ($transaction->Transaction->Item->SellingStatus->CurrentPrice['currencyID'] == 'EUR')
-				{
-					$currency = Currency::getCurrency(1);
-				}			
-				$currency = (1 / $currency['conversion_rate']);			
-				$result = $transaction->Transaction->Item->ItemID.' '.$transaction->Transaction->FeedbackReceived->CommentType.' (';
-				$result .= $transaction->Transaction->Item->PrivateNotes.')<br>';			
-				$result .= $transaction->Transaction->Item->Title.'<br>Цена '.$transaction->Transaction->Item->SellingStatus->CurrentPrice['currencyID'].' ';
-				$result .= floatval($transaction->Transaction->Item->SellingStatus->CurrentPrice).'<br>Доставка '.$transaction->Transaction->Item->SellingStatus->CurrentPrice['currencyID'].' ';
-				$result .= floatval($transaction->Transaction->Item->ShippingDetails->ShippingServiceOptions->ShippingServiceCost).'<br>Итого: ';
-				$result .= round(((floatval($transaction->Transaction->Item->SellingStatus->CurrentPrice) + floatval($transaction->Transaction->Item->ShippingDetails->ShippingServiceOptions->ShippingServiceCost)) * $currency), -2).'р.<br><br>';						
-
-//			print_r($responseXML->WonList->OrderTransactionArray);
-			
-		}
-		
-		// hidden purchase history
-		foreach ($responseXML->DeletedFromWonList->OrderTransactionArray->OrderTransaction as $transaction) 
-		{
-		
-			// если несколько лотов в одном заказе
-			if ($transaction->Order)
-			{
-				foreach ($transaction->Order->TransactionArray->Transaction as $order) 
-				{
-			$currency = 0;
-			if ($order->Item->SellingStatus->CurrentPrice['currencyID'] == 'USD')
-			{
-				$currency = Currency::getCurrency(2);
-			}
-			if ($order->Item->SellingStatus->CurrentPrice['currencyID'] == 'EUR')
-			{
-				$currency = Currency::getCurrency(1);
-			}			
-				$currency = (1 / $currency['conversion_rate']);			
-				$result .= $order->Item->ItemID.' '.$order->FeedbackReceived->CommentType.' (';
-				$result .= $order->Item->PrivateNotes.')<br>';			
-				$result .= $order->Item->Title.'<br>Цена '.$order->Item->SellingStatus->CurrentPrice['currencyID'].' ';
-				$result .= floatval($order->Item->SellingStatus->CurrentPrice).'<br>Доставка '.$order->Item->SellingStatus->CurrentPrice['currencyID'].' ';
-				$result .= floatval($order->Item->ShippingDetails->ShippingServiceOptions->ShippingServiceCost).'<br>Итого: ';
-				$result .= round(((floatval($order->Item->SellingStatus->CurrentPrice) + floatval($order->Item->ShippingDetails->ShippingServiceOptions->ShippingServiceCost)) * $currency), -2).'р.<br><br>';						
-				}
-				continue;
-//print_r($order->FeedbackReceived->CommentType);				
-			}
-			
-				$currency = 0;
-				if ($transaction->Transaction->Item->SellingStatus->CurrentPrice['currencyID'] == 'USD')
-				{
-					$currency = Currency::getCurrency(2);
-				}
-				if ($transaction->Transaction->Item->SellingStatus->CurrentPrice['currencyID'] == 'EUR')
-				{
-					$currency = Currency::getCurrency(1);
-				}			
-				$currency = (1 / $currency['conversion_rate']);			
-				$result .= $transaction->Transaction->Item->ItemID.' '.$transaction->Transaction->FeedbackReceived->CommentType.' (';
-				$result .= $transaction->Transaction->Item->PrivateNotes.')<br>';			
-				$result .= $transaction->Transaction->Item->Title.'<br>Цена '.$transaction->Transaction->Item->SellingStatus->CurrentPrice['currencyID'].' ';
-				$result .= floatval($transaction->Transaction->Item->SellingStatus->CurrentPrice).'<br>Доставка '.$transaction->Transaction->Item->SellingStatus->CurrentPrice['currencyID'].' ';
-				$result .= floatval($transaction->Transaction->Item->ShippingDetails->ShippingServiceOptions->ShippingServiceCost).'<br>Итого: ';
-				$result .= round(((floatval($transaction->Transaction->Item->SellingStatus->CurrentPrice) + floatval($transaction->Transaction->Item->ShippingDetails->ShippingServiceOptions->ShippingServiceCost)) * $currency), -2).'р.<br><br>';						
-				
-				
-//			print_r($transaction);
-			
-		}
-
-//print_r($result);
-
-	}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	// обрезает хвосты у имен файлов картинок
-	// 
-	*/	
-	static function imageNameTrim($image)
-	{
-		$p = strpos($image,".JPG");
-		if ($p!=FALSE) return substr($image, 0,$p+4);
-		else return $image;
-	}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	//Делает массив из объекта simpleXMLelement Key=Value
-	// 
-	*/	
-	public static function simplexmlelement2array($xml)
-	{
-		foreach ($xml as $NameValue)
-		{
-			$arr[strval($NameValue->Name)] = strval($NameValue->Value);
-		} 
-//var_dump($xml);die;	
-return $arr;
-	}	
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public static function simpleXmlToArray($xmlObject)
-    {
-        $array = array();
-
-        foreach ($xmlObject->children() as $node) {
-            if (is_array($node)) {
-                $array[$node->getName()] = simplexml_to_array($node);
+        /**
+         * ищет товары по EPID, показывает %PositiveFeedback
+         * имеет фильтр по колву feedback продавца
+         * показывает большие фотки
+         * не показывает стоимость доставки
+         *
+         * <outputSelector>SellerInfo|StoreInfo|AspectHistogram|ConditionHistogram|GalleryInfo|PictureURLSuperSize|PictureURLLarge|UnitPriceInfo</outputSelector>
+         * <sortOrder>BestMatch|CurrentPriceHighest|DistanceNearest|EndTimeSoonest|PricePlusShippingLowest|PricePlusShippingHighest|StartTimeNewest|BidCountMost|BidCountFewest|CountryAscending(Only showing first 10 of 11)</sortOrder>
+         *
+         * @param $request
+         * @param string $endpoint
+         * @return bool|SimpleXMLElement
+         */
+        public static function findItemsByEPID($request, $endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1?')
+        {
+            $auth = self::getAuthorization();
+            if (empty($auth['access_token'])) return false;
+            $xmlRequest = <<<xml
+<?xml version="1.0" encoding="utf-8"?>
+<findItemsByProductRequest xmlns="https://www.ebay.com/marketplace/search/v1/services">
+    <itemFilter><name>FeedbackScoreMin</name><value>10000</value></itemFilter>
+    <productId type="ReferenceID">{$request}</productId>
+    <outputSelector>SellerInfo</outputSelector>	    
+    <outputSelector>PictureURLLarge</outputSelector>	    
+    <sortOrder>PricePlusShippingLowest</sortOrder>
+    <paginationInput><entriesPerPage>10</entriesPerPage></paginationInput>
+</findItemsByProductRequest>
+xml;
+            $responseXML = self::getXMLRequest($endpoint, $xmlRequest, array(
+                'X-EBAY-SOA-SERVICE-NAME:FindingService',
+                'X-EBAY-SOA-OPERATION-NAME:findItemsByProduct',
+                'X-EBAY-SOA-SERVICE-VERSION:1.12.0',
+                'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-SOA-REQUEST-DATA-FORMAT:XML',
+                'X-EBAY-API-IAF-TOKEN:' . $auth['access_token']
+            ));
+            if (!isset($responseXML->errorMessage)) {
+                foreach ($responseXML->searchResult->item as $lots) {
+                    print_r($lots);
+                    die;
+                    // return $responseXML;
+                }
+                return false;
             } else {
-                $array[$node->getName()] = (string) $node;
+                return $responseXML->errorMessage->error->message;
             }
         }
-        return $array;
+
+        /**
+         * Ищет ключевые слова в заданной store
+         * аналог RSS
+         * понимает доставку в рашку
+         * itemFilter - http://developer.ebay.com/Devzone/finding/CallRef/findItemsIneBayStores.html искать по itemFilter.name
+         * @param $request
+         * @param $store
+         * @param int $minprice
+         * @param int $maxprice
+         * @return array|bool|SimpleXMLElement|string
+         */
+        public static function findItemsIneBayStores($request, $store, $minprice = 0, $maxprice = 99999)
+        {
+            die('die findItemsIneBayStores');
+            $auth = self::getAuthorization();
+            if (empty($auth['access_token'])) return false;
+            $xmlTemplate = <<<xml
+<?xml version="1.0" encoding="utf-8"?>
+<findItemsIneBayStoresRequest xmlns="https://www.ebay.com/marketplace/search/v1/services">
+    <keywords>{$request}</keywords>
+    <storeName>{$store}</storeName>
+    <itemFilter><name>MinPrice</name><value>{$minprice}</value></itemFilter>
+    <itemFilter><name>MaxPrice</name><value>{$maxprice}</value></itemFilter>  
+    <itemFilter><name>AvailableTo</name><value>RU</value></itemFilter>
+    <itemFilter><name>Condition</name><value>1000</value></itemFilter>
+    <paginationInput>
+        <entriesPerPage>100</entriesPerPage>  
+        <pageNumber>[+page+]</pageNumber>
+    </paginationInput>
+</findItemsIneBayStoresRequest>
+xml;
+            $headers = array(
+                'X-EBAY-SOA-SERVICE-NAME:FindingService',
+                'X-EBAY-SOA-OPERATION-NAME:findItemsIneBayStores',
+                'X-EBAY-SOA-SERVICE-VERSION:1.13.0',
+                'X-EBAY-SOA-GLOBAL-ID:EBAY-US',
+                'X-EBAY-SOA-SECURITY-APPNAME:' . self::EBAY_CLIENT_ID,
+                'X-EBAY-SOA-REQUEST-DATA-FORMAT:XML',
+                'X-EBAY-API-IAF-TOKEN:' . $auth['access_token']
+            );
+            $session = curl_init('https://svcs.ebay.com/services/search/FindingService/v1?');
+            curl_setopt($session, CURLOPT_POST, true);
+            curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($session, CURLOPT_HTTPHEADER, $headers);
+            $curr_page  = 0;
+            $totalpages = 0;
+            do
+            {
+                $xmlRequest = self::placeholders($xmlTemplate, array('page' => $curr_page + 1));
+                curl_setopt($session, CURLOPT_POSTFIELDS, $xmlRequest);
+                $responseXML = curl_exec($session);
+                $responseXML = simplexml_load_string($responseXML);
+                if ($responseXML->errorMessage) return $responseXML->errorMessage->error->message;
+                if ($responseXML->searchResult['count'] == 0) return '<div id="console">Ничего не найдено. Возможно нет доставки?</div>';
+                if ($totalpages==0)
+                {
+                    echo $error = 'Найдено '. strval($responseXML->paginationOutput->totalEntries).' лотов ('.strval($responseXML->paginationOutput->totalPages).' страниц).<br>';
+                    // если лотов больше 100, запросим след страницу
+                    // результат в виде номеров лотов запишем в $items
+                    $totalpages = strval($responseXML->paginationOutput->totalPages);
+                }
+                foreach ($responseXML->searchResult->item as $item) $items[] = strval($item->itemId);
+                $curr_page++;
+            }
+            while ($curr_page < $totalpages);
+            curl_close($session);
+            return self::getSingleItem($items,0);
+        }
+
+        /**
+         * Поиск пользователя
+         * @param mixed  $userID  User ID
+         * @param string $url     URL
+         * @return SimpleXMLElement|false
+         */
+        public static function GetUserProfile($userID, $url = 'https://open.api.ebay.com/shopping?')
+        {
+            $auth = self::getAuthorization();
+            if (empty($auth['access_token'])) return false;
+            $xmlRequest = <<<xml
+<?xml version="1.0" encoding="utf-8"?>
+<GetUserProfileRequest xmlns="urn:ebay:apis:eBLBaseComponents">
+    <UserID>{$userID}</UserID>
+</GetUserProfileRequest>
+xml;
+            $responseXML = self::getXMLRequest($url, $xmlRequest, array(
+                'X-EBAY-API-APP-ID:' . self::EBAY_CLIENT_ID,
+                'X-EBAY-API-VERSION:' . self::EBAY_API_VER,
+                'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
+                'X-EBAY-API-CALL-NAME:GetUserProfile',
+                'X-EBAY-API-REQUEST-ENCODING:XML',
+                'Content-type:text/xml;charset=utf-8'
+            ));
+            if (!isset($responseXML->Errors)) {
+                return $responseXML->User;
+            } else {
+                return $responseXML->Errors->LongMessage;
+            }
+        }
+
+        /**
+         * Get authorization data
+         * @param array $scope  Scope
+         * @return mixed
+         */
+        public static function getAuthorization(array $scope = null, &$req = null, &$auth = null)
+        {
+            if (empty($scope)) $scope = array('https://api.ebay.com/oauth/api_scope');
+            $request = array(
+                'grant_type' => 'client_credentials',
+                'scope'      => implode(' ', $scope)
+            );
+            $req = http_build_query($request);
+            $auth = array(
+                'Content-Type: application/x-www-form-urlencoded',
+                'Authorization: Basic ' . base64_encode(self::EBAY_CLIENT_ID . ':' . self::EBAY_CLIENT_SECRET)
+            );
+            $ch = curl_init('https://api.ebay.com/identity/v1/oauth2/token');
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $auth);
+            $response = curl_exec($ch);
+            curl_close($ch);
+            return json_decode($response, true);
+        }
+
+        /**
+         * Get XML request
+         * @param string $url      URL
+         * @param string $request  XML request body
+         * @param array  $headers  Headers
+         * @return SimpleXMLElement
+         */
+        public static function getXMLRequest($url, $request, $headers = array())
+        {
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $request);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            $responseXML = curl_exec($ch);
+            curl_close($ch);
+            return simplexml_load_string($responseXML);
+        }
+
+        /**
+         * Обрезает хвосты у имен файлов картинок
+         * @param string $image  Image file
+         * @return string
+         */
+        public static function imageNameTrim($image)
+        {
+            $p = strpos($image, '.JPG');
+            return ($p !== false) ? substr($image, 0, $p - 4) : $image;
+        }
+
+        /**
+         * Делает массив из объекта simpleXMLelement Key=Value
+         * @param mixed $xml  XML object
+         * @return array
+         */
+        public static function simplexmlelement2array($xml)
+        {
+            $arr = array();
+            foreach ($xml as $NameValue) {
+                $arr[strval($NameValue->Name)] = strval($NameValue->Value);
+            }
+            return $arr;
+        }
+
+        /**
+         * SimpleXMLElement to array
+         * @param mixed $obj
+         * @return array
+         */
+        public static function simpleXmlToArray($obj)
+        {
+            $ret = array();
+            $obj = (array) $obj;
+            foreach ($obj as $name => $node) {
+                if (is_array($node)) {
+                    foreach ($node as $child) {
+                        $ret[$name][] = self::simpleXmlToArray($child);
+                    }
+                } elseif (is_object($node)) {
+                    $ret[$name] = self::simpleXmlToArray($node);
+                } else {
+                    $ret[$name] = (string) $node;
+                }
+            }
+            return $ret;
+        }
+
+        /**
+         * Очистка текста от лишнего
+         * @param string $desc  Входной текст
+         * @return mixed
+         */
+        public static function cleanText($desc)
+        {
+            $search = array('visit our ebay Store', 'visit our store', 'ebay', 'positive feedback', '   ', ';');
+            $desc = str_ireplace($search, '', $desc);
+            return $desc;
+        }
+
+        /**
+         * Берет стоимость доставки из базы на основе веса товара для соотв уменьшения цены
+         * @param mixed $weight
+         * @return float
+         */
+        public static function weightPrice($weight)
+        {
+            $sql = <<<sql
+select `price` from `presta_delivery`
+where (`id_carrier` = 55)
+  and (`id_zone` = 1)
+  and (`id_range_weight` = (
+      select `id_range_weight` from `presta_range_weight`
+      where (`id_carrier` = 55) and (`delimiter1` <= {$weight}) and (`delimiter2` >= {$weight})
+  )
+sql;
+            $weight_price = Db::getInstance()->getValue($sql);
+            $result = (float) $weight_price;
+            return $result;
+        }
+
+        /**
+         * Ищет наиболее дешевый лот из массива. Используется в findItemsAdvanced
+         * @param array $request  Входной массив
+         * @return float
+         */
+        public static function priceSort($request)
+        {
+            $ret = null;
+            foreach ($request as $lot)
+            {
+                if (empty($lot['ebay_price'])) continue;
+                $price = (float) $lot['ebay_price'];
+                if ($ret === null) $ret = $price;
+                if ($price < $ret) $ret = $price;
+            }
+            return $ret;
+        }
+
+        /**
+         * Simple templater
+         * @param string $tpl   Template
+         * @param array  $data  Data
+         * @return string
+         */
+        public static function placeholders($tpl, $data = array())
+        {
+            $ph = array();
+            foreach ($data as $k => $v) $ph['[+' . $k . '+]'] = $v;
+            return strtr($tpl, $ph);
+        }
     }
-    
-   
-///////////////////////////////////////////////////////////////////////////////////////////////////
-    
-
-	public static function cleanText($desc)
-	{
-		$search = array(
-		'visit our ebay Store',
-		'visit our store',
-		'ebay',
-		'positive feedback',
-		'   ',
-		';');
-		$desc = str_ireplace($search, '', $desc);
-
-	return $desc;
-	}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	// берет стоимость доставки из базы на основе веса товара
-	// для соотв уменьшения цены
-	*/
-	public static function weightPrice($weight)
-	{
-		$weight_price = Db::getInstance()->getValue('
-		SELECT `price` FROM `presta_delivery`
-		where `id_carrier` = 55
-		and `id_zone` = 1
-		and `id_range_weight` = (SELECT `id_range_weight` 
-		FROM `presta_range_weight`
-		where `id_carrier` = 55
-		and `delimiter1` <= '.$weight.'
-		and `delimiter2` >= '.$weight.')
-		');
-		$result = (float)$weight_price;
-		return $result;
-	}
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-	/*
-	// ищет наиболее дешевый лот из массива
-	// используется в findItemsAdvanced
-	//
-	*/
-	public static function priceSort($request)
-	{
-		foreach ($request as $lot)
-			{
-					$keys[] = strval($lot['lot']);
-				$values[] = strval($lot['ebay_price']);
-			}
-		$set = array_combine($keys, $values);
-	asort($set);
-	return $request[array_keys($set)[0]]; 
-	}
-		
-
-}
 
 // список категорий ebay
 // http://faq.frooition.com/ebay_categories.php
 
+    if (!isset($_POST['lot']))
+    {
+        echo <<<html
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<link href="//motokofr.com/js/toastr/toastr.css" rel="stylesheet"/>
 
-if (!isset($_POST['lot']))
-{
-    echo '<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
-    <link href="//motokofr.com/js/toastr/toastr.css" rel="stylesheet"/>
-    <script src="//motokofr.com/js/toastr/toastr.js"></script>';
-}
-
-?>
+html;
+    }

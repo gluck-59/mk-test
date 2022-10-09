@@ -15,6 +15,9 @@ ini_set("display_errors", 1);
     //echo "\r\ngetSingleItem\r\n"; 
     // идем на ебей за лотом
     $lot = Ebay_shopping::getSingleItem(array($item), 1, 1);
+echo __FILE__.' line '.__LINE__;
+var_dump($lot);
+die;
     if (empty($lot))
     {
         echo json_encode(array('error' => 'Пустой ответ от Ебея. Лот протух?'));

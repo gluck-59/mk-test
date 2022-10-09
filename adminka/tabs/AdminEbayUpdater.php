@@ -3,7 +3,15 @@ error_reporting(E_ERROR);
 ini_set('display_errors','On');
 
 //header('X-Accel-Buffering: no');
-ob_get_flush();
+//ob_get_flush();
+
+$prib = 1.20;					// % прибыль
+$min_prib = 15;					// в долларах
+$max_prib = 200;					// в долларах
+$paypal_rate = 1;				// комиссия Paypal считается при чекауте
+
+$euCountries = ['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','EU'];
+$ukCountries = ['UK','IE'];
 
 $max_results = $_POST['max_results'];
 if (!$max_results) $max_results = 1;
@@ -16,9 +24,9 @@ $fast = $_POST['fast'];
 if (!$no_check_old) $no_check_old = '';
 if (!$debug) $debug = '';
 if (!$autorecord) $autorecord = 'off';
-if (!$_POST) $autorecord = 'on'; // запускает авторекорд с первого раза
-if (!$_POST) $no_check_old = 'on'; // запускает не проверять старые с первого раза
-if (!$_POST) $fast = 'on'; // запускает не проверять старые с первого раза
+if (!$_POST) $autorecord = 'off'; // запускает авторекорд с первого раза
+if (!$_POST) $no_check_old = 'off'; // запускает не проверять старые с первого раза
+if (!$_POST) $fast = 'off'; // запускает не проверять старые с первого раза
 if (!$fast) $fast = 5000; else $fast = 0;
 
 //echo "<script>toastr.clear();</script>";
@@ -29,14 +37,13 @@ if (!$fast) $fast = 5000; else $fast = 0;
     </script>
 <?     
 
-$prib = 1.18;					// % прибыль
-$min_prib = 14;					// в долларах
-$max_prib = 45;					// в долларах
-$paypal_rate = 1;				// комиссия Paypal считается при чекауте
-$maintenance_interval = 30; 	// через сколько ДНЕЙ считать сверку товаров устаревшей
+$sellerEbayPositive = Ebay_shopping::getsellerEbayPositive(); 		// процент положительных отзывов о продавце на Ebay. Если ниже - пропускаем
+
+
+// удобства
 $price_diff = 15; 				// если разница больше, то выводим красную или зеленую точку
 $price_alert_perc = 30; 		// если разница В ПРОЦЕНТАХ больше, то алерт
-$sellerEbayPositive = Ebay_shopping::getsellerEbayPositive(); 		// процент положительных отзывов о продавце на Ebay. Если ниже - пропускаем
+$maintenance_interval = 30; 	// через сколько ДНЕЙ считать сверку товаров устаревшей
 $isnew = array('New', 'Neu', 'Nuovo', 'Neuf', 'Neu mit Etikett', 'Nuevo', 'Brand New', 'New with tags'); // состояние товара "новый" на разных языках
 
 
@@ -134,7 +141,7 @@ if ($debug == "on") echo '</div>';
 //if ($no_check_old == "on") $max_results = 1;
 
 $products = Db::getInstance()->ExecuteS('
-SELECT SQL_CALC_FOUND_ROWS distinct p.`id_product`, p.`ean13`, p.`reference`, p.`supplier_reference`, pl.`name`, pl.`meta_description`, `quantity`, p.`id_manufacturer`, p.`id_category_default`, p.`wholesale_price`, p.`price` as presta_price, p.`date_upd` as p_date_upd /*, sp.`date_upd` as sp_date_upd*/
+SELECT SQL_CALC_FOUND_ROWS distinct p.`id_product`, p.`ean13`, p.`reference`, p.`supplier_reference`, pl.`name`, pl.`meta_description`, `quantity`, p.`weight`, p.`id_manufacturer`, p.`id_category_default`, p.`wholesale_price`, p.`price` as presta_price, p.`date_upd` as p_date_upd, sp.`date_upd` as sp_date_upd
 FROM `presta_product` p 
 left join `presta_product_lang` pl ON (pl.`id_product`= p.`id_product`  AND pl.`id_lang` = 3)
 left outer join `sync_price` sp on p.`id_product`=sp.`id_product`
@@ -143,18 +150,12 @@ left join `presta_category` pc on pcp.`id_category` = pc.`id_category`
 where pc.`active` = 1
 /*and p.`active` = 1*/
 and (sp.`skip` = 0 OR sp.`skip` IS NULL) 
-
 and p.`supplier_reference` rlike "^[0-9]{12,}$" 
-
-
 and sp.`date_upd` BETWEEN "2010-01-01" AND (CURDATE() - INTERVAL '.$maintenance_interval.' DAY) 
-
 ORDER BY sp.`date_upd` 
-
 LIMIT 0,'.abs($max_results));
 
-$remain = Db::getInstance()->getRow('
-SELECT FOUND_ROWS () as remain');
+$remain = Db::getInstance()->getRow('SELECT FOUND_ROWS () as remain');
 
 $all = Db::getInstance()->ExecuteS('
 SELECT distinct p.`id_product`, p.`ean13`, p.`reference`, p.`supplier_reference`, pl.`name`, p.`id_manufacturer`, p.`id_category_default`, p.`wholesale_price`, p.`date_upd` as p_date_upd, sp.`date_upd` as sp_date_upd
@@ -177,18 +178,17 @@ $irow = 0;
 
 
 //////////////////////// главный foreach  ////////////////////////////////
-//echo '<pre>';
 foreach ($products as $product)
 	{
-		unset($new_product);	
+		unset($new_product);
 		$cover = Image::getCover($product['id_product']);
-		$skip_no_spipping = 1;
+		$skip_no_spipping = 0; // $skip_no_spipping актуален только при достааке в рашку, поэтому пока ебей не вернется в ращку $skip_no_spipping будет = 0 всегда
         $skip = 0; // пишет в базу "неактивный товар
 		$currency=0;
 		$id_currency = 0;
 		$err = "";
 		$error ="";
-		$price = 0;
+//		$price = 0;
 		$shipping = 0;
 		$new_price = 0;
 		$ebay_price =0;
@@ -202,7 +202,7 @@ foreach ($products as $product)
 		if ($_POST)
             echo '<script>toastr.success(\'<a href="index.php?tab=AdminCatalog&id_product='.$_POST['old_product'].'&updateproduct&token='.$token.'">Товар '.$_POST['old_product'].' обновлен</a>\');</script>';
 
-		ob_get_flush();
+//		ob_get_flush();
 			
     	// сначала определим парный ли товар
     	$pair = strripos($product['ean13'], '+');
@@ -212,7 +212,7 @@ foreach ($products as $product)
             $pairFound = Ebay_shopping::findPair($product['ean13']);
     		echo $pairFound;
     		$err = 1;
-            ob_get_flush();    		
+//            ob_get_flush();
 
             echo"<script>jQuery.fn.sortElements=function(){var t=[].sort;return function(e,n){n=n||function(){return this};var r=this.map(function(){var t=n.call(this),e=t.parentNode,r=e.insertBefore(document.createTextNode(''),t.nextSibling);return function(){if(e===this)throw new Error;e.insertBefore(this,r),e.removeChild(r)}});return t.call(this,e).each(function(t){r[t].call(n.call(this))})}}();
             
@@ -280,146 +280,131 @@ foreach ($products as $product)
 
             if ($pairFound != null) echo 'Клик на нужном диве подставит его цену';
             else echo 'Ни одной пары не найдено';
-            ob_get_flush();
     	}
-    
+
+        // товар не парный
     	else
     	{
-//if ($product['reference'] != 'Dynamic Cycle Parts')
-// надо не делать findItemsAdvanced если поставщик Крис
     		if ( /* $product['supplier_reference'] !== '' &&  $no_check_old == '' &&*/ preg_match('/^\d{12}$/', trim($product['supplier_reference'])))
     		{
-    			if ($product['reference'] == 'kakahealthcare' || $product['reference'] == 'Meow-Auctshop' ) $skip_no_spipping = 0; 
-    			
-//    			echo "<script>toastr.info('".$product['supplier_reference']."','Запрос getSingleItem: ');</script>";
-//    			ob_get_flush();
 
-    			$new_product = array_values(Ebay_shopping::getSingleItem([trim($product['supplier_reference'])], $skip_no_spipping ))[0];
+    			echo "<script>toastr.info('".$product['supplier_reference']."','Запрос getSingleItem: ');</script>";
+                $new_product = array_values(Ebay_shopping::getSingleItem([trim($product['supplier_reference'])], $skip_no_spipping ))[0];
     		}
 
     		if (!$new_product['lot'] && strripos($product['ean13'], 'http') === FALSE)
     		{
-    			echo "<script>toastr.info('".$product['ean13']."','Запрос findItemsAdvanced: ');</script>";
-    			ob_get_flush();
     			if (!$product['ean13'])
     			{
-//				echo 'Нет EAN13.<br>';
+				    // Нет EAN13
+                    echo "<script>toastr.info('".$product['ean13']."','Запрос findItemsAdvanced по meta_description: ');</script>";
     				echo "<script>toastr.warning('Нет EAN13, запрашиваем meta_description');</script>";				
-    				ob_get_flush();
     				$new_product = Ebay_shopping::findItemsAdvanced($product['meta_description']);
-    			}
-    			else $new_product = Ebay_shopping::findItemsAdvanced($product['ean13']);
+    			} else {
+                    echo "<script>toastr.info('".$product['ean13']."','Запрос findItemsAdvanced по ean13: ');</script>";
+                    $new_product = Ebay_shopping::findItemsAdvanced($product['ean13']);
+                }
     		}	
     	}
 
-    if (!$new_product['shipping'] && $new_product)
-    {
+//echo '<br>==================== AdminEbayUpdater presta $product';
+//prettyDump($product);
+//
+//echo '<br>==================== AdminEbayUpdater Ebay $new_product';
+//prettyDump($new_product);
+
+
+    if ($new_product && !$new_product['shipping']) {
     	$err = 2;
     	$error .= "Нет доставки ";
     }
-    
-    if (!$new_product['lot'] && $product['quantity'] > 0)
-    {
+    if (!$new_product[array_keys($new_product)[0] /****/ ]['lot'] && $product['quantity'] > 0) {
     	$err = 1;
     	$error = "Ручное заполнение";
     }
 
-    if ($skip == 0)
-	{		
-		$price = strval($new_product['price']); 
-
-		// ищем доставку
-		$shipping = $new_product['shipping'];
-		
-		// ищем картинку для нового лота
-		$cover_new = explode('|', $new_product['image']);
-		$cover_new = $cover_new[0];
-		
-		// посчитаем цену закупки в рублях и добавим все комиссии
-		$price_add = 0;
-		
-        /*       
-		* условия для перцев типа kojak 
-		*
-		*/
-		
-		// добавим 20 евро, если продавец kojak
-		if ($product['reference']=='starversand-buehler.de' or $product['reference']=='kojak4357')
-	     {
-		   $price_add = 28; // 25 евро в долларах
-		   $shipping = $shipping+$price_add;  
-	     }
-
-/*
-		 // добавим $127 за крепления стекол если производитель NC и продавец Chris и категория - стекла для чопперов    
-   		if ($new_product['seller']=='Dynamic Cycle Parts' and $product['id_manufacturer'] == 11 and $product['id_category_default'] == 25)
-	     {
-		   $price_add = 127; 
-		   $shipping = $shipping+$price_add;  
-	     }
-*/
-	     
-	     if ($product['reference']=='kakahealthcare' || $product['reference']=='Meow-Auctshop')
-	     {
-		   $price_add = 8; // это МИНУС
-		   $shipping = $shipping - $price_add;  
-	     }
+    // ищем картинку для нового лота
+    $cover_new = Ebay_shopping::simpleXmlToArray($new_product['cover']);
+    $cover_new = $cover_new[0];
 
 
-	     if ($conversion_rate != 0) {
-	         $ebay_price = intval((($paypal_rate * ($price + $shipping)) / $conversion_rate));
-         }
-	
-		// посчитаем новую цену продажи
-		$new_price = ($ebay_price * $prib);
+    ///////////////  МАТЕМАТИКА //////////////////
+// тут считается входная и выходная цены
+    if ($skip == 0) {
+        if ($conversion_rate != 0) {
+            $ebay_price = ($paypal_rate * ((float)$new_product['price'] + (float)$new_product['shipping'])) / $conversion_rate;
+        }
 
-		if (($new_price - $ebay_price) < $min_prib) 
-			{
-				$new_price = ($ebay_price + $min_prib);
-			}
-		if (($new_price - $ebay_price) > $max_prib) 
-			{
-				$new_price = ($ebay_price + $max_prib);
-			}			
-		
-		// если нет доставки, то оставим старые цены из престы
-		if ($err === 2) 
-		{
-			$new_price = $presta_price;
-			$ebay_price = $product['wholesale_price'];
-		}
-		
-		// если нет нового лота, то цена = 0
-		if ($err === 1) 
-		{
-			$new_price = 0;
-			$ebay_price = 0;
-		}			
-		
-		$price_alert = (abs((floatval($presta_price) - floatval($new_price))) / (floatval($presta_price) / 100) );
-		
-	}
+        $new_price = $ebay_price;
+
+        // если нет доставки, то оставим старые цены из престы
+        if ($err == 2) {
+            $ebay_price = $presta_price;
+            $ebay_price = $product['wholesale_price'];
+        }
+
+        // если есть лот — считаем всё
+        if (!is_null($new_product)) {
+            // выкуп посредником
+            if ($ebay_price <= 1000) {
+                $additionalPrice = $ebay_price / 100 * 1.1;
+            } else {
+                $additionalPrice = $ebay_price / 100 * 1.07;
+            }
+            if ($additionalPrice < 13) $additionalPrice = 13;
+
+
+            // упаковка
+            // габариты заранее хуй поймешь, будем отталкиваться от веса
+            $wrappingPrice = 3.5;
+            if ($product['weight'] > 1) {
+                $wrappingPrice = 5;
+            } elseif ($product['weight'] > 3) {
+                $wrappingPrice = 7;
+            } elseif ($product['weight'] > 6) {
+                $wrappingPrice = 10;
+            }
+
+
+            // подготовим запрос к бандерольке
+            $hub = 'DE1'; // delaware
+            if (in_array($new_product['sellerCountry'], $euCountries)) {
+                $hub = 'EU1'; // berlin
+            } elseif (in_array($new_product['sellerCountry'], $ukCountries)) {
+                $hub = 'UK1'; // england
+            }
+
+
+            // доставка
+            $delivery = new Delivery();
+            $shippingPrice = $delivery->getQwintryCost($product['weight'], $hub);
+prettyDump('готовый к математике $new_product с бандеролькой' );
+prettyDump($new_product);
+
+
+            // ВХОДНАЯ: соберем и добавим все доп расходы
+            $ebay_price = $ebay_price + $shippingPrice + $wrappingPrice + $additionalPrice;
+
+            // ВЫХОДНАЯ: добавим наценку
+            $new_price = $ebay_price * $prib;
+            if ($new_price - $ebay_price < $min_prib) {
+                $new_price = $ebay_price + $min_prib;
+            } elseif ($new_price - $ebay_price > $max_prib) {
+                $new_price = $ebay_price + $max_prib;
+            }
+
+///////////////  /МАТЕМАТИКА //////////////////
+
+            // если нет нового лота, то цена = 0
+            if ($err == 1) {
+                $new_price = 0;
+                $ebay_price = 0;
+            }
+            $price_alert = (abs((floatval($presta_price) - floatval($new_price))) / (floatval($presta_price) / 100));
+        }
+    }
     
-    /*
-    		if ($price_discount > 0) 
-    		{ 
-    			echo '<p><input style="width: 50px;" name="price_discount[]" value="'.round((($price - $price_discount) / $conversion_rate), 0).'">
-    			<input style="width: 50px;" name="price_discount_ttl[]" value="'.$price_discount_ttl.'"></p>';
-    		}
-    		// если не нашли, покажем пустые
-    		else
-    		{	echo '<p>скид р/дн.:<input style="width: 50px;" name="price_discount[]" value="">
-    			<input style="width: 20px;" name="price_discount_ttl[]" value=""></p>';
-    		}
-    
-    
-    	if ($price_discount > 0) 
-    	echo ' '.$currency.' '.($price - $price_discount).' еще '.$price_discount_ttl.' дн';
-    */	
-    	
-        
-    //print_r($variations);
-    	
+
     echo '<div id="out"><div id="in">
     <div style="position: absolute;top: 10px;right: 9px;">'.$product['p_date_upd'].'</div>
     <h1>'.$product['name'].'</h1>
@@ -442,7 +427,7 @@ foreach ($products as $product)
     '.$product['reference'].'<br>
     '.mb_substr($product['ean13'], 0, 30).'</a>
 
-    <input type="hidden" readonly name="price_test[]" onchange="blink()" id="price_test_'.$product['id_product'].'" style="width: 58px; border:0; text-align:right" value="'.$price.'"><br><br>'.'    
+    <input type="1hidden" readonly name="price_test[]" onchange="blink()" id="price_test_'.$product['id_product'].'" style="width: 58px; border:0; text-align:right" value="'.$ebay_price.'"><br><br>'.'    
     Ст.whol <input readonly style="width: 32px; height: 12px; border: 0; text-align:right" id="wholesale_price_old_'.$product['id_product'].'" value="'.$product['wholesale_price'].'"><br>
     Ст.цена <input readonly style="width: 32px; height: 12px; border: 0; text-align:right" id="presta_price_'.$product['id_product'].'" value="'.$presta_price.'"><br>
     Разница '.($price_alert >= $price_alert_perc ? '<input class="error"' : '<input').' id="different" readonly value="'.round($price_alert).'" style="width: 23px;text-align:right;
@@ -475,18 +460,9 @@ foreach ($products as $product)
     }
     elseif ($pair > 0 AND $pairFound != null) echo 'найдена пара<br>';
     
-    echo '<input autofocus onchange="do_math('.$product['id_product'].','.$conversion_rate.')" name="shipping[]" autocomplete="off" id="shipping_'.$product['id_product'].'" style=" width: 55px; " value="'.ceil($shipping).'"> '.($err == 2 ? '<span class="error">'.$error.'</span>' : 'Доставка').'<br>';
-    
-    /*if ($new_product['quantity'] == 0) 
-    {
-    	$ebay_price = 0;
-    }*/
-    
-    
-    
+    echo '<input autofocus readonly onchange="do_math('.$product['id_product'].','.$conversion_rate.')" name="shipping[]" autocomplete="off" id="shipping_'.$product['id_product'].'" style=" width: 55px; " value="'.ceil($shipping).'"> '.($err == 2 ? '<span class="error">'.$error.'</span>' : 'не исп.').'<br>';
     echo '<input style="'.( (round($product['wholesale_price'],0) > round($ebay_price,0)) ? 'background:#dfd;' : '').( (round($product['wholesale_price'],0) < round($ebay_price,0)) ? 'background:#fdd;' : '').' width: 32px; height: 12px;" name="wholesale_price[]" autocomplete="off" id="wholesale_price_'.$product['id_product'].'" value="'.round($ebay_price,0).'"> Нов.whol';
-    
-    		if ($ebay_price > 1)
+        if ($ebay_price > 1)
     		{
     			$price_temp = ($product['wholesale_price'] - round($ebay_price,0));
     			while ( $price_temp >= $price_diff)
@@ -503,7 +479,7 @@ foreach ($products as $product)
     			}			
     		};
     
-    echo '<br><input style="'.( (round($new_price,0) < $presta_price) ? 'background:#dfd;' : '').( (round($new_price,0) > $presta_price) ? 'background:#fdd;' : '').'  width: 32px; height: 12px;" name="price[]" autocomplete="off" id="price_'.$product['id_product'].'" '. ($ebay_price ? 'value="'.round($new_price,0).'"' : 'value="0"').' > Нов.цена';
+    echo '<br><input style="'.( (round($new_price,0) < $presta_price) ? 'background:#dfd;' : '').( (round($new_price,0) > $presta_price) ? 'background:#fdd;' : '').'  width: 32px; height: 12px;" name="price[]" autocomplete="off" id="price_'.$product['id_product'].'" '. ($new_price ? 'value="'.round($new_price,0).'"' : 'value="0"').' > Нов.цена';
     
     		if ($ebay_price > 1)
     		{
@@ -550,7 +526,7 @@ foreach ($products as $product)
     
     
     if ($price_discount > 0) 
-    	echo ' '.$currency.' '.($price - $price_discount).' еще '.$price_discount_ttl.' дн';	
+    	echo ' '.$currency.' '.($ebay_price - $price_discount).' еще '.$price_discount_ttl.' дн';
     
     echo '</div>
     <div class="compatibility" id="compatibility '.$new_product['lot'].'" style="display:none">'.$compatibility.'</div>
@@ -563,10 +539,10 @@ foreach ($products as $product)
     <input hidden name="supplier_reference[]" value="'.$new_product['lot'].'">
     <input hidden name="name[]" value="'.$new_product['name'].'">
     <input hidden name="ean13[]" value="'.$product['ean13'].'">
-    <input hidden name="sum[]" id="sum_'.$product['id_product'].'" style="width:50px;  border:0" value="'.floatval($price + $shipping).'">
+    <input hidden name="sum[]" id="sum_'.$product['id_product'].'" style="width:50px;  border:0" value="'.floatval($ebay_price).'">
     <input hidden name="old_product" value="'.$product['id_product'].'">
     ';	
-    ob_get_flush();
+//    ob_get_flush();
     		
 //die; // остановить цикл	
 } //////////////////////// главный foreach  ////////////////////////////////
@@ -590,7 +566,7 @@ echo '<p align="right">
 &nbsp;&nbsp;
 
 
-<input id="timer" value="Записать и проверить следующие" type="submit" onclick="do_math('.$product['id_product'].','.$conversion_rate.')" style="height:25px; padding: 4px 7px 4px 7px; border: solid 1px gray; border-radius: 4px; background-color:';
+<input id="timer" value="Записать и проверить следующие" type="submit" onclick="/*do_math111('.$product['id_product'].','.$conversion_rate.')*/" style="height:25px; padding: 4px 7px 4px 7px; border: solid 1px gray; border-radius: 4px; background-color:';
 if ($err == 0) 
 echo '#CCFFCD;'; 
 else 
@@ -611,8 +587,7 @@ if ($err == null) $err = 0;
 
 <script language='JavaScript'>
 // <![CDATA[
-function do_math(id,rate)
-{
+function do_math(id,rate) {
 	var prib = <?php echo number_format($prib,2,'.',''); ?>;
 	var min_prib = <?php echo number_format($min_prib,2,'.',''); ?>;
 	var max_prib = <?php echo number_format($max_prib,2,'.',''); ?>;
@@ -648,7 +623,9 @@ function do_math(id,rate)
 
 
 
-console.log('do_math()');
+console.log('вызов do_math()');
+// console.warn('price_test',price_test);
+// console.warn('shipping',shipping);
 console.log('prib',prib);
 console.log('min_prib',min_prib);
 console.log('max_prib',max_prib);
@@ -659,8 +636,6 @@ console.log('wholesale_price',wholesale_price);
 console.log('presta_price',presta_price);
 console.log('price',price);
 console.log('price-итог',price);
-
-
 
     if (wholesale_price > wholesale_price_old)
     {

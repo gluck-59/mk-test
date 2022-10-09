@@ -278,12 +278,14 @@ class		Configuration extends ObjectModel
 
 		/* Multilingual configuration */
 		self::$_CONF_LANG = array();
-		$result = Db::getInstance()->ExecuteS('
-		SELECT c.`name`, cl.`id_lang`, IFNULL(cl.`value`, c.`value`) AS value
+        $sql = 'SELECT c.`name`, cl.`id_lang`, IFNULL(cl.`value`, c.`value`) AS value
 		FROM `'._DB_PREFIX_.'configuration_lang` cl
-		LEFT JOIN `'._DB_PREFIX_.'configuration` c ON c.id_configuration = cl.id_configuration');
-		if ($result === false)
+		LEFT JOIN `'._DB_PREFIX_.'configuration` c ON c.id_configuration = cl.id_configuration';
+
+		$result = Db::getInstance()->ExecuteS($sql);
+		if ($result === false) {
 			die(Tools::displayError('Invalid loadConfiguration() SQL query!'));
+        }
 		foreach ($result AS $row)
 			self::$_CONF_LANG[intval($row['id_lang'])][$row['name']] = $row['value'];
 	}

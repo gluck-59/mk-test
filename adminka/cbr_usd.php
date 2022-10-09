@@ -6,7 +6,7 @@ include(dirname(__FILE__).'/../config/settings.inc.php');
 include(dirname(__FILE__).'/../config/config.inc.php');
 
 // готовим мыло
-$headers .= 'MIME-Version: 1.0' . "\r\n";
+$headers = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 $headers .= ('<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd"><html><body>');
 $to = 'support@motokofr.com';
@@ -37,13 +37,9 @@ $gbp_old = round($usd_old / $gbp_old['conversion_rate'], 2);
   	{
 	$cbr = simplexml_load_file('http://www.cbr.ru/scripts/XML_daily.asp?d=0');
 echo '<pre>';
-
-
-
-
 		if (empty($cbr))
 	  	{
-	  		$message .= ('<p><span style="background:#fdd">cbr.ru в дауне, ничего не пишем</span></p>');
+	  		$message = ('<p><span style="background:#fdd">cbr.ru в дауне, ничего не пишем</span></p>');
 	  		unset($usd);
 	  	}
 	  	else
@@ -64,10 +60,11 @@ echo '<pre>';
     			}
     		}
     		// математика для ЦБРФ
-    		$usd = round($usd * 1.030, 2);
-    		$eur = round($eur * 1.013, 2);
-    		$aud = round($aud * 1.017, 2);
-    		$gbp = round($gbp * 1.017, 2);
+			$qwintry = 1.153;
+    		$usd = round($usd*$qwintry * 1.030, 2);
+    		$eur = round($eur*$qwintry * 1.013, 2);
+    		$aud = round($aud*$qwintry * 1.017, 2);
+    		$gbp = round($gbp*$qwintry * 1.017, 2);
 		}
   	}
 

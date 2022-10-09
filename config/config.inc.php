@@ -3,9 +3,9 @@
 // тест для проверки гита на хостере
 
 /* Improve PHP configuration to prevent issues */
-//@error_reporting(E_ALL ^ E_NOTICE);
-error_reporting(0);
-@ini_set('display_errors', 'off');
+@error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(1);
+@ini_set('display_errors', 'on');
 @ini_set('upload_max_filesize', '100M');
 @ini_set('default_charset', 'utf-8');
 // @ini_set('max_input_vars', 10000); //не работает, надо увеличить колво полей
@@ -19,11 +19,19 @@ header('Content-Type: text/html; charset=utf-8');
  */
 
 /* Autoload */
-function __autoload($className)
+/*function __autoload($className)
 {
 	if (!class_exists($className, false))
 		require_once(dirname(__FILE__).'/../classes/'.$className.'.php');
-}
+}*/
+
+    spl_autoload_register(function($className) {
+//        include 'classes/' . $class . '.class.php';
+        require_once(dirname(__FILE__).'/../classes/'.$className.'.php');
+    });
+
+
+
 
 /* No settings file? goto installer...*/
 if (!file_exists(dirname(__FILE__).'/settings.inc.php'))
@@ -172,7 +180,7 @@ define(site_version, 'full');
 
 
 // беспошлинная сумма 
-$porog = 200; //порог беспошлинного ввоза в евро
+$porog = 1000; //порог беспошлинного ввоза в евро
 $tax = Db::getInstance()->getValue('
 SELECT `conversion_rate`
 FROM `presta_currency`

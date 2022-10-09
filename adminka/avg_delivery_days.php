@@ -6,7 +6,7 @@ require_once($cfgFile);
 include_once "../gdeposylka_test/GdePosylkaClient.php";
 require_once _PS_ROOT_DIR_."/composer/vendor/gdeposylka/api-client/src/apikey.php";
 $client = new GdePosylkaClient($apikey);
-
+//die 'jopa';
 $db = mysql_connect(_DB_SERVER_, _DB_USER_, _DB_PASSWD_);
 if (!$db)
 {
