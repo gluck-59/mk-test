@@ -46,7 +46,7 @@ class StatsData extends Module
 			// Ajax request sending browser information
 			$token = $blowfish->encrypt($params['cookie']->id_guest);
 			$this->_html = '
-			<script type="text/javascript" src="'.$protocol_content.$server_host.__PS_BASE_URI__.'js/pluginDetect.js"></script>
+			<script type="text/javascript" src="//'.$server_host.__PS_BASE_URI__.'js/pluginDetect.js"></script>
 			<script type="text/javascript">
 				plugins = new Object;
 				
@@ -65,7 +65,7 @@ class StatsData extends Module
 							navinfo[i] = plugins[i];
 						navinfo.type = "navinfo";
 						navinfo.token = "'.$token.'";
-						$.post("'.$protocol_content.$server_host.__PS_BASE_URI__.'statistics.php", navinfo);
+						$.post("//'.$server_host.__PS_BASE_URI__.'statistics.php", navinfo);
 					}
 				);
 			</script>';
@@ -93,7 +93,7 @@ class StatsData extends Module
 					pagetime.type = "pagetime";
 					pagetime.token = "'.$token.'";
 					pagetime.time = time_end-time_start;
-					$.post("'.$protocol_content.$server_host.__PS_BASE_URI__.'statistics.php", pagetime);
+					$.post("//'.$server_host.__PS_BASE_URI__.'statistics.php", pagetime);
 				}
 			);
 		</script>';

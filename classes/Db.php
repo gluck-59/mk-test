@@ -252,11 +252,12 @@ abstract class Db
  */
 function pSQL($string, $htmlOK = false)
 {
+return $string;
 	if (_PS_MAGIC_QUOTES_GPC_)
 		$string = stripslashes($string);
 	if (!is_numeric($string))
 	{
-		$string = _PS_MYSQL_REAL_ESCAPE_STRING_ ? mysql_real_escape_string($string) : addslashes($string);
+		$string = _PS_MYSQL_REAL_ESCAPE_STRING_ ? mysqli_real_escape_string($string) : addslashes($string);
 		if (!$htmlOK)
 			$string = strip_tags(nl2br2($string));
 	}

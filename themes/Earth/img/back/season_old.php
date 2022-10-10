@@ -1,7 +1,7 @@
 <?php
 header("Cache-Control: max-age=7776000, must-revalidate");
 
-error_reporting(0);
+//error_reporting(0);
 //ini_set('display_errors','On');
 
 function getRequestHeaders() 

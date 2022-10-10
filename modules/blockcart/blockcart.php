@@ -59,7 +59,9 @@ class BlockCart extends Module
 		'notax' => $GLOBALS['notax'],
 		'porog'	=> $GLOBALS['porog']
 		));
-		if (sizeof($errors))
+
+//		if (sizeof($errors)) // оригинал
+		if (is_countable($errors))
 			$smarty->assign('errors', $errors);
 		if(isset($params['cookie']->ajax_blockcart_display))
 			$smarty->assign('colapseExpandStatus', $params['cookie']->ajax_blockcart_display);

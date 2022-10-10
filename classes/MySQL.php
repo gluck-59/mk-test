@@ -29,7 +29,7 @@ class MySQL extends Db
 //		if (!mysqli_query('SET NAMES \'utf8\'', $this->_link))
 //			die(Tools::displayError('PrestaShop Fatal error: no utf-8 support. Please check your server configuration.'));
 		/* Disable some MySQL limitations */
-		mysqli_query('SET GLOBAL SQL_MODE=\'\'', $this->_link);
+		mysqli_query($this->_link, 'SET GLOBAL SQL_MODE=\'\'');
 		return $this->_link;
 	}
 	
@@ -49,7 +49,7 @@ class MySQL extends Db
 	{
 		$this->_result = false;
 		if ($this->_link)
-			if ($this->_result = mysqli_query($query.' LIMIT 1', $this->_link))
+			if ($this->_result = mysqli_query($this->_link, $query.' LIMIT 1'))
 			{
 				$this->displayMySQLError($query);
 				return mysqli_fetch_assoc($this->_result);
@@ -61,7 +61,7 @@ class MySQL extends Db
 	public function	getValue($query)
 	{
 		$this->_result = false;
-		if ($this->_link AND $this->_result = mysqli_query($query.' LIMIT 1', $this->_link) AND is_array($tmpArray = mysqli_fetch_assoc($this->_result)))
+		if ($this->_link AND $this->_result = mysqli_query($this->_link, $query.' LIMIT 1') AND is_array($tmpArray = mysqli_fetch_assoc($this->_result)))
 			return array_shift($tmpArray);
 		return false;
 	}
@@ -71,7 +71,7 @@ class MySQL extends Db
 		$this->_result = false;
 		if ($this->_link)
 		{
-			$this->_result = mysqli_query($query, $this->_link);
+			$this->_result = mysqli_query($this->_link, $query);
 			$this->displayMySQLError($query);
 			return $this->_result;
 		}
@@ -105,7 +105,7 @@ class MySQL extends Db
 	{
 		$this->_result = false;
 		if ($this->_link)
-			return mysqli_query('DELETE FROM `'.pSQL($table).'`'.($where ? ' WHERE '.$where : '').($limit ? ' LIMIT '.intval($limit) : ''), $this->_link);
+			return mysqli_query($this->_link, 'DELETE FROM `'.pSQL($table).'`'.($where ? ' WHERE '.$where : '').($limit ? ' LIMIT '.intval($limit) : ''));
 		return false;
 	}
 	
@@ -133,7 +133,7 @@ class MySQL extends Db
 	{
 		$this->_result = false;
 		if ($this->_link)
-			return mysqli_query($query, $this->_link);
+			return mysqli_query($this->_link, $query);
 		return false;
 	}
 	
@@ -155,7 +155,7 @@ class MySQL extends Db
 
 	public function displayMySQLError($query = false)
 	{
-		if (_PS_DEBUG_ AND mysqli_errno())
+		if (_PS_DEBUG_ AND mysqli_errno($this->_link))
 		{
 			if ($query)
 				die(Tools::displayError(mysqli_error().'<br /><br /><pre>'.$query.'</pre>'));
@@ -176,7 +176,7 @@ class MySQL extends Db
 	static public function tryUTF8($server, $user, $pwd)
 	{
 		$link = @mysqli_connect($server, $user, $pwd);
-		if (!mysqli_query('SET NAMES \'utf8\'', $link))
+		if (!mysqli_query($link, 'SET NAMES \'utf8\''))
 			$ret = false;
 		else
 			$ret = true;

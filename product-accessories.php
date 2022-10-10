@@ -1,7 +1,7 @@
 <?php
 include_once(dirname(__FILE__).'/config/config.inc.php');
 include_once(dirname(__FILE__).'/init.php');
-error_reporting(0);
+//error_reporting(0);
 
 //echo '<pre>';
 //print_r($_GET);

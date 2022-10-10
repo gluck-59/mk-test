@@ -111,7 +111,7 @@ file_put_contents($file,  '
    
     
 
-error_reporting(0);
+//error_reporting(0);
 //=Product::getProducts(3, 0, 0, 'id_product', 'desc', false, $only_active = true);
 
 /* // старый запрос

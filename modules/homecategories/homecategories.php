@@ -69,7 +69,7 @@ class Homecategories extends Module
 
         // из топ-50 товаров вычисляются наиболее популярные категории 
         
-        $products = ProductSale::getBestSales($id_lang, 0, 1000, sale_nbr, DESC, 90);
+        $products = ProductSale::getBestSales($id_lang, 0, 1000, 'sale_nbr', 'DESC', 90);
         $categories = Category::getCategories($id_lang, true, true)[1];
         $result = array();
 

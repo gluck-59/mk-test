@@ -37,7 +37,7 @@ echo '</pre-->';
     
     ?>
     <script type="text/javascript">
-        (function(){
+        /*(function(){
         var widget_id = 650648;
         _shcp =[];
         _shcp.push({widget_id : 650648, auth : '<?php echo $auth;?>'});
@@ -54,7 +54,7 @@ echo '</pre-->';
         +"://"+ url;
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hcc, s.nextSibling);
-        })();
+        })();*/
     </script>
     <?php
 }
@@ -84,5 +84,8 @@ window.ConveadSettings = {
 
 
 //printf('<center><p style="color:#666; font-size:smallest;">%.2f с</p></center>', (microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"]));
+
+//    echo 'jopa';
+//    var_dump(error_reporting());
 ?>
 

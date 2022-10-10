@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 $month = idate(m);
 
 //$month = $month +1; // проверка детекта сезона

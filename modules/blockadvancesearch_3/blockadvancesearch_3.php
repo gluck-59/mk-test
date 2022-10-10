@@ -1277,10 +1277,13 @@ elseif (preg_match('#^filter#', $k)) {
 		
 			}
 			//print_r($advancedsearch_value);
-			//echo "XXXXXXXXXXX";
-			//print_r($advancedsearch_label);
+//			echo "<pre>";
+//			print_r(@$advancedsearch_value[$k]);
 			//Séléction active
-			if(count(@$advancedsearch_value[$k])) {
+
+//			if(count(@$advancedsearch_value[$k])) // оригинал
+			if(is_countable(@$advancedsearch_value[$k])) // оригинал
+			{
 				foreach ($advancedsearch_value[$k] as $curValue) {
 					if($this->isSelected(@$_GET[$k], $curValue[0])) {
 						$aSelection[] = array($curValue[0],$curValue[1],@$advancedsearch_label[$k]['name'],$k,@$SelectMulti[$k]);

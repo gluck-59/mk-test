@@ -3,8 +3,8 @@
 // тест для проверки гита на хостере
 
 /* Improve PHP configuration to prevent issues */
-@error_reporting(E_ALL ^ E_NOTICE);
-error_reporting(1);
+@error_reporting(E_ALL ^ E_NOTICE );
+//error_reporting(1); @TODO включить
 @ini_set('display_errors', 'on');
 @ini_set('upload_max_filesize', '100M');
 @ini_set('default_charset', 'utf-8');
@@ -176,7 +176,10 @@ if(preg_match('/android|(android|bb\d+|meego).+mobile|iPad|avantgo|bada\/|blackb
 define(site_version, 'mobile');
 else
 */
-define(site_version, 'full');
+
+// @TODO добавил кавычки
+define('site_version', 'full');
+
 
 
 // беспошлинная сумма 
