@@ -252,6 +252,7 @@ abstract class Db
  */
 function pSQL($string, $htmlOK = false)
 {
+	// // оригинал
 return $string;
 	if (_PS_MAGIC_QUOTES_GPC_)
 		$string = stripslashes($string);
