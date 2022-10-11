@@ -7,10 +7,10 @@
 
     class Ebay_shopping
     {
-        const EBAY_CLIENT_ID     = 'RubenYak-81fb-43e6-b05e-58e99eeaf19e';
+        const EBAY_CLIENT_ID     = 'RubenYak-RubenYak-PRD-dbd5b5e02-d1ce4fa1'; //App ID (Client ID)
         const EBAY_API_VER       = '889';
         const EBAY_TOKEN         = 'v^1.1#i^1#I^3#f^0#r^1#p^3#t^Ul4xMF83OjVGMEVDRDM0QjYyMUY0M0UyMEY2Q0Y5RUFFRTU3QUE0XzJfMSNFXjI2MA==';
-        const EBAY_CLIENT_SECRET = '56e007b5-0a25-48d0-997b-28377c615dc6';
+        const EBAY_CLIENT_SECRET = 'PRD-bd5b5e02ec03-b563-4246-8181-99c7'; //Cert ID (Client Secret)
 
         var $lotnum;
         var $name;
@@ -79,7 +79,7 @@
             $headersShip = array(
                 'X-EBAY-API-CALL-NAME: GetShippingCosts',
                 'X-EBAY-API-SITE-ID: 0',
-                'X-EBAY-API-APP-ID: RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-API-APP-ID: RubenYak-RubenYak-PRD-dbd5b5e02-d1ce4fa1',
                 'X-EBAY-API-VERSION: 889',
                 "X-EBAY-API-REQUEST-ENCODING: XML",
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
@@ -90,7 +90,7 @@
             $headers = array(
                 'X-EBAY-API-CALL-NAME: GetSingleItem',
                 'X-EBAY-API-SITE-ID: 0',                                 // Site 0 is for US
-                'X-EBAY-API-APP-ID: RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-API-APP-ID: RubenYak-RubenYak-PRD-dbd5b5e02-d1ce4fa1',
                 'X-EBAY-API-VERSION: 889',
                 "X-EBAY-API-REQUEST-ENCODING: XML",    // for a POST request, the response by default is in the same format as the request
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
@@ -492,7 +492,7 @@ $xmlRequest = "<?xml version='1.0' encoding='UTF-8'?>
                 'X-EBAY-SOA-OPERATION-NAME:findItemsAdvanced',
                 'X-EBAY-SOA-SERVICE-VERSION:1.12.0',
                 'X-EBAY-SOA-GLOBAL-ID:EBAY-US',
-                'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-RubenYak-PRD-dbd5b5e02-d1ce4fa1',
                 "X-EBAY-API-REQUEST-ENCODING: XML",
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
                 'Content-Type: text/xml;charset=utf-8',
@@ -658,7 +658,7 @@ xml;
                 'X-EBAY-SOA-SERVICE-NAME:FindingService',
                 'X-EBAY-SOA-OPERATION-NAME:findItemsByProduct',
                 'X-EBAY-SOA-SERVICE-VERSION:1.12.0',
-                'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-RubenYak-PRD-dbd5b5e02-d1ce4fa1',
                 'X-EBAY-SOA-REQUEST-DATA-FORMAT:XML',
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token']
             ));
