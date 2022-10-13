@@ -7,10 +7,9 @@
 
     class Ebay_shopping
     {
-        const EBAY_CLIENT_ID     = 'RubenYak-RubenYak-PRD-dbd5b5e02-d1ce4fa1'; //App ID (Client ID)
+        const EBAY_CLIENT_ID     = ''; //App ID (Client ID)
         const EBAY_API_VER       = '889';
-        const EBAY_TOKEN         = 'v^1.1#i^1#I^3#f^0#r^1#p^3#t^Ul4xMF83OjVGMEVDRDM0QjYyMUY0M0UyMEY2Q0Y5RUFFRTU3QUE0XzJfMSNFXjI2MA==';
-        const EBAY_CLIENT_SECRET = 'PRD-bd5b5e02ec03-b563-4246-8181-99c7'; //Cert ID (Client Secret)
+        const EBAY_CLIENT_SECRET = ''; //Cert ID (Client Secret)
 
         var $lotnum;
         var $name;
