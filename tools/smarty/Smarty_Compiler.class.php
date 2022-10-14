@@ -262,19 +262,30 @@ class Smarty_Compiler extends Smarty {
         reset($this->_folded_blocks);
 
 
+
+/* replace special blocks by "{php}" */
+// оригинал
 /*
-echo '<!--pre>';
-print_r($source_content);
-echo '</pre-->';
-*/
-        /* replace special blocks by "{php}" */
         $source_content = preg_replace($search.'e', "'"
-                                       . $this->_quote_replace($this->left_delimiter) . 'php'
-                                       . "' . str_repeat(\"\n\", substr_count('\\0', \"\n\")) .'"
-                                       . $this->_quote_replace($this->right_delimiter)
-                                       . "'"
-                                       , $source_content);
-                                       
+                               . $this->_quote_replace($this->left_delimiter) . 'php'
+                               . "' . str_repeat(\"\n\", substr_count('\\0', \"\n\")) .'"
+                               . $this->_quote_replace($this->right_delimiter)
+                               . "'"
+                               , $source_content);
+
+*/
+        $source_content = preg_replace_callback($search,
+            function($matches) {
+                return
+                    $this->_quote_replace($this->left_delimiter) . 'php' . str_repeat(
+                        $this->_quote_replace("\n"),
+                        substr_count($matches[0], $this->_quote_replace("\n"))
+                    )
+                    . $this->_quote_replace($this->right_delimiter);
+            },
+            $source_content
+        );
+
 
         /* Gather all template tags. */
         preg_match_all("~{$ldq}\s*(.*?)\s*{$rdq}~s", $source_content, $_match);

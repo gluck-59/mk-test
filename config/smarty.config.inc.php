@@ -7,7 +7,7 @@ $smarty->compile_dir 	= _PS_SMARTY_DIR_.'compile';
 $smarty->cache_dir 		= _PS_SMARTY_DIR_.'cache';
 $smarty->config_dir 	= _PS_SMARTY_DIR_.'configs';
 $smarty->caching 		= false;
-$smarty->force_compile	= false;
+$smarty->force_compile	= true;
 //$smarty->debugging		= true;
 $smarty->debug_tpl		= _PS_ALL_THEMES_DIR_ . 'debug.tpl';
 //$smarty->load_filter('output','trimwhitespace'); // не включать, перестает работать JS 

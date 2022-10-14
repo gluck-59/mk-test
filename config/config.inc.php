@@ -1,11 +1,12 @@
 <?php
 
-// тест для проверки гита на хостере
-
 /* Improve PHP configuration to prevent issues */
 @error_reporting(E_ALL ^ E_NOTICE );
-//error_reporting(1); @TODO включить
+//error_reporting(1); //@TODO включить
 @ini_set('display_errors', 'on');
+
+//var_dump(error_reporting());
+
 @ini_set('upload_max_filesize', '100M');
 @ini_set('default_charset', 'utf-8');
 // @ini_set('max_input_vars', 10000); //не работает, надо увеличить колво полей
