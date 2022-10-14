@@ -7,10 +7,6 @@
 
     class Ebay_shopping
     {
-        const EBAY_CLIENT_ID     = '';
-        const EBAY_API_VER       = '889';
-        const EBAY_CLIENT_SECRET = '';
-
         var $lotnum;
         var $name;
         var $currency;
@@ -399,8 +395,8 @@ xml;
             $responseXML = self::getXMLRequest($endpoint, $xmlRequest, array(
                 'X-EBAY-API-CALL-NAME: GetShippingCosts',
                 'X-EBAY-API-SITE-ID: 0',
-                'X-EBAY-API-APP-ID: ' . self::EBAY_CLIENT_ID,
-                'X-EBAY-API-VERSION: ' . self::EBAY_API_VER,
+                'X-EBAY-API-APP-ID: ' . EBAY_CLIENT_ID,
+                'X-EBAY-API-VERSION: ' . EBAY_API_VER,
                 'X-EBAY-API-REQUEST-ENCODING: XML',
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
                 'Content-Type: text/xml;charset=utf-8',
@@ -709,7 +705,7 @@ xml;
                 'X-EBAY-SOA-OPERATION-NAME:findItemsIneBayStores',
                 'X-EBAY-SOA-SERVICE-VERSION:1.13.0',
                 'X-EBAY-SOA-GLOBAL-ID:EBAY-US',
-                'X-EBAY-SOA-SECURITY-APPNAME:' . self::EBAY_CLIENT_ID,
+                'X-EBAY-SOA-SECURITY-APPNAME:' . EBAY_CLIENT_ID,
                 'X-EBAY-SOA-REQUEST-DATA-FORMAT:XML',
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token']
             );
@@ -759,8 +755,8 @@ xml;
 </GetUserProfileRequest>
 xml;
             $responseXML = self::getXMLRequest($url, $xmlRequest, array(
-                'X-EBAY-API-APP-ID:' . self::EBAY_CLIENT_ID,
-                'X-EBAY-API-VERSION:' . self::EBAY_API_VER,
+                'X-EBAY-API-APP-ID:' . EBAY_CLIENT_ID,
+                'X-EBAY-API-VERSION:' . EBAY_API_VER,
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
                 'X-EBAY-API-CALL-NAME:GetUserProfile',
                 'X-EBAY-API-REQUEST-ENCODING:XML',
@@ -788,7 +784,7 @@ xml;
             $req = http_build_query($request);
             $auth = array(
                 'Content-Type: application/x-www-form-urlencoded',
-                'Authorization: Basic ' . base64_encode(self::EBAY_CLIENT_ID . ':' . self::EBAY_CLIENT_SECRET)
+                'Authorization: Basic ' . base64_encode(EBAY_CLIENT_ID . ':' . EBAY_CLIENT_SECRET)
             );
             $ch = curl_init('https://api.ebay.com/identity/v1/oauth2/token');
             curl_setopt($ch, CURLOPT_POST, true);
