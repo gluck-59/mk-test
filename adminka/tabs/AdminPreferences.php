@@ -51,6 +51,7 @@ class AdminPreferences extends AdminTab
 			$this->_fieldsGeneral['PS_THEME_V11'] = array('title' => $this->l('v1.1 theme compatibility:'), 'desc' => $this->l('My shop use a PrestaShop v1.1 theme (SSL will generate warnings in customer browser)'), 'validation' => 'isBool', 'cast' => 'intval', 'type' => 'bool');
 
 		parent::__construct();
+
 	}
 
 	public function display()
@@ -134,9 +135,13 @@ class AdminPreferences extends AdminTab
 						if (!Validate::$values['validation'](Tools::getValue($field.'_'.$language['id_lang'])))
 							$this->_errors[] = Tools::displayError('field').' <b>'.$values['title'].'</b> '.Tools::displayError('is invalid');
 			}
-			elseif (Tools::getValue($field) AND isset($values['validation']))
-				if (!Validate::$values['validation'](Tools::getValue($field)))
-					$this->_errors[] = Tools::displayError('field').' <b>'.$values['title'].'</b> '.Tools::displayError('is invalid');
+			elseif (Tools::getValue($field) AND isset($values['validation'])) {
+                var_dump(Validate::isGenericName('jopa'));
+                var_dump(empty('jojo'));
+//				if (!Validate::$values['validation'](Tools::getValue($field))) {
+//					$this->_errors[] = Tools::displayError('field').' <b>'.$values['title'].'</b> '.Tools::displayError('is invalid').': '.Tools::getValue($field);
+//                }
+            }
 
 		/* Default value if null */
 		foreach ($fields AS $field => $values)

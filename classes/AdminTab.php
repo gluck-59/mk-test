@@ -1134,7 +1134,8 @@ echo '<script>toastr.success(\''.$this->_conf[intval($conf)].'\');</script>';
 		$irow = 0;
 		if ($this->_list AND isset($this->fieldsDisplay['position']))
 		{
-			$positions = array_map(create_function('$elem', 'return intval($elem[\'position\']);'), $this->_list);
+//			$positions = array_map(create_function('$elem', 'return intval($elem[\'position\']);'), $this->_list); // оригинал
+			$positions = array_map(function($elem) { return intval($elem['position']); }, $this->_list );
 			sort($positions);
 		}
 		if ($this->_list)

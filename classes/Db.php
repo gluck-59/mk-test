@@ -73,6 +73,7 @@ abstract class Db
 		$this->_type = _DB_TYPE_;
 		$this->_database = _DB_NAME_;
 		$this->connect();
+		$this->q('SET NAMES \'utf8\'');
 	}
 
 	/**

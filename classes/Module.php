@@ -73,11 +73,13 @@ abstract class Module
 			{
 				self::$modulesCache = array();
 				$result = Db::getInstance()->ExecuteS('SELECT * FROM `'.pSQL(_DB_PREFIX_.$this->table).'`');
-				foreach ($result as $row)
+				foreach ($result as $row) {
 					self::$modulesCache[$row['name']] = $row;
+                }
 			}
-			if (!isset(self::$modulesCache[$this->name]))
+			if (!isset(self::$modulesCache[$this->name])) {
 				return false;
+            }
 			$this->active = true;
 			$this->id = self::$modulesCache[$this->name]['id_module'];
 			foreach (self::$modulesCache[$this->name] AS $key => $value)
@@ -315,19 +317,25 @@ abstract class Module
 		$moduleList = array();
 		$errors = array();
 		$modules_dir = self::getModulesDirOnDisk();
+
 		foreach ($modules_dir AS $module)
 		{
 			$file = trim(file_get_contents(_PS_MODULE_DIR_.'/'.$module.'/'.$module.'.php'));
-			if (substr($file, 0, 5) == '<?php')
+			if (substr($file, 0, 5) == '<?php') {
 				$file = substr($file, 5);
-			if (substr($file, -2) == '?>')
+            }
+			if (substr($file, -2) == '?>') {
 				$file = substr($file, 0, -2);
-			if (class_exists($module, false) OR eval($file) !== false)
-				$moduleList[] = new $module;
-			else
+            }
+			if (class_exists($module, false) OR eval($file) !== false) {
+                $newModule = new $module;
+				$moduleList[] = $newModule;
+            } else {
 				$errors[] = $module;
+            }
 		}
-		
+
+
 		if (sizeof($errors))
 		{
 			echo '<div class="alert error"><h3>'.Tools::displayError('Parse error(s) in module(s)').'</h3><ol>';
@@ -335,6 +343,7 @@ abstract class Module
 				echo '<li>'.$error.'</li>';
 			echo '</ol></div>';
 		}
+
 		return $moduleList;
 	}
 

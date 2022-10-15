@@ -18,7 +18,7 @@ class MySQL extends Db
 {
 	public function	connect()
 	{
-		if ($this->_link = @mysqli_connect($this->_server, $this->_user, $this->_password, 'motokofr'))
+		if ($this->_link = @mysqli_connect($this->_server, $this->_user, $this->_password, $this->_database))
 		{
 //			if(!$this->set_db($this->_database))
 //				die(Tools::displayError('The database selection cannot be made.'));

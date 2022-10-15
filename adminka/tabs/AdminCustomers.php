@@ -172,7 +172,7 @@ class AdminCustomers extends AdminTab
 			</table>';
 		}
 		echo '<div class="clear">&nbsp;</div>';
-		echo '<h2>'.$this->l('Orders').' ('.sizeof($orders).')</h2>';
+		echo '<h2>'.$this->l('Orders').' ('.(is_countable($orders) ? sizeof($orders) : '0').')</h2>';
 		if ($orders AND sizeof($orders))
 		{
 			echo '
