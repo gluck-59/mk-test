@@ -42,7 +42,7 @@ class AdminCMS extends AdminTab
 		$iso = Language::getIsoById(intval($cookie->id_lang));
 		$languages = Language::getLanguages();
 		$divLangName = 'meta_title¤meta_description¤meta_keywords¤ccontent¤link_rewrite';
-
+var_dump($currentIndex.'&submitAdd'.$this->table.'=1');
 		echo '
 		<script type="text/javascript">
 			id_language = Number('.$defaultLanguage.');

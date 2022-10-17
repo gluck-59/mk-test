@@ -145,7 +145,7 @@ class MySQL extends Db
 	 */
 	public function getMsgError($query = false)
 	{
-		return mysqli_error();
+		return mysqli_error($this->_link);
 	}
 
 	public function getNumberError()

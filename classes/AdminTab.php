@@ -527,8 +527,10 @@ abstract class AdminTab
 								$this->copyFromPost($object, $this->table);
 								$result = $object->update();
 							}
-							if (!$result)
+							if (!$result) {
+							prettyDump($object);
 								$this->_errors[] = Tools::displayError('an error occurred while updating object').' <b>'.$this->table.'</b> ('.Db::getInstance()->getMsgError().')';
+							}
 							elseif ($this->postImage($object->id) AND !sizeof($this->_errors))
 							{
 								$parent_id = intval(Tools::getValue('id_parent', 1));

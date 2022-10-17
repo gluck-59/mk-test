@@ -74,7 +74,7 @@
             $headersShip = array(
                 'X-EBAY-API-CALL-NAME: GetShippingCosts',
                 'X-EBAY-API-SITE-ID: 0',
-                'X-EBAY-API-APP-ID: RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-API-APP-ID: '.EBAY_CLIENT_ID,
                 'X-EBAY-API-VERSION: 889',
                 "X-EBAY-API-REQUEST-ENCODING: XML",
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
@@ -85,7 +85,7 @@
             $headers = array(
                 'X-EBAY-API-CALL-NAME: GetSingleItem',
                 'X-EBAY-API-SITE-ID: 0',                                 // Site 0 is for US
-                'X-EBAY-API-APP-ID: RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-API-APP-ID: '.EBAY_CLIENT_ID,
                 'X-EBAY-API-VERSION: 889',
                 "X-EBAY-API-REQUEST-ENCODING: XML",    // for a POST request, the response by default is in the same format as the request
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
@@ -487,7 +487,7 @@ $xmlRequest = "<?xml version='1.0' encoding='UTF-8'?>
                 'X-EBAY-SOA-OPERATION-NAME:findItemsAdvanced',
                 'X-EBAY-SOA-SERVICE-VERSION:1.12.0',
                 'X-EBAY-SOA-GLOBAL-ID:EBAY-US',
-                'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-SOA-SECURITY-APPNAME:'.EBAY_CLIENT_ID,
                 "X-EBAY-API-REQUEST-ENCODING: XML",
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token'],
                 'Content-Type: text/xml;charset=utf-8',
@@ -653,7 +653,7 @@ xml;
                 'X-EBAY-SOA-SERVICE-NAME:FindingService',
                 'X-EBAY-SOA-OPERATION-NAME:findItemsByProduct',
                 'X-EBAY-SOA-SERVICE-VERSION:1.12.0',
-                'X-EBAY-SOA-SECURITY-APPNAME:RubenYak-81fb-43e6-b05e-58e99eeaf19e',
+                'X-EBAY-SOA-SECURITY-APPNAME:'.EBAY_CLIENT_ID,
                 'X-EBAY-SOA-REQUEST-DATA-FORMAT:XML',
                 'X-EBAY-API-IAF-TOKEN:' . $auth['access_token']
             ));
