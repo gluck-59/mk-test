@@ -11,6 +11,7 @@
         const EBAY_API_VER       = '889';
         const EBAY_CLIENT_SECRET = '';
 
+
         var $lotnum;
         var $name;
         var $currency;
